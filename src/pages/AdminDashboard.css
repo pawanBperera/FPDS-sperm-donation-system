@@ -1,0 +1,79 @@
+/* File: src/pages/AdminDashboard.css */
+
+/* Analytics Cards */
+.analytics-card {
+    background-color: #f3e5f5; /* very light purple */
+    border: 1px solid #d1c4e9;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    flex: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .analytics-card:hover {
+    background-color: #e1bee7;
+  }
+  
+  .analytics-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    color: #7e57c2; /* medium purple */
+  }
+  
+  /* Action Buttons */
+  .btn-add-donor {
+    background-color: #ff9ec4; /* pink */
+    color: #000;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-add-donor:hover {
+    background-color: #ff77a8;
+  }
+  
+  .btn-approved {
+    background-color: #a18bff; /* lavender */
+    color: #000;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-approved:hover {
+    background-color: #8a6aff;
+  }
+  
+  .btn-rejected {
+    background-color: #ff8c00; /* orange */
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-rejected:hover {
+    background-color: #e67e00;
+  }
+  
+  /* Logout Button */
+  .btn-logout {
+    background-color: #dc3545; /* bootstrap danger */
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-logout:hover {
+    background-color: #c82333;
+  }
+  
