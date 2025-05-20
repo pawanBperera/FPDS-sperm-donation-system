@@ -1,0 +1,73 @@
+/* File: src/pages/RecipientDashboard.css */
+
+/* Base card style */
+.dash-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Icons */
+.dash-icon {
+  font-size: 1.75rem;
+  margin-right: 1rem;
+}
+
+
+/* Primary card (matches) */
+.dash-card-primary {
+  background-color: #f8bbd0;
+}
+.dash-card-primary:hover {
+  background-color: #f48fb1;
+}
+.dash-icon-heart {
+  color: #d204dd;
+}
+
+.dash-icon-vial {
+    color: #d204dd;
+}
+
+/* Success card (profile ✓, screening ✓, approved) */
+.dash-card-success {
+  background-color: #c8e6c9;
+}
+.dash-card-success:hover {
+  background-color: #a5d6a7;
+}
+.dash-icon-user{
+     color: #d204dd;
+}
+.dash-icon-check {
+  color: #0cc027;
+}
+
+.dash-icon-check:hover {
+  color: #5cb461;
+}
+
+/* Warning card (profile ✗, screening ✗) */
+.dash-card-warning {
+  background-color: #cda6e7;
+  
+  
+}
+.dash-card-warning:hover {
+  background-color: #e8ddf0;
+}
+
+
+/* Info card (last login) */
+.dash-card-info {
+  background-color: #e1f5fe;
+}
+.dash-card-info:hover {
+  background-color: #b3e5fc;
+}
+.dash-icon-clock {
+  color: #0288d1;
+}

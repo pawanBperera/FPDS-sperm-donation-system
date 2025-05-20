@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaTwitter, FaInstagram, FaFacebook, FaBars, FaTimes } from 'react-icons/fa';
 import logo from "../../assets/fpds-logo.png";
+import "./NavBar";
 
 export default function NavBar() {
   const [collapsed, setCollapsed] = useState(true);

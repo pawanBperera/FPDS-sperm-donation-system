@@ -1,5 +1,5 @@
 // File: src/pages/DonorDashboard.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
@@ -8,9 +8,32 @@ import { FaHeart, FaBell } from "react-icons/fa";
 
 export default function DonorDashboard() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user")) || {};
+  //const user = JSON.parse(localStorage.getItem("user")) || {};
 
-  // Mocked notification data for now
+  // 1) Dynamic timestamps
+  const [lastLogin, setLastLogin]       = useState("");
+  const [lastPwdChange, setLastPwdChange] = useState("");
+
+  useEffect(() => {
+    const u = auth.currentUser;
+    if (u) {
+      // last login
+      const lastSignIn = u.metadata.lastSignInTime;
+      setLastLogin(new Date(lastSignIn).toLocaleString());
+
+      // ***** TEMP HACK *****  
+      // use account creation as proxy for password‐change date
+      const created = u.metadata.creationTime;
+      const daysAgo  = Math.floor(
+        (Date.now() - new Date(created).getTime()) /
+          (1000 * 60 * 60 * 24)
+      );
+      setLastPwdChange(`${daysAgo}d ago`);
+      // *************************
+    }
+  }, []);
+
+  // 2) Static notifications for now
   const notifications = [
     {
       id: 1,
@@ -55,7 +78,7 @@ export default function DonorDashboard() {
       {/* Sidebar */}
       <DonorSidebar />
 
-      {/* Main dashboard content */}
+      {/* Main */}
       <div className="flex-grow-1 p-4 d-flex flex-column">
         <header className="mb-4">
           <h1 className="mb-1">Welcome back, 👋</h1>
@@ -65,26 +88,30 @@ export default function DonorDashboard() {
           </p>
         </header>
 
-        {/* Last login / password change card */}
-        <div className="bg-light p-3 rounded mb-4" style={{ maxWidth: "400px" }}>
+        {/* Dynamic login/password info */}
+        <div
+          className="bg-light p-3 rounded mb-4"
+          style={{ maxWidth: "400px" }}
+        >
           <p className="mb-1">
             <FaBell className="me-2 text-warning" />
-            Last login: April 27, 2025
+            Last login: <strong>{lastLogin}</strong>
           </p>
           <p className="mb-0">
             <FaBell className="me-2 text-warning" />
-            Last Password Change: 10d ago
+            Last Password Change: <strong>{lastPwdChange}</strong>
           </p>
         </div>
 
-        {/* Notifications list */}
+        {/* Notifications */}
         <div className="flex-grow-1 overflow-auto">
           {notifications.map(({ id, icon, text, date }) => (
             <div
               key={id}
               className="d-flex justify-content-between align-items-center border rounded p-3 mb-2"
             >
-              <div className="d-flex align-items-center">{icon}
+              <div className="d-flex align-items-center">
+                {icon}
                 <span>{text}</span>
               </div>
               <small className="text-muted">({date})</small>
@@ -92,7 +119,7 @@ export default function DonorDashboard() {
           ))}
         </div>
 
-        {/* Logout button */}
+        {/* Logout */}
         <div className="mt-3">
           <button
             className="btn btn-danger"

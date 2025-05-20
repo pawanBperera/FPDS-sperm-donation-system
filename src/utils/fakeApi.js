@@ -60,3 +60,69 @@ export const mockCreateUser = async (registrationPayload) => {
 
   return newUser;
 };
+
+// Fake a fetch of the recipient’s profile
+export const mockFetchRecipientProfile = async (id) => {
+  // simulate network delay
+  await new Promise((r) => setTimeout(r, 200));
+  return {
+    first_name: "Test",
+    last_name:  "User",
+    email:      "recipient@test.com",
+  };
+};
+
+// Fake an update of the recipient’s profile
+export const mockUpdateRecipientProfile = async (id, data) => {
+  console.log("Mock update recipient profile:", id, data);
+  await new Promise((r) => setTimeout(r, 200));
+  return { ...data, id };
+};
+
+
+
+//Donor dashboard
+
+
+
+export function mockGetDonorNotifications(donorId) {
+  console.log("Mock fetch notifications for donor", donorId);
+  return [
+    {
+      id: 1,
+      type: "match_approved",
+      // match approved → use a green heart
+      icon: "heart-success",
+      text: "A recipient match with your donation has been approved by the clinic.",
+      date: "2025-04-28",
+    },
+    {
+      id: 2,
+      type: "shortlisted",
+      icon: "heart-primary",
+      text: "Your donation was shortlisted by a recipient.",
+      date: "2025-04-28",
+    },
+    {
+      id: 3,
+      type: "shortlisted",
+      icon: "heart-primary",
+      text: "Your donation was shortlisted by a recipient.",
+      date: "2025-04-26",
+    },
+    {
+      id: 4,
+      type: "screening_update",
+      icon: "bell",
+      text: "New health screening update completed.",
+      date: "2025-04-20",
+    },
+    {
+      id: 5,
+      type: "no_matches",
+      icon: "bell",
+      text: "No new matches at this time.",
+      date: "2025-04-15",
+    },
+  ];
+}

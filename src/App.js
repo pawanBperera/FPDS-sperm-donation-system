@@ -8,6 +8,14 @@ import RegistrationPage from "./pages/RegistrationPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import DonorDashboard from "./pages/DonorDashboard";
 import AddDonorPage from "./pages/AddDonorPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import RecipientAccountSettings from "./pages/RecipientAccountSettings";
+import RecipientChangePassword from "./pages/RecipientChangePassword";
+import RecipientFeedback from "./pages/RecipientFeedback";
+import RecipientProfileManager from "./pages/RecipientProfileManager";
+import RecipientMatches from "./pages/RecipientMatches";
+import RecipientApprovedMatches from "./pages/RecipientApprovedMatches";
 
 // (Later we’ll add ForgotPasswordPage, ResetPasswordPage, RecipientDashboard, etc.)
 
@@ -22,13 +30,28 @@ function App() {
 
       {/* Dashboards */}
       <Route path="/recipient/dashboard" element={<RecipientDashboard />} />
-      {/* <Route path="/donor/dashboard" element={<DonorDashboard />} />
-      <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <Route path="donor/dashboard" element={<DonorDashboard />} />
+    
 
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-
-        <Route path="donor/dashboard" element={<DonorDashboard />} />
+        {/*Admin Account Settings*/}
         <Route path="admin/add-donor" element={<AddDonorPage />} />
+
+
+        {/*Log in Settings*/}
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+
+          {/*Recipient Account Settings*/}
+          <Route path="/recipient/account-settings" element={<RecipientAccountSettings/>}/>
+          <Route path="/recipient/change-password" element={<RecipientChangePassword />} />
+          <Route path="/recipient/feedback" element={<RecipientFeedback/>}/>
+          <Route path="/recipient/profile" element={<RecipientProfileManager/>}/>
+          <Route path="/recipient/matches" element={<RecipientMatches />} />
+          <Route path="/recipient/approved-match" element={<RecipientApprovedMatches />} />
+          
+
+        
 
 
       {/* Catch-all → back to login */}

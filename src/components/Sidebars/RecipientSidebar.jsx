@@ -12,6 +12,7 @@ import {
 export function RecipientSidebar() {
   return (
     <aside className="sidebar">
+
       <NavLink
         to="/recipient/dashboard"
         className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
@@ -20,26 +21,29 @@ export function RecipientSidebar() {
       </NavLink>
 
       <NavLink
-        to="/recipient/change-password"
+        to="/recipient/account-settings"
         className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
       >
-        <br></br>
-        <FaCog className="icon" /> Account Settings
-      </NavLink>
-      <br></br>
-      <NavLink
-        to="/recipient/profile"
-        className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
-      >
+<br></br>
+      <FaCog className="icon" /> Account Settings
+                </NavLink>
+                
+                    <br></br>
+
+                  <NavLink
+            to="/recipient/profile"
+          className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
         <FaUser className="icon" /> Profile Manager
       </NavLink>
+
       <br></br>
+
       <NavLink
         to="/recipient/feedback"
-        className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
-      >
+        className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
         <FaCommentDots className="icon" /> Feedback
       </NavLink>
+      
       <br></br>
       
       <hr />
@@ -88,4 +92,3 @@ export function RecipientSidebar() {
     </aside>
   );
 }
-

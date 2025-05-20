@@ -1,0 +1,14 @@
+/* File: src/pages/RecipientMatches.css */
+/* give the match cards a soft pastel bg and dotted border per UI */
+
+.recipient-match-card {
+  background-color: #f3e5f5; /* light lavender */
+  border: 1px dashed #9c27b0;
+  border-radius: 0.75rem;
+}
+
+.donor-detail-box {
+  background-color: #e8f5e9; /* light green */
+  border: 1px solid #c8e6c9;
+  border-radius: 0.5rem;
+}

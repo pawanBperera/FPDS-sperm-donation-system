@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
-import axios from "axios";
+//import axios from "axios";
 import { mockCreateUser } from "../utils/fakeApi"; // your mock for signup
 import Step1 from "../components/Registration/Step1";
 import Step2 from "../components/Registration/Step2";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function RegistrationPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
+  //const [step, setStep] = useState(1);
 
   // --- Step 1 state ---
   const [email, setEmail] = useState("");
