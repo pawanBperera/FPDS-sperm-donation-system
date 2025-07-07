@@ -1,0 +1,75 @@
+/* File: src/components/Sidebars/RecipientSidebar.css */
+
+/* Container styling for the sidebar */
+.sidebar {
+  width: 240px;
+  background-color: #b590bd; /* dusty purple background */
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  height: 100vh;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+/* File: src/components/Sidebars/RecipientSidebar.css */
+
+/*.sidebar {
+  position: fixed;    
+  top: 0;
+  left: 0;
+  bottom: 0;         
+  width: 240px;       
+  background-color: #b590bd;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  overflow-y: auto;   
+}*/
+
+/* Base link styling */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  color: #3b2d3a;            /* dark text color */
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  margin: 0.25rem 0;
+  transition: background-color 0.2s;
+}
+
+/* Icon spacing in each link */
+.sidebar-link .icon {
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* Hover state */
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Active link state */
+.sidebar-link.active {
+  background-color: #d4bfe7; /* light pastel highlight */
+  color: #0e5f5e;            /* accent dark-teal for active text */
+}
+
+.sidebar-link.active .icon {
+  color: #0e5f5e;            /* ensure icon matches active text */
+}
+
+/* Divider lines */
+.sidebar hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
+/* Static footer links styling (About, Terms, etc.) */
+.sidebar .sidebar-link:last-of-type {
+  margin-top: auto;
+  padding-bottom: 1rem;
+}

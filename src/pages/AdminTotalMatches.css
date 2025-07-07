@@ -1,0 +1,19 @@
+/* File: src/pages/AdminTotalMatches.css */
+
+.admin-matches-page main {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+}
+
+.matches-table th,
+.matches-table td {
+  vertical-align: middle;
+}
+
+.matches-table th {
+  font-size: 1.1rem;
+}
+
+.matches-table tbody tr:nth-child(odd) {
+  background: #f8f0ff;
+}

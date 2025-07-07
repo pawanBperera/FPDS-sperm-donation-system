@@ -1,0 +1,16 @@
+/* File: src/pages/DonorProfileManager.css */
+
+.donor-profile-form .form-control,
+.donor-profile-form .form-select {
+  border-radius: 0.5rem;
+}
+
+.donor-profile-form .btn {
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+}
+
+.donor-profile-form .row > .col-md-6 {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}

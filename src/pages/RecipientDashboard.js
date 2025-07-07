@@ -10,7 +10,7 @@ import {
   FaUser,
   FaVial,
   FaCheckCircle,
-  FaClock,
+  //FaClock,
 } from "react-icons/fa";
 import "./RecipientDashboard.css";
 
@@ -21,58 +21,120 @@ export default function RecipientDashboard() {
   const [profileComplete, setProfileComplete] = useState(false);
   const [screeningComplete, setScreeningComplete] = useState(false);
   //const [approvedExists, setApprovedExists] = useState(false);
-  const [lastLogin, setLastLogin] = useState("");
-  const [lastPwdChange, setLastPwdChange] = useState("");
+  //const [lastLogin, setLastLogin] = useState("");
+  //const [lastPwdChange, setLastPwdChange] = useState("");
 
-  useEffect(() => {
+ /* useEffect(() => {
     async function fetchStats() {
-      // 1) Matches saved count
+      const currentUser = auth.currentUser;
+      if (!currentUser) return; // nobody’s signed in
+
+      // 1) Grab a fresh Firebase JWT
+      const token = await currentUser.getIdToken();
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+
+      // 2) Matches saved count
       const shortlistRes = await axios.get(
-        `/api/recipients/${user.id}/shortlist`
+        `/api/recipients/${user.id}/shortlist`,
+        config
       );
       setMatchesSaved(shortlistRes.data.length);
 
-      // 2) Profile completeness
+      // 3) Profile completeness
       const profileRes = await axios.get(
-        `/api/recipients/${user.id}/profile`
+        `/api/recipients/${user.id}/profile`,
+        config
       );
       const p = profileRes.data;
+      
       setProfileComplete(
-        p.first_name && p.last_name && p.date_of_birth && p.ethnicity
+        (p.first_name || p.firstName) && 
+        (p.last_name || p.lastName) &&
+        (p.date_of_birth || p.dateOfBirth) &&
+        p.ethnicity 
       );
 
-      // 3) Screening completeness
+      // 4) Screening completeness
       const medRes = await axios.get(
-        `/api/recipients/${user.id}/medical`
+        `/api/recipients/${user.id}/medical`,
+        config
       );
       setScreeningComplete(
         medRes.data.medical_consent && medRes.data.diseases_json?.length > 0
       );
 
-      // 4) Approved match exists?
-   /*   const matchRes = await axios.get(
-        `/api/recipients/${user.id}/matches`,
-        { params: { status: "approved" } }
-      );
-      setApprovedExists(matchRes.data.length > 0);*/
-
-      // 5) Last login & password change times
-      const currentUser = auth.currentUser;
-      setLastLogin(currentUser.metadata.lastSignInTime);
-      // password change timestamp not in metadata; placeholder:
-      setLastPwdChange("10d ago");
+      // 5) Timestamps (removed per request)
+      // setLastLogin(currentUser.metadata.lastSignInTime);
+      // setLastPwdChange("10d ago");
     }
-    fetchStats();
-  }, [user.id]);
 
-  const displayName = user.firstName || user.email.split("@")[0];
+    fetchStats();
+  }, [user.id]);*/
+
+  useEffect(() => {
+  async function fetchStats() {
+    // grab token if we have a signed-in user, otherwise leave headers empty
+    let config = {};
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      const token = await currentUser.getIdToken();
+      config.headers = { Authorization: `Bearer ${token}` };
+    }
+
+    // 2) Matches saved count
+    try {
+      const shortlistRes = await axios.get(
+        `/api/recipients/${user.id}/shortlist`,
+        config
+      );
+      setMatchesSaved(shortlistRes.data.length);
+    } catch (e) {
+      console.error("Error fetching matches:", e);
+    }
+
+    // 3) Profile completeness
+    try {
+      const profileRes = await axios.get(
+        `/api/recipients/${user.id}/profile`,
+        config
+      );
+      const p = profileRes.data;
+      console.log("🔥 PROFILE PAYLOAD:", p);
+      setProfileComplete(
+        (p.first_name || p.firstName) &&
+        (p.last_name  || p.lastName)  &&
+        (p.date_of_birth || p.dateOfBirth) &&
+        p.ethnicity
+      );
+    } catch (e) {
+      console.error("Error fetching profile:", e);
+    }
+
+    // 4) Screening completeness
+    try {
+      const medRes = await axios.get(
+        `/api/recipients/${user.id}/medical`,
+        config
+      );
+      setScreeningComplete(
+        medRes.data.medical_consent && medRes.data.diseases_json?.length > 0
+      );
+    } catch (e) {
+      console.error("Error fetching medical:", e);
+    }
+  }
+
+  fetchStats();
+}, [user.id]);
+
+
+  const displayName = user.firstName || user.username ;
 
   return (
     <>
       <NavBar />
       <div className="d-flex vh-100">
         <RecipientSidebar />
-
         <main className="flex-grow-1 p-4">
           <h1 className="mb-3">
             Welcome back, {displayName}{" "}
@@ -84,6 +146,18 @@ export default function RecipientDashboard() {
             Your intended parent profile can connect you with donors that wish
             to give the gift of parenthood to a deserving person like yourself.
           </p>
+
+          {/* Notification Sections */}
+          {!profileComplete && (
+            <div className="alert alert-warning" role="alert">
+              Please complete your profile to improve matching.
+            </div>
+          )}
+          {!screeningComplete && (
+            <div className="alert alert-info" role="alert">
+              Please complete your medical screening to see all matches.
+            </div>
+          )}
 
           <div className="row g-4 mt-4">
             {/* Matches Saved */}
@@ -110,8 +184,7 @@ export default function RecipientDashboard() {
               >
                 <FaUser className="dash-icon dash-icon-user" />
                 <div>
-                  Your Profile Info:{" "}
-                  {profileComplete ? "✔️" : "Not Completed ❌"}
+                  Your Profile Info: {profileComplete ? "✔️" : "Not Completed ❌"}
                 </div>
               </div>
             </div>
@@ -121,16 +194,13 @@ export default function RecipientDashboard() {
               <div
                 className={
                   "dash-card " +
-                  (screeningComplete
-                    ? "dash-card-success"
-                    : "dash-card-warning")
+                  (screeningComplete ? "dash-card-success" : "dash-card-warning")
                 }
                 onClick={() => navigate("/recipient/medical")}
               >
                 <FaVial className="dash-icon dash-icon-vial" />
                 <div>
-                  Screening:{" "}
-                  {screeningComplete ? "✔️" : "Not Completed ❌" } 
+                  Screening: {screeningComplete ? "✔️" : "Not Completed ❌"}
                 </div>
               </div>
             </div>
@@ -146,7 +216,8 @@ export default function RecipientDashboard() {
               </div>
             </div>
 
-            {/* Last Login / Password Change */}
+            {/* Last Login / Password Change (removed) */}
+            {/*
             <div className="col-md-6 col-lg-8">
               <div className="dash-card dash-card-info">
                 <FaClock className="dash-icon dash-icon-clock" />
@@ -157,6 +228,7 @@ export default function RecipientDashboard() {
                 </div>
               </div>
             </div>
+            */}
           </div>
 
           <button

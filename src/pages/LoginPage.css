@@ -96,6 +96,11 @@
   box-shadow: none;
 }
 
+.spinner-border{
+  background-color: #ff00d9;
+
+}
+
 .input-field.pe-5 {
   padding-right: 3rem !important;
 }

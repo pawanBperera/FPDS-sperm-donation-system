@@ -1,7 +1,8 @@
 // File: src/components/Sidebars/AdminSidebar.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaCog, FaUser } from 'react-icons/fa';
+import { FaHome, FaCog,  } from 'react-icons/fa';//FaUser
+import './Sidebar.css';
 
 export function AdminSidebar() {
   return (

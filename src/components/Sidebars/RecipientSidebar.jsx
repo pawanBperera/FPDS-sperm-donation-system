@@ -8,6 +8,7 @@ import {
   FaCommentDots,
   FaInfoCircle
 } from 'react-icons/fa';
+import './RecipientSidebar.css';
 
 export function RecipientSidebar() {
   return (

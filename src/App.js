@@ -16,6 +16,15 @@ import RecipientFeedback from "./pages/RecipientFeedback";
 import RecipientProfileManager from "./pages/RecipientProfileManager";
 import RecipientMatches from "./pages/RecipientMatches";
 import RecipientApprovedMatches from "./pages/RecipientApprovedMatches";
+import DonorAccountSettings from "./pages/DonorAccountSettings";
+import DonorProfileManager from "./pages/DonorProfileManager";
+import AdminTotalMatches from "./pages/AdminTotalMatches";
+import AdminMatchDetail from "./pages/AdminMatchDetail";
+import AdminApprovedMatches from "./pages/AdminApprovedMatches";
+import AdminRejectedMatches from "./pages/AdminRejectedMatches";
+
+import SearchPage from "./pages/SearchPage";
+import SearchResultsPage from "./pages/SearchResultsPage";
 
 // (Later we’ll add ForgotPasswordPage, ResetPasswordPage, RecipientDashboard, etc.)
 
@@ -36,6 +45,10 @@ function App() {
 
         {/*Admin Account Settings*/}
         <Route path="admin/add-donor" element={<AddDonorPage />} />
+        <Route path="admin/matches" element={<AdminTotalMatches />} />
+        <Route path="admin/matches/:matchId" element={<AdminMatchDetail />} />
+        <Route path="/admin/matches/approved" element={<AdminApprovedMatches />} />
+        <Route path="/admin/matches/rejected"element={<AdminRejectedMatches />}/>
 
 
         {/*Log in Settings*/}
@@ -49,8 +62,16 @@ function App() {
           <Route path="/recipient/profile" element={<RecipientProfileManager/>}/>
           <Route path="/recipient/matches" element={<RecipientMatches />} />
           <Route path="/recipient/approved-match" element={<RecipientApprovedMatches />} />
-          
 
+          {/*Donor Side */}
+
+          <Route path="/donor/change-password" element={<DonorAccountSettings/>}/>
+          <Route path="/donor/profile" element={<DonorProfileManager/>}/>
+
+          {/* SEARCH */}
+          
+          <Route path="search" element={<SearchPage />} />
+          <Route path="search-results" element={<SearchResultsPage />} />
         
 
 

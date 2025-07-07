@@ -1,6 +1,8 @@
 // File: src/components/Registration/Step2.js
 import React from "react";
 import { conditionsList } from "../../constants"; // e.g. [{ id: 1, label: "Thalassemia" }, ...]
+//import { mockCreateUser } from '../utils/fakeApi';
+
 
 export default function Step2({
   diseases, setDiseases,

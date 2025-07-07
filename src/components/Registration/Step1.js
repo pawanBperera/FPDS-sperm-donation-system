@@ -1,6 +1,9 @@
 // File: src/components/Registration/Step1.js
 import React from "react";
 import { provincesList } from "../../constants"; // e.g. ["Western", "Central", ...]
+//import { mockCreateUser } from '../utils/fakeApi';
+
+
 
 export default function Step1({
   email, setEmail,

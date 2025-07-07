@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
 import axios from "axios";
-//import "./RecipientFeedback.css"; // optional, for textarea sizing & button spacing
+import { auth } from "../firebase/firebaseConfig";
+//import "./RecipientFeedback.css"; // optional styling
 
 export default function RecipientFeedback() {
   const navigate = useNavigate();
@@ -25,17 +26,27 @@ export default function RecipientFeedback() {
     }
     setLoading(true);
     try {
-      await axios.post("/api/feedback", {
-        user_id: user.id,
-        subject: "",        // you can add a subject field later
-        message,
-        rating: null,       // optional rating
-      });
+      //  Grab Firebase ID token for authorization
+      const currentUser = auth.currentUser;
+      if (!currentUser) throw new Error("You must be logged in to send feedback.");
+      const token = await currentUser.getIdToken();
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+
+      await axios.post("http://localhost:8080/api/feedback",
+        {
+          user_id: user.id,
+          subject: "what",        // optional
+          message,
+          rating: null,         // optional rating
+        },
+        config
+      );
+
       alert("Thank you for your feedback!");
       navigate("/recipient/dashboard");
     } catch (err) {
       console.error("Feedback error:", err);
-      setError("Failed to send feedback. Please try again.");
+      setError(err.message || "Failed to send feedback. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -44,10 +55,8 @@ export default function RecipientFeedback() {
   return (
     <>
       <NavBar />
-
       <div className="d-flex vh-100">
         <RecipientSidebar />
-
         <main className="flex-grow-1 p-4">
           <h1>We Value Your Feedback!</h1>
           <p>Tell us how we can improve</p>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaTwitter, FaInstagram, FaFacebook, FaBars, FaTimes } from 'react-icons/fa';
 import logo from "../../assets/fpds-logo.png";
-import "./NavBar";
+import "./NavBar.css";
 
 export default function NavBar() {
   const [collapsed, setCollapsed] = useState(true);
@@ -12,13 +12,17 @@ export default function NavBar() {
     <nav className="navbar recipient-navbar">
       {/* Branding */}
       <div className="navbar-brand">
-        <img src={logo} alt="FPDS Logo" className="logo"class="img-fluid w-25" />
+        <img
+          src={logo}
+          alt="FPDS Logo"
+          className="logo img-fluid w-25"
+        />
         <span className="brand-text">FPDS</span>
       </div>
 
       {/* Hamburger for mobile */}
       <button
-        className="navbar-toggler d-md-none" 
+        className="navbar-toggler d-md-none"
         onClick={() => setCollapsed(!collapsed)}
       >
         {collapsed ? <FaBars /> : <FaTimes />}
@@ -26,11 +30,11 @@ export default function NavBar() {
 
       {/* Links (collapsed on mobile) */}
       <div className={`navbar-links ${collapsed ? 'collapsed' : ''}`}>
-        <NavLink 
-          to="/search" 
-          className="btn nav-btn" 
-          activeClassName="active"
-          
+        <NavLink
+          to="/search"
+          className={({ isActive }) =>
+            'btn nav-btn' + (isActive ? ' active' : '')
+          }
         >
           Home
         </NavLink>
@@ -39,9 +43,7 @@ export default function NavBar() {
           href="https://twitter.com/YourFPDS"
           target="_blank"
           rel="noopener noreferrer"
-          className="nav-icon"
-          class="pe-1"
-          
+          className="nav-icon pe-1"
         >
           <FaTwitter />
         </a>
@@ -49,8 +51,7 @@ export default function NavBar() {
           href="https://instagram.com/YourFPDS"
           target="_blank"
           rel="noopener noreferrer"
-          className="nav-icon"
-          class="pe-1"
+          className="nav-icon pe-1"
         >
           <FaInstagram />
         </a>
@@ -58,17 +59,16 @@ export default function NavBar() {
           href="https://facebook.com/YourFPDS"
           target="_blank"
           rel="noopener noreferrer"
-          className="nav-icon"
-          class="pe-4"
+          className="nav-icon pe-4"
         >
           <FaFacebook />
         </a>
 
-        <NavLink 
-          to="/recipient/dashboard" 
-          className="btn nav-btn account-btn" 
-          activeClassName="active"
-          
+        <NavLink
+          to="/recipient/dashboard"
+          className={({ isActive }) =>
+            'btn nav-btn account-btn' + (isActive ? ' active' : '')
+          }
         >
           My Account
         </NavLink>

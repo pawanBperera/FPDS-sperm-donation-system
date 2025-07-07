@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 //import axios from "axios";
-import { mockCreateUser } from "../utils/fakeApi"; // your mock for signup
+//import { mockCreateUser } from "../utils/fakeApi"; // your mock for signup
 import Step1 from "../components/Registration/Step1";
 import Step2 from "../components/Registration/Step2";
 import { useNavigate } from "react-router-dom";
@@ -84,6 +84,7 @@ export default function RegistrationPage() {
       // 2) Backend call (mock or real)
       // We'll send: { firebase_uid, email, firstName, lastName, province, diseases, file, consent }
       // For now use a fakeApi helper:
+      /*
       await mockCreateUser({
         firebase_uid: firebaseUid,
         email,
@@ -93,7 +94,7 @@ export default function RegistrationPage() {
         diseases,
         file,      // the File object
         consent,
-      });
+      });*/
 
       // REAL backend example (comment out for now):
       // const formData = new FormData();

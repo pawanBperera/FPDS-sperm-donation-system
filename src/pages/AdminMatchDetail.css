@@ -1,0 +1,27 @@
+/* File: src/pages/AdminMatchDetail.css */
+
+.admin-match-detail-page main {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+}
+
+.match-detail-card {
+  background: #f0e3ff;
+  border: 1px dashed #000000;
+  border-radius: 0.75rem;
+}
+
+.match-detail-card h2 {
+  color: #047d75;
+  margin-bottom: 0.5rem;
+}
+
+.match-detail-card p {
+  margin-bottom: 0.75rem;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary {
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+}

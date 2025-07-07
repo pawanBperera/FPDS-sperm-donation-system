@@ -11,6 +11,7 @@ import {
   deleteUser as firebaseDeleteUser,
 } from "firebase/auth";
 import axios from "axios";
+//import "./RecipientAccountSettings.css";
 
 export default function RecipientAccountSettings() {
   const navigate = useNavigate();
@@ -24,13 +25,22 @@ export default function RecipientAccountSettings() {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const res = await axios.get("/api/users/me", {
+        const currentUser = auth.currentUser;
+        if (!currentUser) return;
+
+        // Grab Firebase ID token for backend auth
+        const token = await currentUser.getIdToken();
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
           params: { firebase_uid: rawUser.firebase_uid },
-        });
+        };
+
+        const res = await axios.get("/api/users/me", config);
         setUsername(res.data.username || "");
         setEmail(res.data.email || "");
       } catch (err) {
         console.error("Error fetching account data:", err);
+        setError("Failed to load account settings. Please try again.");
       }
     }
     fetchUser();
@@ -42,22 +52,33 @@ export default function RecipientAccountSettings() {
     setLoading(true);
 
     try {
+      const currentUser = auth.currentUser;
+      if (!currentUser) throw new Error("Not authenticated");
+      const token = await currentUser.getIdToken();
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+        params:  { firebase_uid: rawUser.firebase_uid }
+      };
+
       // 1) Update username in backend
-      await axios.put("/api/users/me", { username });
+      await axios.put(
+        "/api/users/me",
+        { username },
+        config
+      );
 
       // 2) If email changed, reauthenticate & update Firebase
       if (email !== rawUser.email) {
-        const user = auth.currentUser;
         const password = prompt(
           "Enter your current password to confirm email change:"
         );
         if (!password) throw new Error("Password is required.");
         const credential = EmailAuthProvider.credential(
-          user.email,
+          currentUser.email,
           password
         );
-        await reauthenticateWithCredential(user, credential);
-        await updateEmail(user, email);
+        await reauthenticateWithCredential(currentUser, credential);
+        await updateEmail(currentUser, email);
       }
 
       // 3) Persist updated user data locally
@@ -65,6 +86,7 @@ export default function RecipientAccountSettings() {
       localStorage.setItem("user", JSON.stringify(updatedUser));
 
       alert("Account settings updated.");
+      navigate("/recipient/dashboard");
     } catch (err) {
       console.error("Update failed:", err);
       setError(err.message || "Failed to update account settings.");
@@ -84,12 +106,16 @@ export default function RecipientAccountSettings() {
 
     try {
       // Delete from backend
-      await axios.delete("/api/users/me", {
-        data: { firebase_uid: rawUser.firebase_uid },
-      });
+      const currentUser = auth.currentUser;
+      const token = await currentUser.getIdToken();
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { firebase_uid: rawUser.firebase_uid },
+      };
+      await axios.delete("/api/users/me", config);
+
       // Delete from Firebase
-      const user = auth.currentUser;
-      await firebaseDeleteUser(user);
+      await firebaseDeleteUser(currentUser);
       localStorage.removeItem("user");
       navigate("/signup");
     } catch (err) {
@@ -135,7 +161,7 @@ export default function RecipientAccountSettings() {
 
             <div className="mb-4">
               <label className="form-label">
-                Password{" "}
+                Password {" "}
                 <button
                   type="button"
                   className="btn btn-link p-0 align-baseline"
