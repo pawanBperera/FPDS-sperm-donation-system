@@ -1,66 +1,68 @@
-/* File: src/pages/SearchResultsPage.css */
+
 
 .search-results-page {
-  padding: 2rem;
+padding: 2rem;
 }
 
-.donor-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+
+.results-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 1.5rem;
 }
+
 
 .donor-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f3e6ff;
-  border: 1px dashed #5a3b6d;
-  border-radius: 1rem;
-  padding: 1rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #f3e6ff;
+border: 1px dashed #5a3b6d;
+border-radius: 1rem;
+padding: 1rem;
 }
 
 .donor-card .info {
-  flex: 1;
+flex: 1;
 }
 
 .donor-card .info h2 {
-  margin: 0;
-  color: #5a3b6d;
-  font-size: 1.25rem;
+margin: 0;
+color: #5a3b6d;
+font-size: 1.25rem;
 }
 
 .donor-card .info p {
-  margin: 0.25rem 0;
-  color: #14584a;
+margin: 0.25rem 0;
+color: #14584a;
 }
 
 .donor-card .actions {
-  margin-left: 1rem;
+margin-left: 1rem;
 }
 
 .donor-card .actions button {
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  border: none;
-  background-color: #7b4173;
-  color: #fff;
-  cursor: pointer;
+padding: 0.5rem 1rem;
+border-radius: 2rem;
+border: none;
+background-color: #7b4173;
+color: #fff;
+cursor: pointer;
 }
 
 .pagination {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+margin-top: 2rem;
+display: flex;
+justify-content: center;
+gap: 1rem;
 }
 
 .pagination button {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: none;
-  background-color: #5a3b6d;
-  color: #fff;
-  cursor: pointer;
+width: 2rem;
+height: 2rem;
+border-radius: 50%;
+border: none;
+background-color: #5a3b6d;
+color: #fff;
+cursor: pointer;
 }

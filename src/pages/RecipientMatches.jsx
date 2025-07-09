@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
+import DonorProfileCard from "../components/DonorProfileCard";  // ADDED import
+import { getDonors } from "../services/donorApi";                // ADDED import
 import axios from "axios";
 import { FaHeart } from "react-icons/fa";
-import "./RecipientMatches.css"; // create for any tweaks
+import "./RecipientMatches.css";
 
 export default function RecipientMatches() {
   const navigate = useNavigate();
@@ -18,11 +20,12 @@ export default function RecipientMatches() {
   useEffect(() => {
     async function fetchShortlist() {
       try {
-        const res = await axios.get(`/api/recipients/${user.id}/shortlist`);
-        // Expecting res.data = [ { donor_id, age, city, province, created_at, ethnicity }, ... ]
+        setLoading(true);                                  // UPDATED: show loading
+        // FETCH donor profiles instead of raw shortlist data
+        const res = await getDonors();                     // UPDATED: use donorApi
         setMatches(res.data);
       } catch (err) {
-        console.error("Error fetching shortlist:", err);
+        console.error("Error fetching matches:", err);
         setError("Could not load your matches yet.");
       } finally {
         setLoading(false);
@@ -65,40 +68,7 @@ export default function RecipientMatches() {
 
           <div className="matches-list">
             {matches.map((donor) => (
-              <div key={donor.donor_id} className="card mb-3 recipient-match-card">
-                <div className="row g-0">
-                  {/* Left info */}
-                  <div className="col-md-4 p-3">
-                    <h4>{donor.donor_id}</h4>
-                    <p>{donor.ethnicity}, from {donor.city}</p>
-                  </div>
-
-                  {/* Detail box */}
-                  <div className="col-md-5 p-3">
-                    <div className="bg-light border rounded p-3 donor-detail-box">
-                      <p><strong>Age:</strong> {donor.age}</p>
-                      <p><strong>Location:</strong> {donor.city}, {donor.province}</p>
-                      <p><strong>Date registered:</strong> {new Date(donor.created_at).toLocaleDateString()}</p>
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="col-md-3 d-flex flex-column justify-content-center align-items-end p-3">
-                    <button
-                      className="btn btn-outline-secondary mb-2"
-                      onClick={() => navigate(`/donor/profile/${donor.donor_id}`)}
-                    >
-                      Profile
-                    </button>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => handleRemove(donor.donor_id)}
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <DonorProfileCard key={donor.userId} donor={donor} /> // UPDATED: use donor shape
             ))}
           </div>
         </main>
