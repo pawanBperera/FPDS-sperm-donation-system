@@ -1,10 +1,12 @@
 // File: src/pages/SearchPage.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import { useNavigate } from "react-router-dom";
+import DonorProfileCard from "../components/DonorProfileCard";
+import { getDonors } from "../services/donorApi";
 import {
   cityOptions,
-  districtOptions,
+  //districtOptions,
   bloodTypeOptions,
   nationalityOptions,
   raceOptions,
@@ -34,6 +36,19 @@ export default function SearchPage() {
   const [language, setLanguage] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
   const [assist, setAssist] = useState("");
+  const [donors, setDonors] = useState([]);
+
+  useEffect(() => {
+    async function fetchDonors() {
+      try {
+        const res = await getDonors();
+        setDonors(res.data);
+      } catch (err) {
+        console.error("Failed to load donors", err);
+      }
+    }
+    fetchDonors();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,27 +71,15 @@ export default function SearchPage() {
 
   return (
     <div className="search-page">
-      {/* 1) Top nav bar */}
       <NavBar />
-
-      {/* 2) Main search area */}
       <div className="search-content">
         <h1 className="search-title">Search For Donors</h1>
         <form className="filters-form" onSubmit={handleSubmit}>
           <div className="filters-top">
-
-
-
-
-
-
-
-
-            {/* Map + district */}
             <div className="map-filter">
               <ComposableMap
                 projection="geoMercator"
-                projectionConfig={{ scale: 8_900, center: [80, 7] }}
+                projectionConfig={{ scale: 8900, center: [80, 7] }}
                 style={{ width: "100%", maxWidth: 300, height: 300 }}
               >
                 <Geographies geography={srilankaTopo}>
@@ -103,36 +106,7 @@ export default function SearchPage() {
                   }
                 </Geographies>
               </ComposableMap>
-
-
-             {/* <small className="map-hint">
-                Selected district: <strong>{district || "None"}</strong>
-              </small>
-
-              <select
-                value={district}
-                onChange={(e) => setDistrict(e.target.value)}
-              >
-                <option value="">District</option>
-                {districtOptions.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
-                  </option>
-                ))}
-              </select>*/} 
-              
             </div>
-
-
-
-
-
-
-
-
-
-
-            {/* All the other dropdowns */}
             <div className="dropdown-grid">
               <select value={city} onChange={(e) => setCity(e.target.value)}>
                 <option value="">City</option>
@@ -256,10 +230,12 @@ export default function SearchPage() {
           </div>
         </form>
 
-        {/* 3) Suggestions & Resources */}
         <div className="suggestions-resources">
           <div className="suggestions-container">
-            {/* you’ll render your mock suggestion cards here */}
+            
+            {donors.map(donor => (
+              <DonorProfileCard key={donor.userId} donor={donor} />
+            ))}
           </div>
           <div className="resources-links">
             <a href="/recipient/guide">Guide for Intended Parents</a>

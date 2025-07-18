@@ -26,6 +26,9 @@ import AdminRejectedMatches from "./pages/AdminRejectedMatches";
 import SearchPage from "./pages/SearchPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 
+import DonorProfileView from "./pages/DonorProfileView";
+
+
 // (Later we’ll add ForgotPasswordPage, ResetPasswordPage, RecipientDashboard, etc.)
 
 function App() {
@@ -72,6 +75,8 @@ function App() {
           
           <Route path="search" element={<SearchPage />} />
           <Route path="search-results" element={<SearchResultsPage />} />
+           <Route path="/donors/:id" element={<DonorProfileView />} />
+          
         
 
 
