@@ -54,10 +54,11 @@ export async function shortlistDonor(recipientId, donorId) {
   const token = await fetchIdToken();
   if (!token) return;
 
-  return axios.post("/api/shortlisted-donors", {
-    recipient_id: recipientId,
-    donor_id: donorId,
-  }, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  return axios.post(
+    `/api/recipients/${recipientId}/shortlist?donorId=${donorId}`,
+    null,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
 }

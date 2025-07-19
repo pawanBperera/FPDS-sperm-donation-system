@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
-import DonorProfileCard from "../components/DonorProfileCard";  // ADDED import
-import { getDonors } from "../services/donorApi";                // ADDED import
+import DonorProfileCard from "../components/DonorProfileCard";
 import axios from "axios";
 import { FaHeart } from "react-icons/fa";
 import "./RecipientMatches.css";
@@ -15,15 +14,45 @@ export default function RecipientMatches() {
 
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function fetchShortlist() {
       try {
-        setLoading(true);                                  // UPDATED: show loading
-        // FETCH donor profiles instead of raw shortlist data
-        const res = await getDonors();                     // UPDATED: use donorApi
-        setMatches(res.data);
+        setLoading(true);
+
+        
+
+        const res = await axios.get(`/api/recipients/${user.id}/shortlisted-donors`);
+        console.log("🔥 Shortlisted raw:", res.data);
+
+const donorIds = res.data
+  .map(item => item.id?.donor_id)
+  .filter(id => id !== undefined && id !== null);
+
+
+console.log("✅ Donor IDs to fetch:", donorIds);
+
+        const donorProfiles = await Promise.all(
+          
+          donorIds.map(async id => {
+            try {
+              const res = await axios.get(`/api/donors/${id}`);
+              return res.data;
+            } catch (err) {
+              console.warn("Failed to fetch donor:", id, err);
+              return null;
+            }
+            
+          })
+          
+        );
+console.log("📦 Donor profiles loaded:", donorProfiles);
+        
+
+console.log("🎯 Final matched profiles:", donorProfiles.filter(profile => profile !== null));
+
+        setMatches(donorProfiles.filter(profile => profile !== null));
       } catch (err) {
         console.error("Error fetching matches:", err);
         setError("Could not load your matches yet.");
@@ -31,16 +60,15 @@ export default function RecipientMatches() {
         setLoading(false);
       }
     }
+
     fetchShortlist();
   }, [user.id]);
 
   const handleRemove = async (donorId) => {
     if (!window.confirm("Remove this donor from your matches?")) return;
     try {
-      await axios.delete(
-        `/api/recipients/${user.id}/shortlist/${donorId}`
-      );
-      setMatches(matches.filter((m) => m.donor_id !== donorId));
+      await axios.delete(`/api/recipients/${user.id}/shortlist/${donorId}`);
+      setMatches(matches.filter((m) => m.user_id !== donorId));
     } catch (err) {
       console.error("Remove error:", err);
       alert("Failed to remove. Try again.");
@@ -67,10 +95,19 @@ export default function RecipientMatches() {
           )}
 
           <div className="matches-list">
-            {matches.map((donor) => (
-              <DonorProfileCard key={donor.userId} donor={donor} /> // UPDATED: use donor shape
-            ))}
-          </div>
+  {matches.map((donor) => (
+    <div key={donor.user_id} className="donor-card-wrapper mb-3">
+      <DonorProfileCard donor={donor} />
+      <button
+        className="btn btn-outline-danger mt-2"
+        onClick={() => handleRemove(donor.user_id)}
+      >
+        Remove from Shortlist
+      </button>
+    </div>
+  ))}
+</div>
+          
         </main>
       </div>
     </>

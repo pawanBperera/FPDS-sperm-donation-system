@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
 import { getDonorProfile, shortlistDonor } from "../services/donorApi";
-import { getAuth } from "firebase/auth";
 import "./DonorProfileView.css";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -20,6 +19,9 @@ export default function DonorProfileView() {
         setLoading(true);
         const res = await getDonorProfile(id);
         setProfile(res.data);
+
+        console.log("👤 Donor Profile loaded:", res.data);
+
       } catch (err) {
         console.error("Error loading donor profile:", err);
         setError("Failed to load profile.");
@@ -32,16 +34,17 @@ export default function DonorProfileView() {
 
   async function handleSave() {
     try {
-      const user = getAuth().currentUser;
-      const token = await user.getIdTokenResult();
-      const recipientId = token.claims?.db_id;
-
-      if (!recipientId) {
-        alert("Unable to identify recipient.");
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user || !user.id) {
+        alert("Unable to identify recipient. Please login again.");
         return;
       }
 
-      await shortlistDonor(recipientId, profile.userId);
+      console.log("💾 Saving donor: recipientId =", user.id, ", donorUserId =", profile.userId);
+
+
+      await shortlistDonor(user.id, profile.user_id);
+
       alert("Donor successfully shortlisted!");
     } catch (err) {
       console.error("Error shortlisting donor:", err);
