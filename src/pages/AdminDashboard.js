@@ -11,32 +11,38 @@ import "./AdminDashboard.css"; // create for custom styles as needed
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user")) || {};
+ // const user = JSON.parse(localStorage.getItem("user")) || {};
   const [totals, setTotals] = useState({
     recipients: 0,
     donors: 0,
     matches: 0,
   });
 
-  useEffect(() => {
-    const fetchTotals = async () => {
-      try {
-        const [recRes, donorRes, matchRes] = await Promise.all([
-          axios.get("/api/admin/analytics/total-recipients"),
-          axios.get("/api/admin/analytics/total-donors"),
-          axios.get("/api/admin/analytics/total-matches"),
-        ]);
-        setTotals({
-          recipients: recRes.data.total_recipients,
-          donors: donorRes.data.total_donors,
-          matches: matchRes.data.total_matches,
-        });
-      } catch (err) {
-        console.error("Error fetching admin analytics:", err);
-      }
-    };
-    fetchTotals();
-  }, []);
+
+
+
+
+ useEffect(() => {
+  const fetchSummary = async () => {
+    try {
+      const res = await axios.get("/api/analytics/summary");
+      setTotals({
+        recipients: res.data.total_recipients,
+        donors: res.data.total_donors,
+        matches: res.data.total_matches,
+      });
+    } catch (err) {
+      console.error("Error fetching admin summary:", err);
+    }
+  };
+  fetchSummary();
+}, []);
+
+
+
+
+
+
 
   const handleLogout = async () => {
     await signOut(auth);

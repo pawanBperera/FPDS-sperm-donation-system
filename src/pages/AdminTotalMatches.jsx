@@ -2,41 +2,46 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaBell } from "react-icons/fa";
-//import AdminSidebar from "../components/Sidebars/AdminSidebar";
+import { FaBell, FaHome } from "react-icons/fa";
+// import AdminSidebar from "../components/Sidebars/AdminSidebar"; // Uncomment if needed
 import "./AdminTotalMatches.css";
-import { FaHome} from 'react-icons/fa';//F
-
-
 
 export default function AdminTotalMatches() {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user")) || {};
 
   useEffect(() => {
-    async function fetchMatches() {
-      try {
-        const res = await axios.get("/api/matches", {
-          params: { status: "pending" },
-        });
-        setMatches(res.data);
-      } catch (err) {
-        console.error("Failed to load matches:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
     fetchMatches();
   }, []);
 
-  const handleAction = async (matchId, newStatus) => {
+  const fetchMatches = async () => {
     try {
-      await axios.put(`/api/matches/${matchId}`, { status: newStatus });
-      // remove from list immediately
-      setMatches((ms) => ms.filter((m) => m.id !== matchId));
+      const res = await axios.get("/api/matches/status/pending");
+      setMatches(res.data);
+    } catch (err) {
+      console.error("Failed to load matches:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleAction = async (matchId, newStatus) => {
+    if (!window.confirm(`Are you sure you want to ${newStatus} this match?`)) return;
+
+    try {
+      await axios.put(`/api/matches/${matchId}/status`, null, {
+        params: {
+          status: newStatus,
+          adminId: user.id,
+        },
+      });
+      // Remove the updated match from current list
+      setMatches((prev) => prev.filter((m) => m.id !== matchId));
     } catch (err) {
       console.error(`Failed to ${newStatus} match`, err);
+      alert("Failed to update match status.");
     }
   };
 
@@ -44,7 +49,7 @@ export default function AdminTotalMatches() {
 
   return (
     <div className="d-flex admin-matches-page">
-      {/*<AdminSidebar />*/}
+      {/* <AdminSidebar /> */}
 
       <main className="flex-grow-1 p-4">
         <div className="d-flex justify-content-between align-items-center mb-4">

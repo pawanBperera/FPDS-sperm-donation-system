@@ -1,27 +1,51 @@
 /* File: src/pages/AdminMatchDetail.css */
 
+/* === Container Style === */
 .admin-match-detail-page main {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.9); /* Slightly stronger contrast for readability */
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
+/* === Match Card Style === */
 .match-detail-card {
   background: #f0e3ff;
-  border: 1px dashed #000000;
-  border-radius: 0.75rem;
+  border: 2px dashed #9e00ff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.3s ease;
 }
 
+.match-detail-card:hover {
+  box-shadow: 0 0 10px rgba(158, 0, 255, 0.2);
+}
+
+/* === Card Headings === */
 .match-detail-card h2 {
   color: #047d75;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
+/* === Card Paragraphs === */
 .match-detail-card p {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
+/* === Button Styles === */
 .btn-outline-primary,
 .btn-outline-secondary {
   border-radius: 2rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
 }

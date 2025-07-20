@@ -4,14 +4,11 @@
 // line-> 6, 12, 31 to 32, 48 need changes, un comments the once thats been comment
 
 import React, { useState, useEffect } from "react";
-//import axios from "axios";
+import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 //import AdminSidebar from "../components/Sidebars/AdminSidebar";
 import "./AdminMatchDetail.css";
 
-//';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-import { mockMatchDetail } from "../utils/fakeApi";
-//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 export default function AdminMatchDetail() {
   const { matchId } = useParams();
@@ -24,15 +21,9 @@ export default function AdminMatchDetail() {
   useEffect(() => {
     async function fetchMatch() {
       try {
-        //const res = await axios.get(`/api/matches/${matchId}`);
-        //setMatch(res.data);
+        const res = await axios.get(`/api/matches/${matchId}`);
+        setMatch(res.data);
 
-//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-const data = await mockMatchDetail(matchId);
-setMatch(data)
-
-//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
       } catch (err) {
         console.error("Failed to load match:", err);
@@ -46,7 +37,14 @@ setMatch(data)
 
   const handleAction = async (newStatus) => {
     try {
-     // await axios.put(`/api/matches/${matchId}`, { status: newStatus });
+      const user = JSON.parse(localStorage.getItem("user"));
+await axios.put(`/api/matches/${matchId}/status`, null, {
+  params: {
+    status: newStatus,
+    adminId: user.id
+  }
+});
+
       navigate("/admin/matches"); // go back to list after action
     } catch (err) {
       console.error(`Failed to ${newStatus}:`, err);
@@ -57,7 +55,7 @@ setMatch(data)
   if (error)   return <div className="p-4 text-danger">{error}</div>;
   if (!match)  return <div className="p-4">Match not found.</div>;
 
-  const { recipient, donor, genetic_risk, summary } = match;
+  const { recipient, donor,/* genetic_risk,*/ summary } = match;
 
   return (
     <div className="d-flex admin-match-detail-page">
