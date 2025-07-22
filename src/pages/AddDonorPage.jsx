@@ -81,7 +81,7 @@ export default function AddDonorPage() {
   const donorConditions = conditionsList.slice(0, 6);
 
   return (
-    <div className="d-flex vh-100">
+      <div className="admin-page" style={{ marginLeft: "240px", minHeight: "100vh" }}>
       {/* Sidebar */}
       <AdminSidebar />
 

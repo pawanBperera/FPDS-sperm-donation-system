@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import "./RecipientDashboard.css";
 
+
 export default function RecipientDashboard() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || {};
@@ -133,7 +134,16 @@ export default function RecipientDashboard() {
   return (
     <>
       <NavBar />
-      <div className="d-flex vh-100">
+    {/* </> <div className="recipient-dashboard d-flex vh-100">*/}
+{/*<div className="d-flex vh-100">*/}
+  {/*<div className="recipient-dashboard" style={{ marginLeft: "240px", minHeight: "100vh" }}>*/}
+  <div
+  className="recipient-dashboard"
+  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
+>
+
+
+
         <RecipientSidebar />
         <main className="flex-grow-1 p-4">
           <h1 className="mb-3">

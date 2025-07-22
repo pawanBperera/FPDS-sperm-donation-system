@@ -10,6 +10,15 @@
   transition: background-color 0.2s ease;
 }
 
+.recipient-dashboard {
+  height: 100vh;
+  background: url('../assets/back\ 2.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+
 /* Icons */
 .dash-icon {
   font-size: 1.75rem;

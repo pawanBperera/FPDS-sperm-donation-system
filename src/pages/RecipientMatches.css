@@ -12,3 +12,22 @@
   border: 1px solid #c8e6c9;
   border-radius: 0.5rem;
 }
+
+.recipient-matches {
+  background: url('../assets/back\ 2.png') no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-top: 64px; /* if NavBar is present */
+  padding-left: 240px; /* if Sidebar is present */
+}
+
+.matches-wrapper {
+  background: url('../assets/back\ 2.png') no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-left: 240px;  /* for sidebar */
+  padding-top: 64px;    /* for navbar */
+}
+

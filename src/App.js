@@ -28,11 +28,23 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 
 import DonorProfileView from "./pages/DonorProfileView";
 
+import AdminAllDonors from "./pages/AdminAllDonors";
+import AdminAllRecipients from "./pages/AdminAllRecipients";
+
+import WelcomePage from "./pages/WelcomePage";
+import HomePage from "./pages/HomePage";
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 // (Later we’ll add ForgotPasswordPage, ResetPasswordPage, RecipientDashboard, etc.)
 
 function App() {
   return (
+    <>
+     <ToastContainer position="top-right" autoClose={3000} />
     <Routes>
       {/* Login */}
       <Route path="/login" element={<LoginPage />} />
@@ -66,6 +78,9 @@ function App() {
           <Route path="/recipient/matches" element={<RecipientMatches />} />
           <Route path="/recipient/approved-match" element={<RecipientApprovedMatches />} />
 
+          <Route path="/admin/donors" element={<AdminAllDonors />} />
+          <Route path="/admin/recipients" element={<AdminAllRecipients />} />
+
           {/*Donor Side */}
 
           <Route path="/donor/change-password" element={<DonorAccountSettings/>}/>
@@ -78,12 +93,16 @@ function App() {
            <Route path="/donors/:id" element={<DonorProfileView />} />
           
         
-
+{/* your app routes/components */}
+      
+      <Route path="/" element={<WelcomePage />} />
+      <Route path="/home" element={<HomePage />} />
 
       {/* Catch-all → back to login */}
       <Route path="*" element={<Navigate to="/login" replace />} />
       
     </Routes>
+    </>
   );
 }
 

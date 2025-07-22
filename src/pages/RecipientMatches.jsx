@@ -78,9 +78,11 @@ console.log("🎯 Final matched profiles:", donorProfiles.filter(profile => prof
   return (
     <>
       <NavBar />
-      <div className="d-flex vh-100">
-        <RecipientSidebar />
 
+      
+    
+        <RecipientSidebar />
+<div className="matches-wrapper">
         <main className="flex-grow-1 p-4">
           <h1 className="d-flex align-items-center mb-4">
             <FaHeart className="me-2 text-primary" />
@@ -102,7 +104,7 @@ console.log("🎯 Final matched profiles:", donorProfiles.filter(profile => prof
         className="btn btn-outline-danger mt-2"
         onClick={() => handleRemove(donor.user_id)}
       >
-        Remove from Shortlist
+        Remove this donor
       </button>
     </div>
   ))}

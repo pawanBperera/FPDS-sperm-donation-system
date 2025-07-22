@@ -67,7 +67,12 @@ export default function RecipientChangePassword() {
       <NavBar />
 
       {/* Sidebar + main */}
-      <div className="d-flex vh-100">
+    <div
+  className="recipient-dashboard"
+  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
+>
+
+
         <RecipientSidebar />
 
         <main className="flex-grow-1 p-4">

@@ -1,0 +1,61 @@
+/* NavBar.css */
+
+.recipient-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: url('../../assets/back\ 2.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 100; /* stays above sidebar */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img.logo {
+  max-height: 40px;
+  margin-right: 0.5rem;
+}
+
+.brand-text {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #3b2d3a;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-links a,
+.navbar-links .nav-btn {
+  color: #3b2d3a;
+  text-decoration: none;
+}
+
+.navbar-links .nav-btn.active {
+  font-weight: bold;
+  color: #0e5f5e;
+}
+
+.navbar-toggler {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #3b2d3a;
+}
+
+.navbar-separator {
+  display: none;
+}

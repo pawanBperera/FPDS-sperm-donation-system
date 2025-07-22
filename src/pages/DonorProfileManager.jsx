@@ -106,7 +106,10 @@ export default function DonorProfileManager() {
   if (loading) return <div className="p-4">Loading profile…</div>;
 
   return (
-    <div className="d-flex vh-100">
+    <div
+  className="donor-page"
+  style={{ marginLeft: "240px", minHeight: "100vh" }}
+>
       <DonorSidebar />
       <main className="flex-grow-1 p-4">
         <h1 className="mb-4">Your Profile</h1>

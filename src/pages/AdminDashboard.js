@@ -9,6 +9,7 @@ import { FaUser, FaUserFriends, FaHeart } from "react-icons/fa";
 //import "../components/Sidebars/Sidebar.css"; // ensure sidebar CSS
 import "./AdminDashboard.css"; // create for custom styles as needed
 
+
 export default function AdminDashboard() {
   const navigate = useNavigate();
  // const user = JSON.parse(localStorage.getItem("user")) || {};
@@ -51,7 +52,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="d-flex vh-100">
+      <div className="admin-page" style={{ marginLeft: "240px", minHeight: "100vh" }}>
       {/* Sidebar */}
       <AdminSidebar />
 

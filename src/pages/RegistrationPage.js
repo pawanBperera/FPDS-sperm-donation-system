@@ -7,6 +7,8 @@ import { auth } from "../firebase/firebaseConfig";
 import Step1 from "../components/Registration/Step1";
 import Step2 from "../components/Registration/Step2";
 import { useNavigate } from "react-router-dom";
+import api from "../services/axiosInstance";
+
 
 export default function RegistrationPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -76,47 +78,55 @@ export default function RegistrationPage() {
   const handleRegister = async () => {
     if (!validateStep2()) return;
     setLoading(true);
+
+
     try {
       // 1) Firebase signup
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       const firebaseUid = cred.user.uid;
+      const token = await cred.user.getIdToken();
 
-      // 2) Backend call (mock or real)
-      // We'll send: { firebase_uid, email, firstName, lastName, province, diseases, file, consent }
-      // For now use a fakeApi helper:
-      /*
-      await mockCreateUser({
-        firebase_uid: firebaseUid,
-        email,
-        firstName,
-        lastName,
-        province,
-        diseases,
-        file,      // the File object
-        consent,
-      });*/
 
-      // REAL backend example (comment out for now):
-      // const formData = new FormData();
-      // formData.append("firebase_uid", firebaseUid);
-      // formData.append("email", email);
-      // formData.append("firstName", firstName);
-      // formData.append("lastName", lastName);
-      // formData.append("province", province);
-      // formData.append("diseases", JSON.stringify(diseases));
-      // if (file) formData.append("report", file);
-      // formData.append("consent", consent);
-      // await axios.post("/api/recipients", formData, { headers: { "Content-Type": "multipart/form-data" }});
-
-      // 3) Redirect or show success
-      alert("Account created! Please log in.");
-      navigate("/login");
-    } catch (err) {
-      console.error(err);
-      setError("Registration failed. Try again.");
-    } finally {
-      setLoading(false);
+ // 2. Backend user creation with auth header
+  const response = await api.post("/api/users", {
+    firebaseUid,
+    email,
+    username: email.split("@")[0],
+    roleId: 1
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
     }
+  });
+
+/*await api.post("/api/users", {
+  firebaseUid: cred.user.uid,
+  email: email,
+  username: email.split("@")[0],
+  roleId: 1
+});*/
+
+const createdUser = response.data;
+const userId = createdUser.id;
+
+await api.post(`/api/recipients/${userId}/profile`);
+
+// 3. Handle response
+  if (response.status === 201 || response.status === 200) {
+    alert("Account created! Please log in.");
+    navigate("/login");
+  } else {
+    setError("Registration failed. Please try again.");
+    console.error("Unexpected status code:", response.status);
+  }
+
+} catch (err) {
+  console.error("Registration error:", err);
+  setError("Registration failed. Try again.");
+} finally {
+  setLoading(false);
+}
   };
 
   return (

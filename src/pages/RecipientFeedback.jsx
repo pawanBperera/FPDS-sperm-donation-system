@@ -55,7 +55,13 @@ export default function RecipientFeedback() {
   return (
     <>
       <NavBar />
-      <div className="d-flex vh-100">
+      {/*<div className="d-flex vh-100">*/}
+      <div
+  className="recipient-dashboard"
+  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
+>
+
+
         <RecipientSidebar />
         <main className="flex-grow-1 p-4">
           <h1>We Value Your Feedback!</h1>

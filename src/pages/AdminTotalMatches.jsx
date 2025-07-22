@@ -1,27 +1,30 @@
 // File: src/pages/AdminTotalMatches.jsx
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaBell, FaHome } from "react-icons/fa";
-// import AdminSidebar from "../components/Sidebars/AdminSidebar"; // Uncomment if needed
+import {
+  fetchPendingMatches,
+  updateMatchStatus,
+} from "../services/adminApi";
 import "./AdminTotalMatches.css";
 
 export default function AdminTotalMatches() {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || {};
 
   useEffect(() => {
-    fetchMatches();
+    loadMatches();
   }, []);
 
-  const fetchMatches = async () => {
+  const loadMatches = async () => {
     try {
-      const res = await axios.get("/api/matches/status/pending");
-      setMatches(res.data);
+      const data = await fetchPendingMatches();
+      setMatches(data);
     } catch (err) {
-      console.error("Failed to load matches:", err);
+      console.error("Error loading matches:", err);
     } finally {
       setLoading(false);
     }
@@ -31,13 +34,7 @@ export default function AdminTotalMatches() {
     if (!window.confirm(`Are you sure you want to ${newStatus} this match?`)) return;
 
     try {
-      await axios.put(`/api/matches/${matchId}/status`, null, {
-        params: {
-          status: newStatus,
-          adminId: user.id,
-        },
-      });
-      // Remove the updated match from current list
+      await updateMatchStatus(matchId, newStatus, user.id);
       setMatches((prev) => prev.filter((m) => m.id !== matchId));
     } catch (err) {
       console.error(`Failed to ${newStatus} match`, err);
@@ -49,8 +46,6 @@ export default function AdminTotalMatches() {
 
   return (
     <div className="d-flex admin-matches-page">
-      {/* <AdminSidebar /> */}
-
       <main className="flex-grow-1 p-4">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h1>Total Matches</h1>
@@ -80,10 +75,10 @@ export default function AdminTotalMatches() {
                 <td>
                   {m.genetic_risk === "compatible" ? (
                     <span className="text-success">Compatible</span>
+                  ) : m.genetic_risk === "risky" ? (
+                    <span className="text-danger"><FaBell /> Risk</span>
                   ) : (
-                    <span className="text-danger">
-                      <FaBell /> Risk
-                    </span>
+                    <span className="text-muted">Unknown</span> // fallback
                   )}
                 </td>
                 <td>{m.status}</td>

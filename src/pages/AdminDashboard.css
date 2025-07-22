@@ -77,3 +77,9 @@
     background-color: #c82333;
   }
   
+  .admin-page {
+  background: url('../assets/back\ 2.png') no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}

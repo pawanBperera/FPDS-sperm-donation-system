@@ -58,7 +58,10 @@ export default function DonorAccountSettings() {
   };
 
   return (
-    <div className="d-flex vh-100">
+    <div
+  className="donor-page"
+  style={{ marginLeft: "240px", minHeight: "100vh" }}
+>
       <DonorSidebar />
 
       <main className="flex-grow-1 p-4">

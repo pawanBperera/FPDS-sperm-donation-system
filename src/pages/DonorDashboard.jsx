@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { DonorSidebar } from "../components/Sidebars/DonorSidebar";
 import { FaHeart, FaBell } from "react-icons/fa";
+import "./DonorDashboard.css"; // or whatever filename you saved the above CSS in
 
 export default function DonorDashboard() {
   const navigate = useNavigate();
@@ -74,14 +75,25 @@ export default function DonorDashboard() {
   };
 
   return (
-    <div className="d-flex vh-100">
-      {/* Sidebar */}
+    
+<>
+ {/* Sidebar */}
       <DonorSidebar />
+
+     <div
+  className="donor-page"
+  style={{ marginLeft: "240px", minHeight: "100vh" }}
+>
+     
 
       {/* Main */}
       <div className="flex-grow-1 p-4 d-flex flex-column">
+
+        
         <header className="mb-4">
           <h1 className="mb-1">Welcome back, 👋</h1>
+
+
           <p className="text-secondary">
             Your donor profile will connect you with couples and singles that
             wish to be parents and seek the need of =======.
@@ -129,7 +141,13 @@ export default function DonorDashboard() {
             Log Out
           </button>
         </div>
+
+
       </div>
+
+
     </div>
+
+    </>
   );
 }
