@@ -5,7 +5,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { DonorSidebar } from "../components/Sidebars/DonorSidebar";
 import { FaHeart, FaBell } from "react-icons/fa";
-import "./DonorDashboard.css"; // or whatever filename you saved the above CSS in
+import "./DonorDashboard.css";
 
 export default function DonorDashboard() {
   const navigate = useNavigate();
@@ -82,7 +82,7 @@ export default function DonorDashboard() {
 
      <div
   className="donor-page"
-  style={{ marginLeft: "240px", minHeight: "100vh" }}
+   style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
 >
      
 

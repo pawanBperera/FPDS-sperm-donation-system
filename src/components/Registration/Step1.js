@@ -2,6 +2,7 @@
 import React from "react";
 import { provincesList } from "../../constants"; // e.g. ["Western", "Central", ...]
 //import { mockCreateUser } from '../utils/fakeApi';
+import "./Step1.css";
 
 
 

@@ -37,6 +37,8 @@ import HomePage from "./pages/HomePage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import AnalyticsPage from './pages/admin/AnalyticsPage';
+
 
 
 // (Later we’ll add ForgotPasswordPage, ResetPasswordPage, RecipientDashboard, etc.)
@@ -92,6 +94,9 @@ function App() {
           <Route path="search-results" element={<SearchResultsPage />} />
            <Route path="/donors/:id" element={<DonorProfileView />} />
           
+        
+<Route path="/admin/analytics" element={<AnalyticsPage />} />
+
         
 {/* your app routes/components */}
       

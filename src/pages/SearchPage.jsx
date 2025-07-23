@@ -70,7 +70,9 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="search-page">
+                <div className="search-page" style={{ marginLeft: "0px", minHeight: "100vh" }}>
+
+
       <NavBar />
       <div className="search-content">
         <h1 className="search-title">Search For Donors</h1>

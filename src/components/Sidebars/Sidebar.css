@@ -14,7 +14,7 @@
 
 .sidebar {
   position: fixed;
-  top: 64px;
+  top: 0;
   left: 0;
   bottom: 0;
   width: 240px;
@@ -90,22 +90,3 @@
   padding-bottom: 1rem;
 }
 
-/* Custom Scrollbar for Sidebar */
-.sidebar::-webkit-scrollbar {
-  width: 9px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-  background: #a870c1;  /* Light pastel bg */
-  border-radius: 8px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: #4b1f59;  /* Purple thumb */
-  border-radius: 8px;
-  border: 2px solid #c065e7;  /* Gives a soft border around thumb */
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: #7d4592;  /* Darker on hover */
-}

@@ -131,7 +131,7 @@ export default function RecipientAccountSettings() {
       <NavBar />
       <div
   className="recipient-dashboard"
-  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
+  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "110vh" }}
 >
 
 

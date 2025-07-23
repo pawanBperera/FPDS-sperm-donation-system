@@ -1,6 +1,3 @@
-
-
-
 // File: src/pages/RecipientProfileManager.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -184,7 +181,7 @@ export default function RecipientProfileManager() {
       <NavBar />
      <div
   className="recipient-dashboard"
-  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
+  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "190vh" }}
 >
         <RecipientSidebar />
         <main className="flex-grow-1 p-4">

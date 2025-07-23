@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaTwitter, FaInstagram, FaFacebook, FaBars, FaTimes } from 'react-icons/fa';
-import logo from "../../assets/fpds-logo.png";
+//import logo from "../../assets/fpds-logo.png";
+import logo from "../../assets/logoidea1.1B.png"
 import "./NavBar.css";
 
 export default function NavBar() {
@@ -15,7 +16,7 @@ export default function NavBar() {
         <img
           src={logo}
           alt="FPDS Logo"
-          className="logo img-fluid w-25"
+          className="logo img-fluid "
         />
         <span className="brand-text">FPDS</span>
       </div>

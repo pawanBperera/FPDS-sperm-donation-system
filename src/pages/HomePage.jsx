@@ -11,10 +11,13 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleProtectedClick = (route) => {
-    const user = localStorage.getItem("user");
-    if (!user) navigate("/login");
-    else navigate(route);
-  };
+  const user = localStorage.getItem("user");
+  if (!user || user === 'null' || user === 'undefined') {
+    navigate("/login");
+  } else {
+    navigate(route);
+  }
+};
 
   return (
     <div
@@ -32,7 +35,7 @@ const HomePage = () => {
 
         <div className="offer-links">
           <button onClick={() => navigate('/pregnancy')}>Learn about pregnancy</button>
-          <button onClick={() => handleProtectedClick('/search')}>Find Donors</button>
+          <button onClick={() => handleProtectedClick('/login')}>Find Donors</button>
           <button onClick={() => navigate('/ivf')}>Learn about IVF</button>
         </div>
       </div>

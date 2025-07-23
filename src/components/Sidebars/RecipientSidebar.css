@@ -1,16 +1,32 @@
 /* File: src/components/Sidebars/RecipientSidebar.css */
 
 /* Container styling for the sidebar */
-.sidebar {
+/*.sidebar {
   width: 240px;
-  background-color: #b590bd; /* dusty purple background */
+  background-color: #b590bd; 
   display: flex;
   flex-direction: column;
   padding: 0.5rem 0;
   height: 100vh;
   bottom: 0;
   overflow-y: auto;
+}*/
+
+.sidebar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  background-color: #b590bd;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  overflow-y: auto;
+  z-index: 10;
+  margin-top: 59px;
 }
+
 
 /* File: src/components/Sidebars/RecipientSidebar.css */
 
@@ -54,7 +70,8 @@
 /* Active link state */
 .sidebar-link.active {
   background-color: #d4bfe7; /* light pastel highlight */
-  color: #0e5f5e;            /* accent dark-teal for active text */
+  color: #0e5f5e;   
+  border-radius: 1px;         /* accent dark-teal for active text */
 }
 
 .sidebar-link.active .icon {
@@ -72,4 +89,24 @@
 .sidebar .sidebar-link:last-of-type {
   margin-top: auto;
   padding-bottom: 1rem;
+}
+
+/* Custom Scrollbar for Sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 9px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #a870c1;  /* Light pastel bg */
+  border-radius: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #4b1f59;  /* Purple thumb */
+  border-radius: 8px;
+  border: 2px solid #c065e7;  /* Gives a soft border around thumb */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #7d4592;  /* Darker on hover */
 }

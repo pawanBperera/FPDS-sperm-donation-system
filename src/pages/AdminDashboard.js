@@ -103,7 +103,18 @@ export default function AdminDashboard() {
           >
             Rejected
           </button>
+
+<button className="analytics"
+ onClick={()=> navigate('/admin/analytics')}>
+ 📊 Analytics
+</button>
+
         </div>
+
+
+
+
+
 
         {/* Logout */}
         <button className="btn btn-logout" onClick={handleLogout}>
