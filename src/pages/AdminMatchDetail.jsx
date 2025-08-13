@@ -10,6 +10,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./AdminMatchDetail.css";
 
 
+// ─── Axios defaults ────────────────────────────────────────────
+axios.defaults.baseURL = "http://localhost:8080";
+const stored = localStorage.getItem("user");
+if (stored) {
+  const { token } = JSON.parse(stored);
+  if (token) axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+}
+// ─────────────────────────────────────────────────────────────────
+
+
+
+
 export default function AdminMatchDetail() {
   const { matchId } = useParams();
   const navigate    = useNavigate();
@@ -21,7 +33,13 @@ export default function AdminMatchDetail() {
   useEffect(() => {
     async function fetchMatch() {
       try {
-        const res = await axios.get(`/api/matches/${matchId}`);
+       // const res = await axios.get(`/api/matches/${matchId}`);
+
+       const res = await axios.get(
+         `/api/matches/${matchId}/compatibility`
+       );
+
+console.log("⚡️ Pending matches payload:", res);
         setMatch(res.data);
 
 
@@ -76,38 +94,71 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
         {/* Detail Card */}
         <div className="match-detail-card p-4 mb-4">
           {/* Recipient Info */}
-          <section className="mb-3">
-            <h2>Recipient Info</h2>
-            <p><strong>Age:</strong> {recipient.age}</p>
-            <p><strong>Province:</strong> {recipient.province || "—"}</p>
-            <p><strong>Genetic Condition:</strong> {recipient.genetic_condition}</p>
-          </section>
+            <section className="mb-3">
+    <h2>Recipient Info</h2>
+    <p><strong>Age:</strong> {recipient.age > 0 ? recipient.age : "Not Provided"}</p>
+    <p><strong>Province:</strong> {recipient.province || "—"}</p>
+    <p><strong>Diseases:</strong> 
+      {recipient.diseases?.length > 0
+        ? recipient.diseases.join(", ")
+        : "No known diseases"}
+    </p>
+  </section>
 
           {/* Donor Info */}
-          <section className="mb-3">
-            <h2>Donor Info</h2>
-            <p><strong>Age:</strong> {donor.age}</p>
-            <p><strong>Province:</strong> {donor.province || "—"}</p>
-            <p><strong>Genetic Screening:</strong> {donor.genetic_screening}</p>
-          </section>
+           <section className="mb-3">
+    <h2>Donor Info</h2>
+    <p><strong>Age:</strong> {donor.age > 0 ? donor.age : "Not Provided"}</p>
+    <p><strong>Province:</strong> {donor.province || "—"}</p>
+    <p><strong>Diseases:</strong> 
+      {donor.diseases?.length > 0
+        ? donor.diseases.join(", ")
+        : "No known diseases"}
+    </p>
+  </section>
 
           {/* Summary & Actions */}
+
+
           <section>
-            <h2>Summary</h2>
-            <p className="mb-4">{summary}</p>
-            <button
-              className="btn btn-success me-3"
-              onClick={() => handleAction("approved")}
-            >
-              Approve Match
-            </button>
-            <button
-              className="btn btn-danger"
-              onClick={() => handleAction("rejected")}
-            >
-              Reject Match
-            </button>
-          </section>
+  <h2>Summary</h2>
+  <p className="mb-4">{summary || "Summary not available"}</p>
+
+
+  {/* New Predict Button */}
+  <button
+  className="btn btn-info me-3"
+  onClick={() => {
+    if (donor.id && recipient.id) {
+      console.log("Navigating to prediction with:", donor.id, recipient.id);
+      navigate(`/admin/predict/${donor.id}/${recipient.id}`);
+    } else {
+      alert("Cannot predict: Missing donor or recipient ID");
+    }
+  }}
+>
+  Predict Compatibility
+</button>
+
+
+
+
+  <button
+    className="btn btn-success me-3"
+    onClick={() => handleAction("approved")}
+  >
+    Approve Match
+  </button>
+  <button
+    className="btn btn-danger"
+    onClick={() => handleAction("rejected")}
+  >
+    Reject Match
+  </button>
+</section>
+
+
+
         </div>
 
         {/* Footer Buttons */}

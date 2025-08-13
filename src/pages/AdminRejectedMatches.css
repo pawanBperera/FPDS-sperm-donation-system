@@ -10,3 +10,9 @@
   padding: 0.5rem 1.5rem;
   border: none;
 }
+
+.ms-2{
+  background-color: #7b66b8;
+  padding: 5px;
+  border-radius: 5px;
+}

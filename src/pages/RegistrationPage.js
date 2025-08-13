@@ -93,7 +93,8 @@ export default function RegistrationPage() {
 
 
  // 2. Backend user creation with auth header
-  const response = await api.post("/api/users", {
+  const response =// await api.post("/api/users", 
+  await api.post("/users", {
     firebaseUid,
     email,
     username: email.split("@")[0],
@@ -123,7 +124,10 @@ const profilePayload = {
   consent       // from Step 2 state (boolean)
 };
 
-await api.post(`/api/recipients/${userId}/profile`);
+//await api.post(`/api/recipients/${userId}/profile`);
+
+await api.post(`/recipients/${userId}/profile`, profilePayload);
+
 
 // 3. Handle response
   if (response.status === 201 || response.status === 200) {

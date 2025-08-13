@@ -6,6 +6,7 @@ import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
 import axios from "axios";
 import { FaHeart, FaCheckCircle, FaCalendarAlt } from "react-icons/fa";
 import "./RecipientApprovedMatches.css";
+//import "./DonorDashboard.css";
 
 export default function RecipientApprovedMatches() {
   const navigate = useNavigate();
@@ -19,10 +20,11 @@ export default function RecipientApprovedMatches() {
     async function fetchApproved() {
       try {
         const res = await axios.get(
-          `/api/recipients/${user.id}/matches`,
+          `/api/matches/recipients/${user.id}`,
           { params: { status: "approved" } }
         );
         setApprovedMatches(res.data);
+        console.log("API Response for Approved Matches:", res.data);
       } catch (err) {
         console.error("Error fetching approved matches:", err);
         setError("Unable to load approved matches.");
@@ -33,15 +35,19 @@ export default function RecipientApprovedMatches() {
     fetchApproved();
   }, [user.id]);
 
+  console.log("Current approvedMatches state:", approvedMatches);
+
+
   return (
+    
     <>
       <NavBar />
       <div className="d-flex vh-100">
         <RecipientSidebar />
-        <main className="flex-grow-1 p-4">
+        <main className="flex-grow-1 p-4 p-1">
           <h1 className="d-flex align-items-center mb-4">
             <FaHeart className="me-2 text-primary" />
-            Your Approved Matches
+             Approved Matches Details
           </h1>
 
           {loading && <p>Loading approved matches…</p>}
@@ -50,7 +56,7 @@ export default function RecipientApprovedMatches() {
             <p>You have no approved matches yet.</p>
           )}
 
-          <div className="approved-list">
+         {/**  <div className="approved-list">
             {approvedMatches.map((donor) => (
               <div
                 key={donor.donor_id}
@@ -91,25 +97,24 @@ export default function RecipientApprovedMatches() {
                 </div>
               </div>
             ))}
-          </div>
+          </div>*/}
 
           {approvedMatches.length > 0 && (
-            <>
-              <div className="alert alert-secondary d-flex align-items-start mt-4 approved-msg-box">
-                <FaCheckCircle className="me-2 text-success" />
-                <div>
-                  Your match has been approved by the clinic. Please contact
-                  the clinic to proceed with the next steps. You will be
-                  informed of appointment dates and further instructions
-                  soon.
-                </div>
-              </div>
-              <div className="d-flex align-items-center mt-2 appointment-pending">
-                <FaCalendarAlt className="me-2 text-secondary" />
-                <span>Appointment Pending</span>
-              </div>
-            </>
-          )}
+  <>
+    <div className="alert alert-light border shadow-sm p-3 d-flex align-items-start mb-3" style={{ maxWidth: "600px" }}>
+      <FaCheckCircle className="me-2 text-success" size={22} />
+      <div>
+        The match you requested has been approved. Kindly reach out to the clinic for more information.
+      </div>
+    </div>
+
+    <div className="d-flex align-items-center mt-2">
+      <FaCalendarAlt className="me-2 text-secondary" />
+      <span>Appointment Pending</span>
+    </div>
+  </>
+)}
+
         </main>
       </div>
     </>

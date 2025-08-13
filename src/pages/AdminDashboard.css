@@ -11,6 +11,7 @@
     flex: 1;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    font-weight: bolder;
   }
   
   .analytics-card:hover {
@@ -20,48 +21,54 @@
   .analytics-icon {
     font-size: 1.5rem;
     margin-right: 0.75rem;
-    color: #7e57c2; /* medium purple */
+    color: #6d46b0; /* medium purple */
   }
   
   /* Action Buttons */
   .btn-add-donor {
-    background-color: #ff9ec4; /* pink */
+    background-color: #5746a2; /* pink */
     color: #000;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.5rem 1.25rem;
     transition: background-color 0.2s ease;
+font-weight: bolder;
   }
   
   .btn-add-donor:hover {
-    background-color: #ff77a8;
+    background-color: #6b4aa9;
   }
   
   .btn-approved {
-    background-color: #a18bff; /* lavender */
+    background-color: #337936; /* lavender */
     color: #000;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.5rem 1.25rem;
     transition: background-color 0.2s ease;
+    color: whitesmoke;
+    font-weight: bolder;
+  }
+  .btn-approved:hover{
+    background-color:  #46a04b;
   }
   
-  .btn-approved:hover {
-    background-color: #8a6aff;
-  }
+  
   
   .btn-rejected {
-    background-color: #ff8c00; /* orange */
+    background-color: #8d2929; /* orange */
     color: #fff;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.5rem 1.25rem;
     transition: background-color 0.2s ease;
   }
-  
-  .btn-rejected:hover {
-    background-color: #e67e00;
+  .btn-rejected:hover{
+    background-color: #923e3e;
+    color: white;
   }
+  
+  
   
   /* Logout Button */
   .btn-logout {
@@ -71,6 +78,7 @@
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     transition: background-color 0.2s ease;
+    font-weight: bolder;
   }
   
   .btn-logout:hover {
@@ -83,3 +91,7 @@
   background-attachment: fixed;
   min-height: 100vh;
 }
+
+
+
+

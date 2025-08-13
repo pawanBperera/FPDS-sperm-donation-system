@@ -22,8 +22,6 @@ export default function DonorDashboard() {
       const lastSignIn = u.metadata.lastSignInTime;
       setLastLogin(new Date(lastSignIn).toLocaleString());
 
-      // ***** TEMP HACK *****  
-      // use account creation as proxy for password‐change date
       const created = u.metadata.creationTime;
       const daysAgo  = Math.floor(
         (Date.now() - new Date(created).getTime()) /
@@ -34,7 +32,7 @@ export default function DonorDashboard() {
     }
   }, []);
 
-  // 2) Static notifications for now
+
   const notifications = [
     {
       id: 1,
@@ -95,8 +93,7 @@ export default function DonorDashboard() {
 
 
           <p className="text-secondary">
-            Your donor profile will connect you with couples and singles that
-            wish to be parents and seek the need of =======.
+            Your donor profile will connect you with couples and individuals who dream of becoming parents and are seeking the gift of life through your generosity.
           </p>
         </header>
 

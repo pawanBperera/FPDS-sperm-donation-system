@@ -10,3 +10,18 @@
   padding: 0.5rem 1.5rem;
   border: none;
 }
+
+.ms-2{
+  background-color: #b16eb9;
+  color: whitesmoke;
+  border-radius: 1rem;
+  padding: 9px;
+  border: #fdfdfd;
+}
+
+.ms-1{
+  background-color: rgb(189, 51, 51);
+}
+.ms-1:hover{
+  background-color: rgb(225, 72, 72);
+}

@@ -11,7 +11,7 @@ import {
   deleteUser as firebaseDeleteUser,
 } from "firebase/auth";
 import axios from "axios";
-//import "./RecipientAccountSettings.css";
+import "./RecipientAccountSettings.css";
 
 export default function RecipientAccountSettings() {
   const navigate = useNavigate();

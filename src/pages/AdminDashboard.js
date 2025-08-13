@@ -3,12 +3,21 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
-import axios from "axios";
+
 import { AdminSidebar } from "../components/Sidebars/AdminSidebar";
 import { FaUser, FaUserFriends, FaHeart } from "react-icons/fa";
-//import "../components/Sidebars/Sidebar.css"; // ensure sidebar CSS
+import "../components/Sidebars/Sidebar.css"; // ensure sidebar CSS
 import "./AdminDashboard.css"; // create for custom styles as needed
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8080";
 
+const stored = localStorage.getItem("user");
+if (stored) {
+  const { token } = JSON.parse(stored);
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+}
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -22,11 +31,11 @@ export default function AdminDashboard() {
 
 
 
-
+/*
  useEffect(() => {
   const fetchSummary = async () => {
     try {
-      const res = await axios.get("/api/analytics/summary");
+      const res = await axios.get("/api/analytics/analytics");
       setTotals({
         recipients: res.data.total_recipients,
         donors: res.data.total_donors,
@@ -39,7 +48,27 @@ export default function AdminDashboard() {
   fetchSummary();
 }, []);
 
+*/
 
+ useEffect(() => {
+    const fetchTotals = async () => {
+      try {
+        const [rRes, dRes, mRes] = await Promise.all([
+          axios.get("http://localhost:8080/api/admin/analytics/total-recipients"),
+          axios.get("http://localhost:8080/api/admin/analytics/total-donors"),
+          axios.get("http://localhost:8080/api/admin/analytics/total-matches"),
+        ]);
+        setTotals({
+          recipients: rRes.data.count,
+          donors:      dRes.data.count,
+          matches:     mRes.data.count,
+        });
+      } catch (err) {
+        console.error("Error fetching analytics totals:", err);
+      }
+    };
+    fetchTotals();
+  }, []);
 
 
 
@@ -104,12 +133,33 @@ export default function AdminDashboard() {
             Rejected
           </button>
 
-<button className="analytics"
- onClick={()=> navigate('/admin/analytics')}>
- 📊 Analytics
-</button>
 
-        </div>
+
+
+<div className="ana">
+  <div
+    className="dash-card dash-card-info"
+    onClick={() => navigate("/admin/predict")}
+    style={{ cursor: "pointer" }}
+  >
+    <i className="fas fa-brain dash-icon"></i>
+    <div>AI Compatibility Predictor</div>
+  </div>
+</div>
+</div>
+
+<div className="ana"></div>
+ <div className="col-md-6 col-lg-4">
+  <div
+    className="dash-card"
+    onClick={() => navigate("/admin/prediction")}
+    style={{ cursor: "pointer" }}
+  >
+    <div className="dash-icon">📈</div>
+    <div>Prediction</div>
+  </div>
+</div>
+
 
 
 

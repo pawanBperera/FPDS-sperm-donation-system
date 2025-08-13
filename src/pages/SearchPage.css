@@ -3,7 +3,15 @@
 .search-page {
   display: flex;
   flex-direction: column;
+ 
+  background: url('../assets/back 2.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* Optional: makes it stay in place on scroll */
+   min-height: 100vh; /* Allows it to grow beyond viewport */
 }
+
+
+
 
 .search-content {
   max-width: 1200px;
@@ -14,24 +22,36 @@
   display: flex;
   flex-direction: column;
   align-items: right;
+  
 }
 
 .search-title {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  margin-left: -50px;
+  margin-left: -10px;
+  margin-top: 50px;
+text-align:justify;
+
 }
 
 .filters-form {
   display: flex;
   flex-direction: column;
   margin-left: -100px;
+
+ 
+   
+
 }
 
 .filters-top {
   display: flex;
   gap: 2rem;
   align-items: flex-start;
+
+  
+
+  
 }
 
 .map-filter {
@@ -39,19 +59,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: -5px;
-  margin-left: 100px;
+  margin-top: 25px;
+  margin-left: 70px;
 
   width: 350px;
   height: 450px;
 
   max-width: 40vw;
   max-height: 50vh;
+
+
+
 }
 
 .map-filter svg{
   width: 100% !important;
   height: 100% !important;
+  align-items: center;
+  margin-left: 50px;
+
+
+  
 }
 
 
@@ -65,6 +93,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+
 }
 
 .dropdown-grid {
@@ -72,33 +102,96 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  margin-top: 50px;
+  margin-right: 10px;
+
+  
 }
 
 .dropdown-grid select,
 .map-filter select {
   width: 100%;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  padding: 0.1rem;
+  border-radius: 0.55rem;
+  text-shadow: #4b2e83;
+  text-align: center;
+  font-size: small;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+color: rgb(58, 8, 63);
+background-color: rgb(221, 176, 222);
+  box-shadow: 6px 6px 12px #a36bb1, -6px -6px 12px #ffffff; /* 3D shadow */
+
+
+  margin-left: 00px;
 }
 
 .search-button-container {
   text-align: right;
   margin-top: 1rem;
   margin-top: -150px;
+  margin-right: 57px;
+ 
+  margin-bottom: 20px;
+
+
+
 }
 
+
+
+
 .btn-search {
-  background: #f3c8ff;
+  background: linear-gradient(145deg, #f3c8ff, #e6aaff); /* Adds depth */
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
   font-size: 1rem;
+  font-weight: bold;
+  color: #4a004e;
+  box-shadow: 6px 6px 12px #d1a7db, -6px -6px 12px #ffffff; /* 3D shadow */
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+
+
 }
+
+/* Hover effect */
+.btn-search:hover {
+  box-shadow: 2px 2px 6px #d1a7db, -2px -2px 6px #ffffff; /* Pressed look */
+  transform: translateY(-3px); /* Lift up */
+}
+
+/* Active (clicked) effect */
+.btn-search:active {
+  box-shadow: inset 3px 3px 6px #d1a7db, inset -3px -3px 6px #ffffff; /* Inner shadow for pressed look */
+  transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .suggestions-resources {
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
+margin-top: 100px;
+border-radius: 20px;
+  
+
+
+ 
 }
 
 .suggestions-container {
@@ -106,18 +199,46 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  
 }
 
 .resources-links {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: stretch; /* makes links full width inside */
+  gap: 0.75rem;
+  margin: 10px;
+  padding: 1rem;
+  border-radius: 16px;
+  background: url('../assets/clloud3.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* ✅ keep fixed for parallax effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* Links inside */
 .resources-links a {
-  color: #4b2e83;
-  text-decoration: none;
+  display: block; /* makes the entire area clickable */
+  text-align: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.85); /* light background for readability */
+  border-radius: 12px;
+  color: #4b2e83; /* theme purple */
   font-weight: 500;
-  
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
+
+/* Hover effect */
+.resources-links a:hover {
+  background: rgba(117, 87, 148, 0.95); /* subtle purple tint */
+  color: #d5cedd; /* brighter purple tone */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(106, 17, 203, 0.15);
+}
+
+
+

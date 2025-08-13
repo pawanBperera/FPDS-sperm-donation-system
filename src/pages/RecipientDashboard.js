@@ -13,6 +13,7 @@ import {
   //FaClock,
 } from "react-icons/fa";
 import "./RecipientDashboard.css";
+import ChatBot from "../components/ChatBot/ChatBot";
 
 
 export default function RecipientDashboard() {
@@ -21,6 +22,9 @@ export default function RecipientDashboard() {
   const [matchesSaved, setMatchesSaved] = useState(0);
   const [profileComplete, setProfileComplete] = useState(false);
   const [screeningComplete, setScreeningComplete] = useState(false);
+
+  const [approvedExists, setApprovedExists] = useState(false);
+
   //const [approvedExists, setApprovedExists] = useState(false);
   //const [lastLogin, setLastLogin] = useState("");
   //const [lastPwdChange, setLastPwdChange] = useState("");
@@ -123,6 +127,19 @@ export default function RecipientDashboard() {
     } catch (e) {
       console.error("Error fetching medical:", e);
     }
+
+
+try {
+  const approvedRes = await axios.get(`/api/matches/recipients/${user.id}`, {
+    params: { status: "approved" }
+  });
+  setApprovedExists(approvedRes.data.length > 0);
+} catch (e) {
+  console.error("Error fetching approved matches:", e);
+}
+
+
+
   }
 
   fetchStats();
@@ -160,12 +177,12 @@ export default function RecipientDashboard() {
           {/* Notification Sections */}
           {!profileComplete && (
             <div className="alert alert-warning" role="alert">
-              Please complete your profile to improve matching.
+              Please complete your profile to improve your matching.
             </div>
           )}
           {!screeningComplete && (
             <div className="alert alert-info" role="alert">
-              Please complete your medical screening to see all matches.
+              Please complete your medical screening to see most suitable matches.
             </div>
           )}
 
@@ -217,14 +234,42 @@ export default function RecipientDashboard() {
 
             {/* Approved Match */}
             <div className="col-md-6 col-lg-4">
-              <div
-                className="dash-card dash-card-success"
-                onClick={() => navigate("/recipient/approved-match")}
-              >
-                <FaCheckCircle className="dash-icon dash-icon-check" />
-                <div>Your Approved Match</div>
-              </div>
-            </div>
+  <div
+    className="dash-card dash-card-success position-relative"
+    onClick={() => navigate("/recipient/approved-match")}
+    style={{ position: "relative" }}
+  >
+    <FaCheckCircle className="dash-icon dash-icon-check" style={{ position: "relative" }} />
+    {approvedExists && (
+      approvedExists && <span className="notification-dot"
+        style={{
+           position: "absolute",
+          top: "-8px", // better placement
+          right: "-8px",
+          width: "28px",
+          height: "28px",
+          background: "linear-gradient(145deg, #ff4d4d, #cc0000)", // gradient for depth
+          borderRadius: "50%",
+          boxShadow:
+            "4px 4px 8px rgba(0, 0, 0, 0.3), -2px -2px 6px rgba(255, 200, 200, 0.5)", // 3D shadows
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontWeight: "bold",
+          fontSize: "14px",
+          cursor: "pointer",
+          transition: "all 0.2s ease-in-out",
+          zIndex: "10"
+        }}
+      >
+        💜
+      </span>
+    )}
+    <div>Your Approved Match</div>
+  </div>
+</div>
+
 
             {/* Last Login / Password Change (removed) */}
             {/*
@@ -253,6 +298,8 @@ export default function RecipientDashboard() {
           </button>
         </main>
       </div>
+      <ChatBot />
+
     </>
   );
 }

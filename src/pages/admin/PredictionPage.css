@@ -1,0 +1,173 @@
+/* Overall container */
+.prediction-container {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  
+
+  background-image: url('../../assets/back\ 2.png'); /* Adjust path based on CSS location */
+  background-size: cover;  /* Makes the image fill the container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Avoids tiling */
+  min-height: 100vh; /* Makes it full page height */
+
+
+
+}
+
+/* Page header */
+.prediction-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+
+  margin-top: 100px;
+  
+}
+
+.prediction-subtitle {
+  text-align: center;
+  color: rgb(48, 46, 46);
+  margin-bottom: 20px;
+}
+
+/* Loading text */
+.prediction-loading {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 100px;
+}
+
+
+
+
+/* Predict button */
+.predict-btn-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.predict-btn {
+background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #000000;
+  padding: 12px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.predict-btn:active {
+  box-shadow: 0 2px #0a58ca;   /* Reduce shadow when pressed */
+  transform: translateY(4px);  /* Push button down */
+}
+
+.predict-btn:hover {
+transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+background-color: #c46fe8;}
+  
+
+
+
+
+
+
+/* Score & Risk Section */
+.prediction-score-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.prediction-score {
+  font-size: 60px;
+  margin: 10px 0;
+}
+
+.prediction-risk {
+  font-size: 24px;
+  font-weight: bold;
+  color:rgb(11, 10, 10);
+  
+   background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+}
+
+/* Chart Section */
+.prediction-charts {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.bar-chart-section,
+.pie-chart-section {
+  width: 45%;
+  text-align: center;
+ 
+    background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border: 1px solid #827979;
+
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+
+  padding: 35px;
+  border-radius: 38px;
+}
+
+
+
+
+
+
+.bar-chart-section h4,
+.pie-chart-section h4 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+
+
+/* Quick Facts */
+.prediction-quick-facts {
+  margin-top: 30px;
+  text-align: center;
+  
+}
+
+.prediction-quick-facts h4 {
+  margin-bottom: 10px;
+}
+
+.prediction-quick-facts p {
+  margin: 4px 0;
+  font-size: 16px;
+}
+
+
+
+
+/* Insights box */
+.prediction-insights {
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+
+
+  color: black;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+

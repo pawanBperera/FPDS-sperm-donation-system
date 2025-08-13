@@ -8,14 +8,33 @@
   border-radius: 0.75rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
+
+    box-shadow: 6px 6px 12px #a36bb18d, -6px -6px 12px #a7a0a0; /* 3D shadow */
+
+
+}
+
+.lead{
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.mb-3{
+  font-family: 'Roboto', sans-serif;
+
 }
 
 .recipient-dashboard {
-  height: 100vh;
+  
   background: url('../assets/back\ 2.png') no-repeat center center;
   background-size: cover;
   display: flex;
   flex-direction: column;
+
+   background-size: cover;
+  background-attachment: fixed; /* Optional: makes it stay in place on scroll */
+   min-height: 100vh; /* Allows it to grow beyond viewport */
+  
 }
 
 
@@ -37,8 +56,10 @@
   color: #d204dd;
 }
 
+
+
 .dash-icon-vial {
-    color: #d204dd;
+    color: #047048;
 }
 
 /* Success card (profile ✓, screening ✓, approved) */
@@ -48,8 +69,9 @@
 .dash-card-success:hover {
   background-color: #a5d6a7;
 }
+
 .dash-icon-user{
-     color: #d204dd;
+     color: #2e5ec5;
 }
 .dash-icon-check {
   color: #0cc027;
@@ -76,7 +98,52 @@
 }
 .dash-card-info:hover {
   background-color: #b3e5fc;
+  
 }
 .dash-icon-clock {
   color: #0288d1;
 }
+
+
+.alert-info{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff9db; /* soft yellow tint */
+  color: #382d0a; /* dark golden tone for text */
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  margin: 1rem 0;
+  
+}
+.alert-warning::before {
+  content: '❕'; /* bell icon for attention */
+  font-size: 1.2rem;
+}
+
+.alert-warning{
+
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff4e6; /* soft orange tint for info/warning */
+  color: #911b00; /* dark orange for text */
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  margin: 1rem 0;
+}
+
+/* Optional icon for better UX */
+.alert-info::before {
+  content: '❕'; /* or use SVG/icon for better style */
+  font-size: 1.2rem;
+}
+
+
+

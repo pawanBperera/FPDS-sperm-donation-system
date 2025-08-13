@@ -5,6 +5,8 @@ import NavBar from "../components/NavBar/NavBar";
 import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
 import axios from "axios";
 import { auth } from "../firebase/firebaseConfig";
+import "./RecipientProfileManager.css";
+
 
 // Dropdown options
 const ethnicityOptions = [
