@@ -25,11 +25,11 @@ export function RecipientSidebar() {
         to="/recipient/account-settings"
         className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
       >
-<br></br>
+
       <FaCog className="icon" /> Account Settings
                 </NavLink>
                 
-                    <br></br>
+                
 
                   <NavLink
             to="/recipient/profile"
@@ -37,7 +37,7 @@ export function RecipientSidebar() {
         <FaUser className="icon" /> Profile Manager
       </NavLink>
 
-      <br></br>
+   
 
       <NavLink
         to="/recipient/feedback"
@@ -45,7 +45,7 @@ export function RecipientSidebar() {
         <FaCommentDots className="icon" /> Feedback
       </NavLink>
       
-      <br></br>
+     
       
       <hr />
 

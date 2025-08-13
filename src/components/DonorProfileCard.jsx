@@ -37,9 +37,7 @@ export default function DonorProfileCard({ donor }) {
           <p>
             <strong>Location:</strong> {city}, {district}
           </p>
-          <p>
-            <strong>Date registered:</strong> {registeredDate}
-          </p>
+          
         </div>
 
         <button

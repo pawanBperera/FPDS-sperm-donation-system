@@ -6,7 +6,11 @@ import './Sidebar.css';
 
 export function AdminSidebar() {
   return (
+
+                <div className="sidebar" style={{ marginTop: "-1px", minHeight: "100vh" }}>
+
     <aside className="sidebar">
+      
       <NavLink
         to="/admin/dashboard"
         className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
@@ -30,5 +34,6 @@ export function AdminSidebar() {
       </NavLink>*/}
       
     </aside>
+    </div>
   );
 }

@@ -58,7 +58,7 @@ export default function RecipientFeedback() {
       {/*<div className="d-flex vh-100">*/}
       <div
   className="recipient-dashboard"
-  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
+  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "160vh" }}
 >
 
 

@@ -4,29 +4,36 @@ import { getAuth } from "firebase/auth";
 
 // Create an Axios instance
 const api = axios.create({
-  baseURL: "http://localhost:8080", // Change to full URL like "http://localhost:8080/api" if needed
+  baseURL: "http://localhost:8080/api",
 });
 
+
 // Add request interceptor to attach Firebase auth token
+/*api.interceptors.request.use(
+  (config) => {
+  const raw = localStorage.getItem("user");
+  if (raw) {
+    const { token } = JSON.parse(raw);
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+},
+(err) => Promise.reject(err)
+);*/
+
 api.interceptors.request.use(
   async (config) => {
-    try {
-      const auth = getAuth();
-      const user = auth.currentUser;
-
-      if (user) {
-        const token = await user.getIdToken();
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-    } catch (error) {
-      console.warn("Token injection failed:", error);
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      // get a fresh token (this will automatically re-use a cached one if still valid)
+      const token = await user.getIdToken(/* forceRefresh= */ false);
+      config.headers.Authorization = `Bearer ${token}`;
     }
-
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
+
 
 export default api;

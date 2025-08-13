@@ -9,6 +9,9 @@ import Step2 from "../components/Registration/Step2";
 import { useNavigate } from "react-router-dom";
 import api from "../services/axiosInstance";
 
+import { toast } from "react-toastify";
+
+
 
 export default function RegistrationPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -33,17 +36,17 @@ export default function RegistrationPage() {
 
   // Validation for Step 1
   const validateStep1 = () => {
-    if (!email || !firstName || !lastName || !password || !confirmPassword || !province) {
-      setError("All fields are required.");
-      return false;
+     if (!email || !firstName || !lastName || !password || !confirmPassword || !province) {
+    toast.error("All fields are required.");
+    return false;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setError("Invalid email address.");
-      return false;
+    toast.error("Invalid email address.");
+    return false;
     }
     if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return false;
+    toast.error("Passwords do not match.");
+    return false;
     }
     setError("");
     return true;
@@ -52,21 +55,23 @@ export default function RegistrationPage() {
   // Validation for Step 2
   const validateStep2 = () => {
     if (!consent) {
-      setError("You must accept the medical statement.");
+    toast.error("You must accept the medical statement.");
+    return false;
+    }
+     if (file) {
+    const isPdf = file.type === "application/pdf";
+    const tooBig = file.size > 5 * 1024 * 1024;
+
+    if (!isPdf) {
+      toast.error("Only PDF files are allowed.");
       return false;
     }
-    if (file) {
-      const isPdf = file.type === "application/pdf";
-      const tooBig = file.size > 5 * 1024 * 1024;
-      if (!isPdf) {
-        setError("Only PDF files are allowed.");
-        return false;
-      }
-      if (tooBig) {
-        setError("File size exceeds 5 MB.");
-        return false;
-      }
+
+    if (tooBig) {
+      toast.error("File size exceeds 5 MB.");
+      return false;
     }
+  }
     setError("");
     return true;
   };
@@ -88,7 +93,8 @@ export default function RegistrationPage() {
 
 
  // 2. Backend user creation with auth header
-  const response = await api.post("/api/users", {
+  const response =// await api.post("/api/users", 
+  await api.post("/users", {
     firebaseUid,
     email,
     username: email.split("@")[0],
@@ -110,7 +116,18 @@ export default function RegistrationPage() {
 const createdUser = response.data;
 const userId = createdUser.id;
 
-await api.post(`/api/recipients/${userId}/profile`);
+const profilePayload = {
+  firstName,    // from Step 1 state
+  lastName,     // from Step 1 state
+  province,     // from Step 1 state
+  diseases,     // from Step 2 state (array)
+  consent       // from Step 2 state (boolean)
+};
+
+//await api.post(`/api/recipients/${userId}/profile`);
+
+await api.post(`/recipients/${userId}/profile`, profilePayload);
+
 
 // 3. Handle response
   if (response.status === 201 || response.status === 200) {
@@ -156,5 +173,7 @@ await api.post(`/api/recipients/${userId}/profile`);
 
       {error && <p className="error-text">{error}</p>}
     </div>
+
+    
   );
 }

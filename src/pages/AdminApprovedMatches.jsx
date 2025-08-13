@@ -6,6 +6,16 @@ import { FaHome, FaBell } from "react-icons/fa";
 import axios from "axios";
 import "./AdminApprovedMatches.css";
 
+
+axios.defaults.baseURL = "http://localhost:8080";
+const stored = localStorage.getItem("user");
+if (stored) {
+  const { token } = JSON.parse(stored);
+  if (token) axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+}
+
+
+
 export default function AdminApprovedMatches() {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,9 +24,9 @@ export default function AdminApprovedMatches() {
   useEffect(() => {
     async function fetchApproved() {
       try {
-        const res = await axios.get("/api/matches", {
-          params: { status: "approved" },
-        });
+        const res = await axios.get("/api/matches/status/approved");
+
+
         setMatches(res.data);
       } catch (err) {
         console.error("Failed to load approved matches:", err);
@@ -28,13 +38,15 @@ export default function AdminApprovedMatches() {
   }, []);
 
   const handleUndo = async (matchId) => {
-    try {
-      await axios.put(`/api/matches/${matchId}`, { status: "pending" });
-      setMatches((ms) => ms.filter((m) => m.id !== matchId));
-    } catch (err) {
-      console.error("Failed to undo match:", err);
-    }
-  };
+  if (!window.confirm("Move this match back to pending?")) return;
+  try {
+    await axios.put(`/api/matches/${matchId}/status?status=pending&adminId=1`);
+    setMatches(matches.filter((m) => m.matchId !== matchId));
+  } catch (err) {
+    console.error("Failed to undo match:", err);
+    alert("Failed to update status.");
+  }
+};
 
   if (loading) return <div className="p-4">Loading approved matches…</div>;
 
@@ -54,37 +66,46 @@ export default function AdminApprovedMatches() {
         <table className="table table-bordered matches-table">
           <thead className="table-light">
             <tr>
-              <th>Recipient ID</th>
-              <th>Donor ID</th>
-              <th>Genetic Risk</th>
-              <th>Actions</th>
+             <th>Recipient ID</th>
+    <th>Donor ID</th>
+    <th>Actions</th>
             </tr>
           </thead>
+
+
+
           <tbody>
-            {matches.map((m) => (
-              <tr key={m.id}>
-                <td>{m.recipient_id}</td>
-                <td>{m.donor_id}</td>
-                <td>
-                  {m.genetic_risk === "compatible" ? (
-                    <span className="text-success">Compatible</span>
-                  ) : (
-                    <span className="text-danger">
-                      <FaBell /> Risk
-                    </span>
-                  )}
-                </td>
-                <td>
-                  <button
-                    className="btn btn-success btn-sm"
-                    onClick={() => handleUndo(m.id)}
-                  >
-                    Undo
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+  {matches.map((m, index) => (
+    <tr key={`${m.matchId}-${index}`}>
+      <td>{m.recipientId}</td>
+      <td>{m.donorId}</td>
+      <td>
+        
+        <button
+          className="btn btn-warning btn-sm ms-1"
+          onClick={() => handleUndo(m.matchId)}
+        >
+          Undo The action
+        </button>
+
+        <button
+          className="btn btn-outline-primary btn-sm ms-2"
+          onClick={() => navigate(`/admin/matches/${m.matchId}`)}
+        >
+          Details of this match
+        </button>
+
+
+      </td>
+    </tr>
+  ))}
+  {matches.length === 0 && (
+    <tr>
+      <td colSpan="3">No approved matches.</td>
+    </tr>
+  )}
+</tbody>
+
         </table>
 
         <button

@@ -6,15 +6,61 @@
   left: 0;
   right: 0;
   height: 64px;
-  background: url('../../assets/back\ 2.png') no-repeat center center;
+  background: url('../../assets/back 2.png') no-repeat center center;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
-  z-index: 100; /* stays above sidebar */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 1.5rem;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
+/* Overlay for better readability */
+.recipient-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* dark overlay for contrast */
+  z-index: -1;
+}
+
+/* Navbar Items */
+.recipient-navbar .nav-item {
+  color: #fff;
+  font-weight: 500;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.recipient-navbar .nav-item:hover {
+  color: #d1aaff; /* theme accent on hover */
+}
+
+/* Right-side buttons or actions */
+.recipient-navbar .nav-actions button {
+  background: linear-gradient(135deg, #9d4edd, #7a2c9f);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.recipient-navbar .nav-actions button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #7a2c9f, #5a189a);
+}
+
 
 .navbar-brand {
   display: flex;
@@ -22,7 +68,9 @@
 }
 
 .navbar-brand img.logo {
-  max-height: 40px;
+  height: 40px;
+  width: 40px;
+  left: 60px;
   margin-right: 0.5rem;
 }
 
@@ -32,30 +80,128 @@
   color: #3b2d3a;
 }
 
+
+
+
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
+/* Links and buttons share styles */
 .navbar-links a,
 .navbar-links .nav-btn {
-  color: #3b2d3a;
+  position: relative;
+  color: #4b2e83; /* theme purple */
   text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
-.navbar-links .nav-btn.active {
-  font-weight: bold;
-  color: #0e5f5e;
+/* Hover state */
+.navbar-links a:hover,
+.navbar-links .nav-btn:hover {
+  background: rgba(157, 78, 221, 0.1); /* subtle purple tint */
+  color: #fbfbfb; /* brighter purple for hover */
 }
+
+/* Active link indicator */
+.navbar-links .nav-btn.active,
+.navbar-links a.active {
+  font-weight: 600;
+  color: #ffffff; /* main purple */
+}
+
+/* Optional: Underline animation on hover */
+.navbar-links a::after,
+.navbar-links .nav-btn::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #7635a8;
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover::after,
+.navbar-links .nav-btn:hover::after {
+  width: 100%;
+}
+
+
+
 
 .navbar-toggler {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #3b2d3a;
+  visibility: hidden;
 }
 
 .navbar-separator {
   display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.language-switcher {
+  margin-left: 12px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #d3b8ff; /* soft purple border */
+  background: #fff; /* keep it clean */
+  color: #4a4a4a; /* dark neutral for readability */
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none; /* removes default arrow styling for custom control */
+}
+
+/* Hover effect */
+.language-switcher:hover {
+  background: #f8f4ff; /* subtle purple tint */
+  border-color: #b88aff;
+  box-shadow: 0 2px 8px rgba(157, 78, 221, 0.15); /* soft theme shadow */
+}
+
+/* Focus state for accessibility */
+.language-switcher:focus {
+  outline: none;
+  border-color: #9d4edd;
+  box-shadow: 0 0 6px rgba(157, 78, 221, 0.4);
+}
+
+.language-switcher {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='none' stroke='%239d4edd' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  padding-right: 32px; /* make space for arrow */
+}
+
+
+.language-switcher option {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a4a4a; /* neutral text */
+  background: #fff; /* ensures clean background */
+  padding: 8px 12px;
+}
+.language-switcher option:hover {
+  background: #9566c8; /* light purple tint */
 }

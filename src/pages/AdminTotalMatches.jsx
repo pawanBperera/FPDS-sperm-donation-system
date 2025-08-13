@@ -1,48 +1,77 @@
+
 // File: src/pages/AdminTotalMatches.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaBell, FaHome } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import axios from "axios";
+
+/*
 import {
-  fetchPendingMatches,
-  updateMatchStatus,
+  fetchAdminShortlists,
+  updateShortlistStatus,
 } from "../services/adminApi";
+*/
+
 import "./AdminTotalMatches.css";
+
+// Configure axios base URL and auth header
+axios.defaults.baseURL = "http://localhost:8080/api";
+const stored = localStorage.getItem("user");
+if (stored) {
+  const { token } = JSON.parse(stored);
+  if (token) axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+}
 
 export default function AdminTotalMatches() {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || {};
 
+
+//**************************************************************** */
+
+
   useEffect(() => {
-    loadMatches();
-  }, []);
+  fetchPendingMatches();
+}, []);
 
-  const loadMatches = async () => {
-    try {
-      const data = await fetchPendingMatches();
-      setMatches(data);
-    } catch (err) {
-      console.error("Error loading matches:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+const fetchPendingMatches = async () => {
+  try {
+   // const res = await axios.get("/matches/status/pending");
+   const res = await axios.get("/api/matches/status/pending");
 
-  const handleAction = async (matchId, newStatus) => {
-    if (!window.confirm(`Are you sure you want to ${newStatus} this match?`)) return;
+    setMatches(res.data);
+  } catch (err) {
+    console.error("Error fetching matches:", err);
+    setError("Could not load matches, Try refreshing the page");
+  } finally {
 
-    try {
-      await updateMatchStatus(matchId, newStatus, user.id);
-      setMatches((prev) => prev.filter((m) => m.id !== matchId));
-    } catch (err) {
-      console.error(`Failed to ${newStatus} match`, err);
-      alert("Failed to update match status.");
-    }
-  };
+
+    
+    setLoading(false);
+  }
+};
+
+const updateMatchStatus = async (matchId, newStatus) => {
+  if (!window.confirm(`Are you sure you want to ${newStatus} this match?`)) return;
+  try {
+  //  await axios.put(`/matches/${matchId}/status?status=${newStatus}&adminId=${user.id}`);
+await axios.put(`/api/matches/${matchId}/status?status=${newStatus}&adminId=${user.id}`);
+    setMatches(matches.filter((m) => m.matchId !== matchId)); // remove from list after update
+  } catch (err) {
+    console.error(`Failed to ${newStatus}:`, err);
+    alert("Failed to update status.");
+  }
+};
+
+
+
 
   if (loading) return <div className="p-4">Loading matches…</div>;
+  if (error) return <div className="p-4 text-danger">{error}</div>;
 
   return (
     <div className="d-flex admin-matches-page">
@@ -62,45 +91,61 @@ export default function AdminTotalMatches() {
             <tr>
               <th>Recipient ID</th>
               <th>Donor ID</th>
-              <th>Genetic Risk</th>
-              <th>Match Status</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {matches.map((m) => (
-              <tr key={m.id}>
-                <td>{m.recipient_id}</td>
-                <td>{m.donor_id}</td>
-                <td>
-                  {m.genetic_risk === "compatible" ? (
-                    <span className="text-success">Compatible</span>
-                  ) : m.genetic_risk === "risky" ? (
-                    <span className="text-danger"><FaBell /> Risk</span>
-                  ) : (
-                    <span className="text-muted">Unknown</span> // fallback
-                  )}
-                </td>
-                <td>{m.status}</td>
-                <td>
-                  <button
-                    className="btn btn-success btn-sm me-2"
-                    onClick={() => handleAction(m.id, "approved")}
-                  >
-                    Approve
-                  </button>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => handleAction(m.id, "rejected")}
-                  >
-                    Reject
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+
+
+         <tbody>
+  {matches.map((m, index) => (
+    <tr key={`${m.matchId}-${index}`}>
+      <td>{m.recipientUserId}</td>
+<td>{m.donorUserId}</td>
+
+      <td>
+        <span className="text-warning">{m.status}</span>
+      </td>
+      <td>
+        <button
+          className="btn btn-success btn-sm me-2"
+          onClick={() => updateMatchStatus(m.matchId, "approved")}
+        >
+          Approve
+        </button>
+        <button
+          className="btn btn-danger btn-sm me-2"
+          onClick={() => updateMatchStatus(m.matchId, "rejected")}
+        >
+          Reject
+        </button>
+        <button
+          className="btn btn-outline-primary btn-sm" style={{
+    fontWeight: "bold",
+    borderRadius: "8px",
+    padding: "6px 14px",
+    background: "rgba(212, 134, 206, 1)",
+    color: "white"
+  }}
+          onClick={() => navigate(`/admin/matches/${m.matchId}`)}
+        >
+          Details
+        </button>
+      </td>
+    </tr>
+  ))}
+  {matches.length === 0 && (
+    <tr>
+      <td colSpan="4">No pending matches.</td>
+    </tr>
+  )}
+</tbody>
+
+
+
         </table>
       </main>
     </div>
   );
 }
+

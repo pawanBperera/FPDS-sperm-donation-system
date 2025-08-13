@@ -8,6 +8,8 @@ export function DonorSidebar() {
 
 
   return (
+                    <div className="sidebar" style={{ marginTop: "-1px", minHeight: "100vh" }}>
+
     <aside className="sidebar">
 
 
@@ -38,6 +40,7 @@ export function DonorSidebar() {
         <FaCog className="icon" /> Account Settings
       </NavLink>
     </aside>
+    </div>
   );
 }
 

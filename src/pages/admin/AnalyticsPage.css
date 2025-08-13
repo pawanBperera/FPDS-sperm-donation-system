@@ -1,0 +1,160 @@
+/* AnalyticsPage.css */
+
+/* Container for the entire analytics page */
+.analytics-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: radial-gradient(
+    circle at top left,
+    #f3e8ff,
+    #ffe4e6,
+    #fffbeb
+  );
+}
+
+/* Main heading */
+.analytics-page h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #6d28d9;
+  margin-bottom: 2rem;
+}
+
+/* Summary cards wrapper */
+.summary-cards-container {
+    display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* Individual card styling */
+.summary-card {
+  background: #fff;
+  border-radius: 9999px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: left;
+}
+.summary-card-icon {
+  font-size: 24px;
+}
+.summary-card-content .label {
+   font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+.summary-card-content .value {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #1f2937;
+}
+
+
+
+
+
+
+
+/* Charts section */
+.charts-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+.chart-container {
+  flex: 1;
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+   
+
+
+}
+
+/* Affected donor section */
+.affected-donor-title {
+  font-size: 2rem;
+  color: #6d28d9;
+  margin: 2rem 0 1rem;
+  text-align: center;
+}
+.affected-donor-table {
+  width: 100%;
+  max-width: 1000px;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  margin-bottom: 2.5rem;
+}
+.affected-donor-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.affected-donor-table th,
+.affected-donor-table td {
+  padding: 0.75rem;
+  text-align: left;
+  white-space: nowrap;
+}
+.affected-donor-table thead tr th {
+  border-bottom: 2px solid #e5e7eb;
+}
+.affected-donor-table tbody tr:hover {
+  background: #f9fafb;
+}
+.affected-donor-table td.risk-high {
+  color: #ef4444;
+}
+.affected-donor-table td.risk-low {
+  color: #10b981;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background: #f472b6;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 160px;
+}
+.action-button:hover {
+  background: #ec4899;
+}
+.action-button .icon {
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}

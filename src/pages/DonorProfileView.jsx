@@ -20,7 +20,30 @@ export default function DonorProfileView() {
       try {
         setLoading(true);
         const res = await getDonorProfile(id);
-        setProfile(res.data);
+        const data = res.data;
+const mappedProfile = {
+  userId: data.user_id,
+  willingToHelp: data.willing_to_help,
+  numberOfChildren: data.number_of_children || "N/A",
+  city: data.city,
+  district: data.district,
+  race: data.race,
+  nationality: data.nationality,
+  religion: data.religion,
+  education: data.education,
+  spokenLanguages: data.spoken_languages || "Not specified",
+  smoker: data.smoker,
+  bloodType: data.blood_type || "Unknown",
+  heightCm: data.height_cm || "—",
+  weightKg: data.weight_kg || "—",
+  hairColor: data.hair_color,
+  eyeColor: data.eye_color,
+  maritalStatus: data.marital_status,
+  hadBeenDonor: data.had_been_donor,
+  age: data.age || "N/A"
+};
+setProfile(mappedProfile);
+
 
         console.log("👤 Donor Profile loaded:", res.data);
 
@@ -45,7 +68,8 @@ export default function DonorProfileView() {
       console.log("💾 Saving donor: recipientId =", user.id, ", donorUserId =", profile.userId);
 
 
-      await shortlistDonor(user.id, profile.user_id);
+      await shortlistDonor(user.id, profile.userId);
+
 
      toast.success("Donor successfully shortlisted!", {
   className: "my-toast-class"

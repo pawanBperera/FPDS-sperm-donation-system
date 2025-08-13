@@ -36,6 +36,18 @@ export default function DonorProfileManager() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState("");
+  const [dob, setDob] = useState("");
+
+ 
+  const [childhoodDiseases, setChildhoodDiseases] = useState("");
+  const [traumaticInjury, setTraumaticInjury] = useState("");
+  const [highFeverLastYear, setHighFeverLastYear] = useState("");
+  const [alcoholFrequency, setAlcoholFrequency] = useState("");
+  const [smokingHabit, setSmokingHabit] = useState("");
+  const [exerciseLevel, setExerciseLevel] = useState("");
+  const [sleepQuality, setSleepQuality] = useState("");
+  const [stressLevel, setStressLevel] = useState("");
+
 
   // Fetch existing profile on mount
   useEffect(() => {
@@ -60,6 +72,18 @@ export default function DonorProfileManager() {
         setEyeColor(p.eye_color || "");
         setMaritalStatus(p.marital_status || "");
         setHadBeenDonor(Boolean(p.had_been_donor));
+
+        setDob(p.dob || "");
+        setChildhoodDiseases(p.childhoodDiseases || "");
+        setTraumaticInjury(p.traumaticInjury || "");
+        setHighFeverLastYear(p.highFeverLastYear || "");
+        setAlcoholFrequency(p.alcoholFrequency || "");
+        setSmokingHabit(p.smokingHabit || "");
+        setExerciseLevel(p.exerciseLevel || "");
+        setSleepQuality(p.sleepQuality || "");
+        setStressLevel(p.stressLevel || "");
+
+
       } catch (err) {
         console.error("Error loading donor profile:", err);
         setError("Could not load your profile.");
@@ -92,7 +116,19 @@ export default function DonorProfileManager() {
         hair_color:            hairColor,
         eye_color:             eyeColor,
         marital_status:        maritalStatus,
-        had_been_donor: hadBeenDonor 
+        had_been_donor: hadBeenDonor,
+        willing_to_help: willingToHelp,
+        bloodType,
+        nationality,
+        dob,
+        childhoodDiseases,
+        traumaticInjury,
+        highFeverLastYear,
+        alcoholFrequency,
+        smokingHabit,
+        exerciseLevel,
+        sleepQuality,
+        stressLevel
       });
       alert("Profile updated!");
     } catch (err) {
@@ -250,6 +286,17 @@ export default function DonorProfileManager() {
             </div>
           </div>
 
+          <div className="mb-3">
+  <label className="form-label">Date of Birth</label>
+  <input
+    type="date"
+    className="form-control"
+    value={dob}
+    onChange={(e) => setDob(e.target.value)}
+  />
+</div>
+
+
           {/* Blood Type */}
           <div className="mb-3">
             <label className="form-label">Blood Type</label>
@@ -354,6 +401,134 @@ export default function DonorProfileManager() {
               </label>
             </div>
           </div>
+
+
+
+          <h4>Medical & Lifestyle Information</h4>
+
+<div className="mb-3">
+  <label className="form-label">Date of Birth</label>
+  <input
+    type="date"
+    className="form-control"
+    value={dob}
+    onChange={(e) => setDob(e.target.value)}
+  />
+</div>
+
+<div className="mb-3">
+  <label className="form-label">Childhood Diseases</label>
+  <select
+    className="form-select"
+    value={childhoodDiseases}
+    onChange={(e) => setChildhoodDiseases(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="YES">Yes</option>
+    <option value="NO">No</option>
+  </select>
+</div>
+
+<div className="mb-3">
+  <label className="form-label">Traumatic Injury</label>
+  <select
+    className="form-select"
+    value={traumaticInjury}
+    onChange={(e) => setTraumaticInjury(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="YES">Yes</option>
+    <option value="NO">No</option>
+  </select>
+</div>
+
+<div className="mb-3">
+  <label className="form-label">High Fever Last Year</label>
+  <select
+    className="form-select"
+    value={highFeverLastYear}
+    onChange={(e) => setHighFeverLastYear(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="NO">No</option>
+    <option value="LESS_THAN_3_MONTHS_AGO">Less than 3 months ago</option>
+    <option value="MORE_THAN_3_MONTHS_AGO">More than 3 months ago</option>
+  </select>
+</div>
+
+<div className="mb-3">
+  <label className="form-label">Alcohol Frequency</label>
+  <select
+    className="form-select"
+    value={alcoholFrequency}
+    onChange={(e) => setAlcoholFrequency(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="NEVER">Never</option>
+    <option value="HARDLY_EVER">Hardly ever</option>
+    <option value="ONCE_A_WEEK">Once a week</option>
+    <option value="SEVERAL_TIMES_WEEK">Several times a week</option>
+    <option value="DAILY">Daily</option>
+    <option value="SEVERAL_TIMES_DAY">Several times a day</option>
+  </select>
+</div>
+
+<div className="mb-3">
+  <label className="form-label">Smoking Habit</label>
+  <select
+    className="form-select"
+    value={smokingHabit}
+    onChange={(e) => setSmokingHabit(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="NEVER">Never</option>
+    <option value="OCCASIONAL">Occasional</option>
+    <option value="DAILY">Daily</option>
+  </select>
+</div>
+
+<div className="mb-3">
+  <label className="form-label">Exercise Level</label>
+  <select
+    className="form-select"
+    value={exerciseLevel}
+    onChange={(e) => setExerciseLevel(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="LOW">Low</option>
+    <option value="MODERATE">Moderate</option>
+    <option value="HIGH">High</option>
+  </select>
+</div>
+
+<div className="mb-3">
+  <label className="form-label">Sleep Quality</label>
+  <select
+    className="form-select"
+    value={sleepQuality}
+    onChange={(e) => setSleepQuality(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="POOR">Poor</option>
+    <option value="AVERAGE">Average</option>
+    <option value="GOOD">Good</option>
+  </select>
+</div>
+
+<div className="mb-3">
+  <label className="form-label">Stress Level</label>
+  <select
+    className="form-select"
+    value={stressLevel}
+    onChange={(e) => setStressLevel(e.target.value)}
+  >
+    <option value="">Select</option>
+    <option value="LOW">Low</option>
+    <option value="MODERATE">Moderate</option>
+    <option value="HIGH">High</option>
+  </select>
+</div>
+
 
           <button type="submit" className="btn btn-primary">
             Update

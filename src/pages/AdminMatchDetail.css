@@ -19,7 +19,7 @@
 }
 
 .match-detail-card:hover {
-  box-shadow: 0 0 10px rgba(158, 0, 255, 0.2);
+  box-shadow: 0 0 100px rgba(40, 1, 64, 0.2);
 }
 
 /* === Card Headings === */

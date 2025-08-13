@@ -11,7 +11,7 @@ import {
   deleteUser as firebaseDeleteUser,
 } from "firebase/auth";
 import axios from "axios";
-//import "./RecipientAccountSettings.css";
+import "./RecipientAccountSettings.css";
 
 export default function RecipientAccountSettings() {
   const navigate = useNavigate();
@@ -131,7 +131,7 @@ export default function RecipientAccountSettings() {
       <NavBar />
       <div
   className="recipient-dashboard"
-  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "100vh" }}
+  style={{ marginLeft: "240px", paddingTop: "64px", minHeight: "110vh" }}
 >
 
 

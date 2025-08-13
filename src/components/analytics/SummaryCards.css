@@ -1,0 +1,47 @@
+.card-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 9999px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: left;
+}
+
+.card .icon {
+  font-size: 24px;
+}
+
+.card .label {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.card .value {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #1f2937;
+}
+
+.card.warning {
+  background: linear-gradient(90deg, #fee2e2 0%, #fff 100%);
+}
+
+.card.warning .icon {
+  color: #dc2626;
+}
+
+.card.warning .value {
+  color: #dc2626;
+}

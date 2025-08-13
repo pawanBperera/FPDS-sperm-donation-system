@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { Link } from "react-router-dom";
+import "./ForgotPasswordPage.css";
+
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");

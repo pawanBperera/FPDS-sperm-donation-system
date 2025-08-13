@@ -37,9 +37,33 @@ import HomePage from "./pages/HomePage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import AnalyticsPage from './pages/admin/AnalyticsPage';
+
+import PredictionPage from "./pages/admin/PredictionPage";
 
 
-// (Later we’ll add ForgotPasswordPage, ResetPasswordPage, RecipientDashboard, etc.)
+
+
+// Static Pages (Info)
+import GuideForIntendedParents from "./pages/static/GuideForIntendedParents";
+import IVFInfo from "./pages/static/IVFInfo";
+import CostOfIVF from "./pages/static/CostOfIVF";
+import SpermDonation from "./pages/static/SpermDonation";
+import GenderSelection from "./pages/static/GenderSelection";
+import MaleInfertility from "./pages/static/MaleInfertility";
+import FemaleInfertility from "./pages/static/FemaleInfertility";
+
+// Static Pages (Legal)
+import AboutUs from "./pages/static/AboutUs";
+import TermsOfUse from "./pages/static/TermsOfUse";
+import PrivacyPolicy from "./pages/static/PrivacyPolicy";
+import FAQ from "./pages/static/FAQ";
+
+import AdminPrediction from "./pages/AdminPrediction";
+
+
+
+// (Later weâ€™ll add ForgotPasswordPage, ResetPasswordPage, RecipientDashboard, etc.)
 
 function App() {
   return (
@@ -64,7 +88,7 @@ function App() {
         <Route path="admin/matches/:matchId" element={<AdminMatchDetail />} />
         <Route path="/admin/matches/approved" element={<AdminApprovedMatches />} />
         <Route path="/admin/matches/rejected"element={<AdminRejectedMatches />}/>
-
+<Route path="/admin/prediction" element={<AdminPrediction />} />
 
         {/*Log in Settings*/}
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
@@ -93,13 +117,42 @@ function App() {
            <Route path="/donors/:id" element={<DonorProfileView />} />
           
         
+<Route path="/admin/analytics" element={<AnalyticsPage />} />
+
+        
 {/* your app routes/components */}
       
       <Route path="/" element={<WelcomePage />} />
       <Route path="/home" element={<HomePage />} />
 
-      {/* Catch-all → back to login */}
+      {/* Catch-all â†’ back to login */}
       <Route path="*" element={<Navigate to="/login" replace />} />
+
+
+      {/* Prediction part */}
+      <Route path="/admin/predict" element={<PredictionPage />} />
+      <Route path="/admin/predict/:donorId/:recipientId" element={<PredictionPage />} />
+
+
+{/**STATIC */}
+{/* Info Pages */}
+<Route path="/recipient/guide" element={<GuideForIntendedParents />} />
+<Route path="/recipient/ivf-info" element={<IVFInfo />} />
+<Route path="/recipient/cost-of-ivf" element={<CostOfIVF />} />
+<Route path="/recipient/sperm-donation" element={<SpermDonation />} />
+<Route path="/recipient/gender-selection" element={<GenderSelection />} />
+<Route path="/recipient/male-infertility" element={<MaleInfertility />} />
+<Route path="/recipient/female-infertility" element={<FemaleInfertility />} />
+
+{/* Legal Pages */}
+<Route path="/about" element={<AboutUs />} />
+<Route path="/terms" element={<TermsOfUse />} />
+<Route path="/privacy" element={<PrivacyPolicy />} />
+<Route path="/faq" element={<FAQ />} />
+
+
+
+
       
     </Routes>
     </>

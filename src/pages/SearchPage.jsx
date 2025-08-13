@@ -1,9 +1,13 @@
 // File: src/pages/SearchPage.jsx
 import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import DonorProfileCard from "../components/DonorProfileCard";
-import { getDonors } from "../services/donorApi";
+//import { getDonors } from "../services/donorApi";
+import { getDonors, searchDonors } from "../services/donorApi";
+
+
+
 import {
   cityOptions,
   //districtOptions,
@@ -22,8 +26,10 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import srilankaTopo from "../data/srilanka.json";
 import "./SearchPage.css";
 
+
+
 export default function SearchPage() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
   const [bloodType, setBloodType] = useState("");
@@ -38,6 +44,12 @@ export default function SearchPage() {
   const [assist, setAssist] = useState("");
   const [donors, setDonors] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [searchPerformed, setSearchPerformed] = useState(false);
+
+
+
   useEffect(() => {
     async function fetchDonors() {
       try {
@@ -50,7 +62,7 @@ export default function SearchPage() {
     fetchDonors();
   }, []);
 
-  const handleSubmit = (e) => {
+ /* const handleSubmit = (e) => {
     e.preventDefault();
     const params = new URLSearchParams({
       city,
@@ -67,15 +79,63 @@ export default function SearchPage() {
       assist,
     }).toString();
     navigate(`/recipient/search-results?${params}`);
-  };
+  };*/
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError(null);
+
+  try {
+    // Build params object dynamically
+    const params = {};
+    if (city) params.city = city;
+    if (district) params.district = district;
+    if (bloodType) params.bloodType = bloodType;
+    if (nationality) params.nationality = nationality;
+    if (race) params.race = race;
+    if (religion) params.religion = religion;
+    if (education) params.education = education;
+    if (eyeColor) params.eyeColor = eyeColor;
+    if (hairColor) params.hairColor = hairColor;
+    if (language) params.spokenLanguages = language;
+    if (maritalStatus) params.maritalStatus = maritalStatus;
+    if (assist) params.willingToHelp = assist;
+
+    const res = await searchDonors(params);
+    setDonors(res.data);
+
+setSearchPerformed(true);
+
+  } catch (err) {
+    console.error("Search failed:", err);
+    setError("Failed to fetch donors. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
-    <div className="search-page">
+                <div className="search-page" style={{ marginLeft: "0px", minHeight: "100vh" }}>
+
+
       <NavBar />
-      <div className="search-content">
-        <h1 className="search-title">Search For Donors</h1>
+
+
+     
+
+
+{/*********************************************************************************************************************************** */}
+
+
+ <div className="search-content">
+        <h1 className="search-title">Search For Certified Donors</h1>
         <form className="filters-form" onSubmit={handleSubmit}>
+
+
           <div className="filters-top">
+
             <div className="map-filter">
               <ComposableMap
                 projection="geoMercator"
@@ -92,7 +152,14 @@ export default function SearchPage() {
                         <Geography
                           key={geo.rsmKey}
                           geography={geo}
-                          onClick={() => setDistrict(name)}
+
+                         // onClick={() => setDistrict(name)}
+                         onClick={() => {
+                         setDistrict(name);
+                         console.log("District selected:", name);
+                        }}
+
+
                           fill={isSelected ? "#F3C8FF" : "#EAEAEC"}
                           stroke="#999"
                           style={{
@@ -107,6 +174,9 @@ export default function SearchPage() {
                 </Geographies>
               </ComposableMap>
             </div>
+
+              {/*********************************************************************************************************************************** */}
+
             <div className="dropdown-grid">
               <select value={city} onChange={(e) => setCity(e.target.value)}>
                 <option value="">City</option>
@@ -221,22 +291,42 @@ export default function SearchPage() {
                 ))}
               </select>
             </div>
-          </div>
+            </div>
 
-          <div className="search-button-container">
+            <div className="search-button-container">
             <button type="submit" className="btn-search">
               Search
             </button>
           </div>
+
+          
         </form>
+            
+{/*********************************************************************************************************************************** */}
+
+
+          
+
+          
 
         <div className="suggestions-resources">
           <div className="suggestions-container">
+
+
+{loading && <p>Loading donors...</p>}
+{error && <p className="text-danger">{error}</p>}
+{!loading && searchPerformed && donors.length === 0 && (
+  <p>No donors found for the selected filters.</p>
+)}
+
+
+
             
             {donors.map(donor => (
               <DonorProfileCard key={donor.userId} donor={donor} />
             ))}
           </div>
+
           <div className="resources-links">
             <a href="/recipient/guide">Guide for Intended Parents</a>
             <a href="/recipient/ivf-info">IVF information</a>

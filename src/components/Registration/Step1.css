@@ -1,0 +1,74 @@
+/* File: src/components/Registration/Step1.css */
+
+.step1-form {
+  background-image: url("../../assets/clloud3.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+  color: #3d2f2f;
+}
+
+.step1-form h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+  color: #4c2b2b;
+}
+
+.step1-form p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #3d2f2f;
+}
+
+.step1-form input,
+.step1-form select {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #bfaecb;
+  border-radius: 1.5rem;
+  background-color: #f4edf4;
+  color: #2d2d2d;
+  font-size: 1rem;
+  outline: none;
+}
+
+.step1-form select {
+  appearance: none;
+}
+
+.step1-form button {
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #e2b8f0;
+  color: #173c3f;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.step1-form button:hover {
+  background-color: #d29ce0;
+}
+
+.step1-form a {
+  color: #4b2a2a;
+  font-style: italic;
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+.step1-form a:hover {
+  text-decoration: underline;
+}
