@@ -1,0 +1,299 @@
+/* === Theme tokens (easy to tweak) === */
+:root {
+  --ap-bg: #0f1115;
+  --ap-card: #151923;
+  --ap-text: #9400de;
+  --ap-muted: #9e00e7;
+  --ap-border: #262b36;
+  --ap-primary: #4f8cff;        /* primary accent */
+  --ap-primary-600: #3f74d4;
+  --ap-success: #2ecc71;
+  --ap-danger: #ff5a5f;
+  --ap-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ap-bg: #f7f9fc;
+    --ap-card: #ffffff;
+    --ap-text: #0f172a;
+    --ap-muted: #4b5563;
+    --ap-border: #e5e7eb;
+    --ap-primary: #2563eb;
+    --ap-primary-600: #1e4fd2;
+    --ap-shadow: 0 10px 24px rgba(2,6,23,.08);
+  }
+}
+
+/* === Page wrapper === */
+.admin-prediction {
+  color: var(--ap-text);
+}
+
+.admin-prediction__title {
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--ap-text);
+  margin-bottom: 0.75rem;
+
+  background-color: #262b36;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+/* === Metrics row === */
+.model-metrics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+
+   background-color: #262b36;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.model-metrics__text {
+  color: var(--ap-muted);
+}
+
+.model-metrics__text b {
+  color: var(--ap-text);
+  font-weight: 600;
+}
+
+.model-metrics__text--empty {
+  font-style: italic;
+}
+
+.model-metrics__train-btn.btn {
+  border-color: var(--ap-primary);
+  color: white;
+  padding: .35rem .65rem;
+  line-height: 1.2;
+
+  background-color: #00ff6a45;
+}
+
+.desc{
+    padding: 12px;
+    border-radius: 12px;
+    text-align: left;
+    color: #0f172a96;
+    background-color: #ffffff;
+}
+
+.model-metrics__train-btn.btn:hover {
+  background: var(--ap-primary);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: var(--ap-shadow);
+}
+
+.model-metrics__train-btn.btn:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* === Card / form === */
+.prediction-form.card,
+.prediction-result.card {
+  background: var(--ap-card);
+  border: 1px solid var(--ap-border);
+  border-radius: 14px;
+  box-shadow: var(--ap-shadow);
+}
+
+.prediction-form {
+  padding: 1.25rem !important;
+}
+
+.prediction-form__grid {
+  --gap: .75rem;
+  row-gap: var(--gap);
+  column-gap: var(--gap);
+}
+
+/* === Fields === */
+.form-field {}
+.form-field__label {
+  font-size: .875rem;
+  color: var(--ap-muted);
+  margin-bottom: .35rem;
+  user-select: none;
+}
+
+.form-field__input.form-control,
+.form-field__input.form-select {
+  background: transparent;
+  color: var(--ap-text);
+  border: 1px solid var(--ap-border);
+  border-radius: 10px;
+  padding: .55rem .75rem;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .05s ease;
+}
+
+.form-field__input.form-control::placeholder {
+  color: #9aa3af;
+}
+
+.form-field__input:focus {
+  border-color: var(--ap-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ap-primary) 20%, transparent);
+  outline: none;
+}
+
+/* Subtle “tap” feedback */
+.form-field__input:hover {
+  border-color: color-mix(in srgb, var(--ap-primary) 55%, var(--ap-border));
+}
+.form-field__input:active {
+  transform: scale(.998);
+}
+
+/* === Primary action === */
+.predict-btn.btn {
+  background: var(--ap-primary);
+  border: 1px solid var(--ap-primary-600);
+  border-radius: 12px;
+  padding: .65rem 1.1rem;
+  font-weight: 600;
+  letter-spacing: .2px;
+  box-shadow: var(--ap-shadow);
+  transition: transform .08s ease, box-shadow .12s ease, background .12s ease;
+}
+
+.predict-btn.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.18);
+}
+
+.predict-btn.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--ap-shadow);
+}
+
+.predict-btn.btn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Optional pulse while busy (applies when button text is "Predicting..." if you add a class) */
+.predict-btn--busy {
+  animation: apPulse 1.2s ease-in-out infinite;
+}
+@keyframes apPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.05); }
+}
+
+/* === Error === */
+.prediction-error.alert {
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--ap-danger) 40%, var(--ap-border));
+  background: color-mix(in srgb, var(--ap-danger) 8%, var(--ap-card));
+  color: #ffd6d7;
+}
+
+/* === Result card === */
+.prediction-result {
+  padding: 1.1rem !important;
+  border-left: 4px solid var(--ap-success);
+  
+}
+
+.prediction-result__title {
+  margin: 0 0 .25rem 0;
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--ap-text);
+}
+
+.prediction-result__confidence {
+  color: var(--ap-muted);
+  font-size: .95rem;
+  color: #00ff6a;
+}
+
+/* Drivers list */
+.prediction-result__drivers {
+  margin-top: .5rem;
+
+  
+}
+
+.prediction-result__drivers-label {
+  font-size: 1rem;
+
+  background-color: rgb(255, 255, 255);
+  padding-left: 22px;
+ 
+  border-radius: 12px;
+
+  
+}
+
+.prediction-result__drivers-list {
+  list-style: none;
+  padding: 20px;
+  margin: .25rem 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .35rem;
+  
+  border-radius: 12px;
+
+  background-color: #000000;
+}
+
+@media (min-width: 576px) {
+  .prediction-result__drivers-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 992px) {
+  .prediction-result__drivers-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.prediction-result__driver {
+  background: color-mix(in srgb, var(--ap-card) 85%, var(--ap-primary) 15%);
+  border: 1px solid var(--ap-border);
+  border-radius: 10px;
+  padding: .5rem .6rem;
+}
+
+.prediction-result__driver-feature {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: rgba(136, 0, 0, 0.2);
+  padding: 1px;
+  border-radius: 6px;
+}
+
+.prediction-result__driver-impact {
+  color: var(--ap-muted);
+  margin-left: .25rem;
+  font-size: .85rem;
+}
+
+/* === Subtle container spacing if Bootstrap container is tight === */
+.admin-prediction .container,
+.admin-prediction.container {
+  padding-left: clamp(8px, 2vw, 18px);
+  padding-right: clamp(8px, 2vw, 18px);
+}
+
+/* === Reduce-motion respect === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
