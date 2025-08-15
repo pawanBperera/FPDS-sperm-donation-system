@@ -5,6 +5,9 @@ import NavBar from "../components/NavBar/NavBar";
 import DonorProfileCard from "../components/DonorProfileCard";
 //import { getDonors } from "../services/donorApi";
 import { getDonors, searchDonors } from "../services/donorApi";
+import { useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -47,6 +50,7 @@ export default function SearchPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [showTopButton, setShowTopButton] = useState(false);
 
 
 
@@ -60,7 +64,26 @@ export default function SearchPage() {
       }
     }
     fetchDonors();
+
+
+const toggleVisibility = () => {
+    setShowTopButton(window.scrollY > 400);
+  };
+
+  window.addEventListener("scroll", toggleVisibility);
+  return () => window.removeEventListener("scroll", toggleVisibility);
+
+
+
+
   }, []);
+
+  const topRef = useRef(null);
+
+const scrollToTop = () => {
+  topRef.current?.scrollIntoView({ behavior: "smooth" });
+};
+
 
  /* const handleSubmit = (e) => {
     e.preventDefault();
@@ -117,10 +140,10 @@ setSearchPerformed(true);
 
 
   return (
-                <div className="search-page" style={{ marginLeft: "0px", minHeight: "100vh" }}>
+  <div className="search-page" style={{ marginLeft: "0px", minHeight: "100vh" }}>
+    <div ref={topRef}></div>
+    <NavBar />
 
-
-      <NavBar />
 
 
      
@@ -327,6 +350,9 @@ setSearchPerformed(true);
             ))}
           </div>
 
+
+    
+
           <div className="resources-links">
             <a href="/recipient/guide">Guide for Intended Parents</a>
             <a href="/recipient/ivf-info">IVF information</a>
@@ -335,9 +361,35 @@ setSearchPerformed(true);
             <a href="/recipient/sperm-donation">Sperm Donation</a>
             <a href="/recipient/male-infertility">Male Infertility</a>
             <a href="/recipient/female-infertility">Female Infertility</a>
+          
+          
+          
+  {showTopButton && (
+  <div
+    onClick={scrollToTop}
+    className="scroll-to-top-button"
+    aria-label="Scroll to top"
+    title="Back to Top"
+  >
+  <FontAwesomeIcon icon={faArrowUp} style={{ fontSize: "1.5rem" }} />
+
+  </div>
+)}
+
           </div>
+
+
+
+ 
+
         </div>
       </div>
+
+
+
+
+
+
     </div>
   );
 }

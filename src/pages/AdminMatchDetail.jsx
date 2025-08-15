@@ -1,8 +1,3 @@
-// File: src/pages/AdminMatchDetail.jsx
-
-
-// line-> 6, 12, 31 to 32, 48 need changes, un comments the once thats been comment
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
@@ -33,11 +28,11 @@ export default function AdminMatchDetail() {
   useEffect(() => {
     async function fetchMatch() {
       try {
-       // const res = await axios.get(`/api/matches/${matchId}`);
-
        const res = await axios.get(
          `/api/matches/${matchId}/compatibility`
        );
+
+
 
 console.log("⚡️ Pending matches payload:", res);
         setMatch(res.data);
@@ -53,6 +48,8 @@ console.log("⚡️ Pending matches payload:", res);
     fetchMatch();
   }, [matchId]);
 
+
+
   const handleAction = async (newStatus) => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -63,11 +60,13 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
   }
 });
 
-      navigate("/admin/matches"); // go back to list after action
+      navigate("/admin/matches");  
     } catch (err) {
       console.error(`Failed to ${newStatus}:`, err);
     }
   };
+
+
 
   if (loading) return <div className="p-4">Loading…</div>;
   if (error)   return <div className="p-4 text-danger">{error}</div>;
@@ -80,6 +79,8 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
       
 
       <main className="flex-grow-1 p-4">
+
+
         {/* Back & Title */}
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h1>Match Detail</h1>
@@ -91,8 +92,12 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
           </button>
         </div>
 
+
+
         {/* Detail Card */}
         <div className="match-detail-card p-4 mb-4">
+
+
           {/* Recipient Info */}
             <section className="mb-3">
     <h2>Recipient Info</h2>
@@ -104,6 +109,8 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
         : "No known diseases"}
     </p>
   </section>
+
+
 
           {/* Donor Info */}
            <section className="mb-3">
@@ -117,10 +124,10 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
     </p>
   </section>
 
+
+
           {/* Summary & Actions */}
-
-
-          <section>
+  <section>
   <h2>Summary</h2>
   <p className="mb-4">{summary || "Summary not available"}</p>
 
@@ -139,8 +146,6 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
 >
   Predict Compatibility
 </button>
-
-
 
 
   <button
@@ -164,12 +169,6 @@ await axios.put(`/api/matches/${matchId}/status`, null, {
         {/* Footer Buttons */}
         <div className="d-flex gap-3">
 
-         {/* <button
-            className="btn btn-outline-primary"
-            onClick={() => navigate("/admin/matches")}
-          >
-            Matches
-          </button>*/} 
 
           <button
             className="btn btn-outline-secondary"

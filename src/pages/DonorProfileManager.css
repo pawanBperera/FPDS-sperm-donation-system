@@ -1,10 +1,7 @@
-/* File: src/pages/DonorProfileManager.css */
 
 .donor-profile-form .form-control,
 .donor-profile-form .form-select {
   border-radius: 0.5rem;
-
-  
 }
 
 .donor-profile-form .btn {

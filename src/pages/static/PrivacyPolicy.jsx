@@ -16,6 +16,7 @@ const PrivacyPolicy = () => {
           use, and protect your personal information while you use our platform.
         </p>
 
+
         <section>
           <h2>1. Information We Collect</h2>
           <p>

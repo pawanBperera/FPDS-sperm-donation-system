@@ -1,9 +1,10 @@
-// File: src/layouts/DashboardLayout.jsx
+
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { DonorSidebar } from "../components/Sidebars/DonorSidebar";
 import { AdminSidebar } from "../components/Sidebars/AdminSidebar";
 import "../components/Sidebars/Sidebar.css";
+
 
 export default function DashboardLayout({ roleId }) {
   return (

@@ -241,4 +241,27 @@ border-radius: 20px;
 }
 
 
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 80px;
+  right: 89px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c383f7, #22052f);
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(109, 27, 27, 0.2);
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+
+.scroll-to-top-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(122, 44, 159, 0.4);
+}
 

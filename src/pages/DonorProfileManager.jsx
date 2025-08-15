@@ -1,4 +1,4 @@
-// File: src/pages/DonorProfileManager.jsx
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 //import { useNavigate } from "react-router-dom";//                 <---------------------------------------------
@@ -33,20 +33,19 @@ export default function DonorProfileManager() {
   const [eyeColor, setEyeColor]               = useState("");
   const [maritalStatus, setMaritalStatus]     = useState("");
   const [hadBeenDonor, setHadBeenDonor]       = useState(false);
+  const [loading, setLoading]                 = useState(true);
+  const [error, setError]                     = useState("");
+  const [dob, setDob]                         = useState("");
+  const [childhoodDiseases, setChildhoodDiseases]     = useState("");
+  const [traumaticInjury, setTraumaticInjury]         = useState("");
+  const [highFeverLastYear, setHighFeverLastYear]     = useState("");
+  const [alcoholFrequency, setAlcoholFrequency]       = useState("");
+  const [smokingHabit, setSmokingHabit]               = useState("");
+  const [exerciseLevel, setExerciseLevel]             = useState("");
+  const [sleepQuality, setSleepQuality]               = useState("");
+  const [stressLevel, setStressLevel]                 = useState("");
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState("");
-  const [dob, setDob] = useState("");
 
- 
-  const [childhoodDiseases, setChildhoodDiseases] = useState("");
-  const [traumaticInjury, setTraumaticInjury] = useState("");
-  const [highFeverLastYear, setHighFeverLastYear] = useState("");
-  const [alcoholFrequency, setAlcoholFrequency] = useState("");
-  const [smokingHabit, setSmokingHabit] = useState("");
-  const [exerciseLevel, setExerciseLevel] = useState("");
-  const [sleepQuality, setSleepQuality] = useState("");
-  const [stressLevel, setStressLevel] = useState("");
 
 
   // Fetch existing profile on mount
@@ -72,7 +71,6 @@ export default function DonorProfileManager() {
         setEyeColor(p.eye_color || "");
         setMaritalStatus(p.marital_status || "");
         setHadBeenDonor(Boolean(p.had_been_donor));
-
         setDob(p.dob || "");
         setChildhoodDiseases(p.childhoodDiseases || "");
         setTraumaticInjury(p.traumaticInjury || "");
@@ -82,6 +80,7 @@ export default function DonorProfileManager() {
         setExerciseLevel(p.exerciseLevel || "");
         setSleepQuality(p.sleepQuality || "");
         setStressLevel(p.stressLevel || "");
+
 
 
       } catch (err) {
@@ -94,10 +93,14 @@ export default function DonorProfileManager() {
     fetchProfile();
   }, [user.id]);
 
+
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
+
+
     try {
       await axios.put(`/api/donors/${user.id}/profile`, {
         willing_to_help:       willingToHelp,
@@ -150,6 +153,9 @@ export default function DonorProfileManager() {
       <main className="flex-grow-1 p-4">
         <h1 className="mb-4">Your Profile</h1>
         {error && <div className="alert alert-danger">{error}</div>}
+
+
+
 
         <form onSubmit={handleUpdate} className="donor-profile-form">
           {/* Willing to help */}
@@ -368,6 +374,9 @@ export default function DonorProfileManager() {
               ))}
             </select>
           </div>
+
+
+
 
           {/* Had been Donor before */}
           <div className="mb-4">

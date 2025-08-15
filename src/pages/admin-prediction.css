@@ -1,4 +1,4 @@
-/* === Theme tokens (easy to tweak) === */
+
 :root {
   --ap-bg: #0f1115;
   --ap-card: #151923;
@@ -27,7 +27,7 @@
   }
 }
 
-/* === Page wrapper === */
+
 .admin-prediction {
   color: var(--ap-text);
 }
@@ -37,13 +37,12 @@
   letter-spacing: .2px;
   color: var(--ap-text);
   margin-bottom: 0.75rem;
-
   background-color: #262b36;
   padding: 10px;
   border-radius: 12px;
 }
 
-/* === Metrics row === */
+
 .model-metrics {
   display: flex;
   align-items: center;
@@ -99,7 +98,7 @@
   box-shadow: none;
 }
 
-/* === Card / form === */
+
 .prediction-form.card,
 .prediction-result.card {
   background: var(--ap-card);
@@ -118,7 +117,7 @@
   column-gap: var(--gap);
 }
 
-/* === Fields === */
+
 .form-field {}
 .form-field__label {
   font-size: .875rem;
@@ -147,7 +146,7 @@
   outline: none;
 }
 
-/* Subtle “tap” feedback */
+
 .form-field__input:hover {
   border-color: color-mix(in srgb, var(--ap-primary) 55%, var(--ap-border));
 }
@@ -155,7 +154,7 @@
   transform: scale(.998);
 }
 
-/* === Primary action === */
+
 .predict-btn.btn {
   background: var(--ap-primary);
   border: 1px solid var(--ap-primary-600);
@@ -184,7 +183,7 @@
   box-shadow: none;
 }
 
-/* Optional pulse while busy (applies when button text is "Predicting..." if you add a class) */
+
 .predict-btn--busy {
   animation: apPulse 1.2s ease-in-out infinite;
 }
@@ -193,7 +192,7 @@
   50% { filter: brightness(1.05); }
 }
 
-/* === Error === */
+
 .prediction-error.alert {
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--ap-danger) 40%, var(--ap-border));
@@ -201,7 +200,7 @@
   color: #ffd6d7;
 }
 
-/* === Result card === */
+
 .prediction-result {
   padding: 1.1rem !important;
   border-left: 4px solid var(--ap-success);
@@ -221,7 +220,7 @@
   color: #00ff6a;
 }
 
-/* Drivers list */
+
 .prediction-result__drivers {
   margin-top: .5rem;
 
@@ -283,14 +282,14 @@
   font-size: .85rem;
 }
 
-/* === Subtle container spacing if Bootstrap container is tight === */
+
 .admin-prediction .container,
 .admin-prediction.container {
   padding-left: clamp(8px, 2vw, 18px);
   padding-right: clamp(8px, 2vw, 18px);
 }
 
-/* === Reduce-motion respect === */
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

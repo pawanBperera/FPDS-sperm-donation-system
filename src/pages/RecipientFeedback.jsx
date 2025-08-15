@@ -1,11 +1,11 @@
-// File: src/pages/RecipientFeedback.jsx
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
 import axios from "axios";
 import { auth } from "../firebase/firebaseConfig";
-//import "./RecipientFeedback.css"; // optional styling
+//import "./RecipientFeedback.css"; 
 
 export default function RecipientFeedback() {
   const navigate = useNavigate();
@@ -25,6 +25,8 @@ export default function RecipientFeedback() {
       return setError("Please enter your feedback before sending.");
     }
     setLoading(true);
+
+
     try {
       //  Grab Firebase ID token for authorization
       const currentUser = auth.currentUser;
@@ -35,9 +37,9 @@ export default function RecipientFeedback() {
       await axios.post("http://localhost:8080/api/feedback",
         {
           user_id: user.id,
-          subject: "what",        // optional
+          subject: "what",        
           message,
-          rating: null,         // optional rating
+          rating: null,       
         },
         config
       );

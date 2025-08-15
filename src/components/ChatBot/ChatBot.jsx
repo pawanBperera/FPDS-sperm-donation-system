@@ -1,4 +1,3 @@
-// src/components/ChatBot/ChatBot.jsx
 
 import React, { useState } from "react";
 import { askFAQ } from "./faqApi";
@@ -8,47 +7,44 @@ import { useRef, useEffect } from "react";
 
 
 
-    const ChatBot = () => {
+  const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([{ sender: "bot", text: "Hi! Ask me anything about our system 🦋" }]);
-    const [input, setInput] = useState("");
-    const [isTyping, setIsTyping] = useState(false);
+  const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const bottomRef = useRef(null);
 
 
 
-const bottomRef = useRef(null);
+
 
 useEffect(() => {
   bottomRef.current?.scrollIntoView({ behavior: "smooth" });
 }, [messages]);
 
 
-
-
-
-
-
   const toggleChat = () => setIsOpen(!isOpen);
-
-
-    const handleSend = async () => {
+  const handleSend = async () => {
         if (!input.trim()) return;
+
+
 
   const userMsg = { sender: "user", text: input };
   setMessages(prev => [...prev, userMsg]);
   setInput("");
 
-  setIsTyping(true); // start flapping
 
-  await new Promise(resolve => setTimeout(resolve, 1200));
 
-  const botReplyText = await askFAQ(userMsg.text);
-
-  setIsTyping(false); // stop flapping
+setIsTyping(true); //flap
+await new Promise(resolve => setTimeout(resolve, 1200));
+const botReplyText = await askFAQ(userMsg.text);
+setIsTyping(false);   //stop flap
 
   const botMsg = { sender: "bot", text: botReplyText };
   setMessages(prev => [...prev, botMsg]);
 };
+
+
 
 
   const handleKeyDown = (e) => {
@@ -56,6 +52,8 @@ useEffect(() => {
       handleSend();
     }
   };
+
+
 
   return (
     <>
@@ -65,8 +63,10 @@ useEffect(() => {
   alt="chat"
   className={`chatbot-icon ${isTyping ? 'flap-animation' : ''}`}
 />
+   </div>
 
-      </div>
+
+
 
       {isOpen && (
         <div className="chatbot-panel">
@@ -84,14 +84,19 @@ useEffect(() => {
                 {msg.text}
               </div>
             ))}
+
+
               <div ref={bottomRef} />
+
           </div>
+
+
+
           {isTyping && (
   <div className="chatbot-typing-indicator">
     <span>🦋 Lily is thinking...</span>
   </div>
 )}
-
 
 
 
@@ -103,7 +108,13 @@ useEffect(() => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
             />
+
+
+
             <button onClick={handleSend}>Send</button>
+
+
+            
           </div>
         </div>
       )}

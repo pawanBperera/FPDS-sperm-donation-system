@@ -1,4 +1,4 @@
-// src/pages/WelcomePage.jsx
+
 import React from "react";
 import "./WelcomePage.css";
 import logo from "../assets/Logo-1.gif";

@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// Import your JSON translation files
+// JSON translation files
 import en from './locales/en/common.json';
 import si from './locales/si/common.json';
 import ta from './locales/ta/common.json';

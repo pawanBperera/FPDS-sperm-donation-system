@@ -3,12 +3,13 @@
   padding: 30px;
   border-top: 1px solid #ccc;
   font-family: 'Roboto', sans-serif;
-
-    background: url("/src/assets/infoBak.png") no-repeat center center fixed;
+  background: url("/src/assets/infoBak.png") no-repeat center center fixed;
   background-size: cover;
   padding: 40px 20px;
   border-radius: 10px;
 }
+
+
 
 .footer-container {
   display: flex;
@@ -17,10 +18,14 @@
   margin: auto;
 }
 
+
+
 .footer-section {
   flex: 1;
   margin: 0 15px;
 }
+
+
 
 .footer-section h4 {
   font-size: 18px;
@@ -28,23 +33,33 @@
   color: #5a3d31;
 }
 
+
+
 .footer-section ul {
   list-style: none;
   padding: 0;
 }
 
+
+
 .footer-section ul li {
   margin-bottom: 10px;
 }
+
+
 
 .footer-section ul li a {
   text-decoration: none;
   color: #333;
 }
 
+
+
 .footer-section ul li a:hover {
   color: #a0522d;
 }
+
+
 
 .social-icons {
   display: flex;
@@ -53,9 +68,13 @@
   margin-bottom: 15px;
 }
 
+
+
 .social-icons a {
   color: black;
 }
+
+
 
 .contact-title {
   font-size: 16px;

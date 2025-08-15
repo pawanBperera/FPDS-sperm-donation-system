@@ -1,4 +1,4 @@
-// File: src/pages/ResetPasswordPage.jsx
+
 import React, { useState, useEffect } from "react";
 import {
   verifyPasswordResetCode,

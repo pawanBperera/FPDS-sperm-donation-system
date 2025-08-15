@@ -13,6 +13,8 @@ export const fetchPieData       = () =>
 export const fetchAnalyticsData = () => 
   axios.get('/api/admin/analytics/data');
 
+
+
 // for report, expect a blob and trigger a download
 export const downloadReport = () =>
   axios.get('/api/admin/analytics/report', { responseType: 'blob' });

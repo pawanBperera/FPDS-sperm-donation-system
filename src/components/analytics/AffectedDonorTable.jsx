@@ -1,6 +1,7 @@
 import React from 'react';
-
 export function AffectedDonorTable({ rows }) {
+
+
   return (
     <div className="overflow-x-auto bg-white rounded-lg shadow-md p-4 mb-8">
       <table className="min-w-full text-left">
@@ -11,6 +12,9 @@ export function AffectedDonorTable({ rows }) {
             ))}
           </tr>
         </thead>
+
+
+
         <tbody>
           {rows.map((r) => (
             <tr key={r.id} className="border-b hover:bg-gray-50">
@@ -25,6 +29,8 @@ export function AffectedDonorTable({ rows }) {
           ))}
         </tbody>
       </table>
+
+      
     </div>
   );
 }

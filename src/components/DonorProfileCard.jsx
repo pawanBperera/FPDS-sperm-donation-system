@@ -1,4 +1,4 @@
-// File: src/components/DonorProfileCard.jsx
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./DonorProfileCard.css";
@@ -6,7 +6,7 @@ import "./DonorProfileCard.css";
 export default function DonorProfileCard({ donor }) {
   const navigate = useNavigate();
 
-  // Confirmed backend sends `user_id`, not `userId` or `id`
+
   const donorId = donor.user_id;
 
   if (!donorId) {
@@ -20,6 +20,8 @@ export default function DonorProfileCard({ donor }) {
     ? new Date(createdAt).toLocaleDateString()
     : "";
 
+
+
   return (
     <div className="donor-profile-card">
       <div className="card-left">
@@ -29,6 +31,8 @@ export default function DonorProfileCard({ donor }) {
         </div>
       </div>
 
+
+
       <div className="card-right">
         <div className="info-box">
           <p>
@@ -37,8 +41,9 @@ export default function DonorProfileCard({ donor }) {
           <p>
             <strong>Location:</strong> {city}, {district}
           </p>
-          
         </div>
+
+
 
         <button
           className="btn-profile"
@@ -46,6 +51,8 @@ export default function DonorProfileCard({ donor }) {
         >
           Profile
         </button>
+
+        
       </div>
     </div>
   );

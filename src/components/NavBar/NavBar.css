@@ -1,4 +1,4 @@
-/* NavBar.css */
+
 
 .recipient-navbar {
   position: fixed;
@@ -17,7 +17,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Overlay for better readability */
+
 .recipient-navbar::before {
   content: "";
   position: absolute;
@@ -25,11 +25,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3); /* dark overlay for contrast */
+  background: rgba(0, 0, 0, 0.3); 
   z-index: -1;
 }
 
-/* Navbar Items */
+
 .recipient-navbar .nav-item {
   color: #fff;
   font-weight: 500;
@@ -40,10 +40,10 @@
 }
 
 .recipient-navbar .nav-item:hover {
-  color: #d1aaff; /* theme accent on hover */
+  color: #d1aaff; 
 }
 
-/* Right-side buttons or actions */
+
 .recipient-navbar .nav-actions button {
   background: linear-gradient(135deg, #9d4edd, #7a2c9f);
   color: #fff;
@@ -89,11 +89,11 @@
   gap: 1.2rem;
 }
 
-/* Links and buttons share styles */
+
 .navbar-links a,
 .navbar-links .nav-btn {
   position: relative;
-  color: #4b2e83; /* theme purple */
+  color: #4b2e83; 
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
@@ -102,21 +102,21 @@
   transition: all 0.3s ease;
 }
 
-/* Hover state */
+
 .navbar-links a:hover,
 .navbar-links .nav-btn:hover {
-  background: rgba(157, 78, 221, 0.1); /* subtle purple tint */
-  color: #fbfbfb; /* brighter purple for hover */
+  background: rgba(157, 78, 221, 0.1); 
+  color: #fbfbfb; 
 }
 
-/* Active link indicator */
+
 .navbar-links .nav-btn.active,
 .navbar-links a.active {
   font-weight: 600;
-  color: #ffffff; /* main purple */
+  color: #ffffff; 
 }
 
-/* Optional: Underline animation on hover */
+
 .navbar-links a::after,
 .navbar-links .nav-btn::after {
   content: "";
@@ -129,12 +129,12 @@
   transition: width 0.3s ease;
 }
 
+
+
 .navbar-links a:hover::after,
 .navbar-links .nav-btn:hover::after {
   width: 100%;
 }
-
-
 
 
 .navbar-toggler {
@@ -144,17 +144,11 @@
   visibility: hidden;
 }
 
+
+
 .navbar-separator {
   display: none;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -162,46 +156,54 @@
   margin-left: 12px;
   padding: 6px 12px;
   border-radius: 8px;
-  border: 1px solid #d3b8ff; /* soft purple border */
-  background: #fff; /* keep it clean */
-  color: #4a4a4a; /* dark neutral for readability */
+  border: 1px solid #d3b8ff; 
+  background: #fff; 
+  color: #4a4a4a; 
   font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease;
   cursor: pointer;
-  appearance: none; /* removes default arrow styling for custom control */
+  appearance: none; 
 }
 
-/* Hover effect */
+
+
 .language-switcher:hover {
-  background: #f8f4ff; /* subtle purple tint */
+  background: #f8f4ff; 
   border-color: #b88aff;
-  box-shadow: 0 2px 8px rgba(157, 78, 221, 0.15); /* soft theme shadow */
+  box-shadow: 0 2px 8px rgba(157, 78, 221, 0.15);
 }
 
-/* Focus state for accessibility */
+
+
+
 .language-switcher:focus {
   outline: none;
   border-color: #9d4edd;
   box-shadow: 0 0 6px rgba(157, 78, 221, 0.4);
 }
 
+
+
 .language-switcher {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='none' stroke='%239d4edd' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px 16px;
-  padding-right: 32px; /* make space for arrow */
+  padding-right: 32px; 
 }
+
 
 
 .language-switcher option {
   font-size: 14px;
   font-weight: 500;
-  color: #4a4a4a; /* neutral text */
-  background: #fff; /* ensures clean background */
+  color: #4a4a4a; 
+  background: #fff; 
   padding: 8px 12px;
 }
+
+
 .language-switcher option:hover {
-  background: #9566c8; /* light purple tint */
+  background: #9566c8; 
 }

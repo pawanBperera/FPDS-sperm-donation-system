@@ -1,22 +1,18 @@
-// File: src/pages/RegistrationPage.js
+
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
-//import axios from "axios";
-//import { mockCreateUser } from "../utils/fakeApi"; // your mock for signup
 import Step1 from "../components/Registration/Step1";
 import Step2 from "../components/Registration/Step2";
 import { useNavigate } from "react-router-dom";
 import api from "../services/axiosInstance";
-
 import { toast } from "react-toastify";
-
 
 
 export default function RegistrationPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const navigate = useNavigate();
-  //const [step, setStep] = useState(1);
+
 
   // --- Step 1 state ---
   const [email, setEmail] = useState("");
@@ -27,7 +23,7 @@ export default function RegistrationPage() {
   const [province, setProvince] = useState("");
 
   // --- Step 2 state ---
-  const [diseases, setDiseases] = useState([]); // array of disease IDs or keys
+  const [diseases, setDiseases] = useState([]); 
   const [file, setFile] = useState(null);
   const [consent, setConsent] = useState(false);
 
@@ -92,8 +88,9 @@ export default function RegistrationPage() {
       const token = await cred.user.getIdToken();
 
 
+
  // 2. Backend user creation with auth header
-  const response =// await api.post("/api/users", 
+  const response =
   await api.post("/users", {
     firebaseUid,
     email,
@@ -106,12 +103,6 @@ export default function RegistrationPage() {
     }
   });
 
-/*await api.post("/api/users", {
-  firebaseUid: cred.user.uid,
-  email: email,
-  username: email.split("@")[0],
-  roleId: 1
-});*/
 
 const createdUser = response.data;
 const userId = createdUser.id;
@@ -124,7 +115,6 @@ const profilePayload = {
   consent       // from Step 2 state (boolean)
 };
 
-//await api.post(`/api/recipients/${userId}/profile`);
 
 await api.post(`/recipients/${userId}/profile`, profilePayload);
 

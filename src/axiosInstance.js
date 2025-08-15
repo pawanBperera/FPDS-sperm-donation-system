@@ -1,8 +1,8 @@
-// File: src/axiosInstance.js
+
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8080", // 🔁 Change this if your backend runs on a different port or domain
+  baseURL: "http://localhost:8080", 
 });
 
 axiosInstance.interceptors.request.use(

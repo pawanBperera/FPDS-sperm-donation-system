@@ -6,7 +6,6 @@ import { FaLeaf } from 'react-icons/fa';
 import backgroundImage from '../assets/back 2.png';
 
 
-
 const HomePage = () => {
   const navigate = useNavigate();
 

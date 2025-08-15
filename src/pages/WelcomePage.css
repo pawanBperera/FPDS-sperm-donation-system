@@ -1,4 +1,4 @@
-/* src/pages/WelcomePage.css */
+
 
 .welcome-container {
   width: 100vw;
@@ -18,8 +18,7 @@
   width: 50px;
   height: auto;
   z-index: 10;
-
-   width: 240px;
+  width: 240px;
   height: auto;
 }
 

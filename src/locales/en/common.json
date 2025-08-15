@@ -1,9 +1,15 @@
 {
   "femaleInfertility": {
+
+
+
+
     "heroTitle": "Female Infertility",
     "overviewTitle": "Overview",
     "overviewText": "Female infertility is defined as the inability to conceive after 12 months of unprotected sexual intercourse. It accounts for about 40–50% of infertility cases globally, and Sri Lanka faces similar trends due to lifestyle, medical, and environmental factors.",
     "causesTitle": "Common Causes of Female Infertility",
+
+
     "causes": [
       "Ovulation Disorders: Conditions like Polycystic Ovary Syndrome (PCOS) or hormonal imbalance can disrupt egg release.",
       "Blocked Fallopian Tubes: Often caused by infections or pelvic inflammatory disease.",
@@ -12,6 +18,8 @@
       "Age Factor: Fertility declines significantly after 35.",
       "Lifestyle Factors: Stress, smoking, and poor diet can affect reproductive health."
     ],
+
+
     "diagnosisTitle": "Diagnosis Methods",
     "diagnosisIntro": "Common diagnostic tests include:",
     "diagnosis": [
@@ -20,6 +28,8 @@
       "Hysterosalpingography (HSG): X-ray to check if fallopian tubes are open.",
       "Laparoscopy: Minimally invasive surgery to inspect reproductive organs."
     ],
+
+
     "treatmentsTitle": "Treatment Options in Sri Lanka",
     "treatments": [
       "Medication: Fertility drugs like Clomiphene for ovulation induction.",
@@ -27,8 +37,11 @@
       "Assisted Reproductive Technologies (ART): IVF or ICSI for severe cases.",
       "Intrauterine Insemination (IUI): A less invasive first-line treatment for mild cases."
     ],
+
+
     "treatmentsNote": "These treatments are available at leading clinics like Ninewells Care IVF Centre, Asiri Fertility Centre, and Nawaloka Hospital Fertility Unit.",
     "tipsTitle": "Tips for Improving Fertility",
+
     "tips": [
       "Maintain a healthy weight and balanced diet.",
       "Manage stress with yoga or meditation.",
@@ -36,6 +49,7 @@
       "Track ovulation cycles for better timing.",
       "Consult a doctor early if you face irregular cycles or symptoms of PCOS."
     ],
+
     "resourcesTitle": "Helpful Resources",
     "resources": [
       "WHO – Female Infertility",
@@ -44,7 +58,7 @@
     ],
     "bottomLineTitle": "Bottom Line:",
     "bottomLineText": "Female infertility is treatable with timely intervention, lifestyle changes, and medical support. Early consultation improves success rates."
-  }
+  },
 
 
 
@@ -52,11 +66,91 @@
 
 
 
+
+
+  "maleInfertility": {
+
+
+
+
+  "heroTitle": "Male Infertility",
+  "heroDescription": "Understand the causes, treatments, and resources for male infertility in Sri Lanka.",
+  "overviewTitle": "Overview",
+  "overviewText": "Male infertility refers to a man's inability to cause pregnancy in a fertile female partner. It accounts for nearly 40-50% of all infertility cases worldwide. In Sri Lanka, lifestyle changes, environmental factors, and untreated medical conditions have made male infertility an increasing concern.",
+  "definitionTitle": "What is Male Infertility?",
+  "definitionText": "Infertility in men usually occurs due to low sperm production, abnormal sperm function, or blockages that prevent sperm delivery. Other factors include hormonal imbalances and chronic health issues.",
+  "causesTitle": "Common Causes",
+
+
+  "causes": [
+    "Low Sperm Count (Oligospermia): Most common in Sri Lanka, linked to smoking and poor diet.",
+    "Varicocele: Enlarged veins affecting sperm production.",
+    "Hormonal Imbalance: Low testosterone or other hormone disorders.",
+    "Infections: STDs, mumps, or urinary infections damaging sperm health.",
+    "Lifestyle Factors: Stress, obesity, heat exposure, tight clothing.",
+    "Genetic Disorders: Conditions like Klinefelter syndrome."
+  ],
+
+
+  "diagnosisTitle": "Diagnosis",
+  "diagnosisIntro": "Tests available in Sri Lanka include:",
+  "diagnosisTests": [
+    "Semen Analysis – checks sperm count and motility.",
+    "Blood Tests – hormone levels.",
+    "Scrotal Ultrasound – detects varicocele.",
+    "Genetic Testing – for chromosomal disorders."
+  ],
+
+
+  "diagnosisHospitals": "Available at hospitals like: Ninewells Hospital, Asiri Medical Hospital, Nawaloka Hospital.",
+  "treatmentsTitle": "Treatment Options",
+  "treatments": [
+    "Lifestyle Changes: Quit smoking, reduce alcohol, healthy weight.",
+    "Medication: Hormonal therapy for imbalances.",
+    "Surgery: Varicocele repair, sperm retrieval.",
+    "ART: IUI, IVF, or ICSI – most common for severe male infertility."
+  ],
+
+
+  "tipsTitle": "Tips to Improve Male Fertility",
+  "tips": [
+    "Eat zinc and antioxidant-rich foods.",
+    "Avoid prolonged laptop use on laps.",
+    "Reduce stress with yoga or meditation.",
+    "Exercise regularly, avoid excessive heat exposure."
+  ],
+
+
+  "whoChartTitle": "WHO Semen Parameters (2010 → 2020 → 2021)",
+  "whoChartDesc": "This interactive chart shows the WHO lower reference values (5th percentile) for key semen parameters across editions, with our 2020 fertile cohort for context. It’s an educational trend, not a diagnosis.",
+  "whoChartSource": "Sources: WHO Laboratory Manual for the Examination and Processing of Human Semen, 5th ed (2010) and 6th ed (2021). Reference limits are one-sided at the 5th percentile.",
+  "resourcesTitle": "Helpful Resources",
+
+  
+  "resources": [
+    {
+      "label": "WHO – Male Infertility",
+      "url": "https://www.who.int/health-topics/infertility"
+    },
+    {
+      "label": "Sri Lanka College of Obstetricians and Gynaecologists",
+      "url": "https://slcog.lk"
+    },
+    {
+      "label": "Ninewells Care IVF Clinic",
+      "url": "https://ninewellscare.com"
+    }
+  ],
+
+  "bottomLineText": "Male infertility is treatable in most cases with proper medical care and lifestyle changes. Early diagnosis improves success rates significantly."
+}
 
 
 
   
 }
+
+
 
 
 

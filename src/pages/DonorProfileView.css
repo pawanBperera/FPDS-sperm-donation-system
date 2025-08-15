@@ -1,4 +1,4 @@
-/* File: src/pages/DonorProfileView.css */
+
 .profile-view {
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
 .profile-header {
   display: flex;
   align-items: center;
-  background: rgba(65, 13, 87, 0.15); /* glass effect */
+  background: rgba(65, 13, 87, 0.15);  
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 1.5rem;
@@ -24,8 +24,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
-/* Avatar */
+ 
 .profile-avatar {
   width: 120px;
   height: 120px;
@@ -35,19 +34,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem; /* for initials or icon */
+  font-size: 2rem;  
   color: #4c0691;
   font-weight: 600;
   box-shadow: 0 4px 12px rgba(157, 78, 221, 0.3);
   transition: transform 0.3s ease;
 }
 
-/* Subtle hover effect for avatar */
+ 
 .profile-avatar:hover {
   transform: scale(1.05);
 }
 
-/* Profile text next to avatar */
+ 
 .profile-header .profile-info {
   display: flex;
   flex-direction: column;
@@ -71,7 +70,7 @@
   margin: 0 0 0.5rem;
   font-size: 2rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #9d4edd, #1f023e); /* purple gradient */
+  background: linear-gradient(135deg, #9d4edd, #1f023e); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -86,7 +85,7 @@
  
   
   font-weight: 700;
-  background: linear-gradient(135deg, #9d4edd, #1f023e); /* purple gradient */
+  background: linear-gradient(135deg, #9d4edd, #1f023e);  
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -112,7 +111,7 @@
 .btn-save {
   display: block;
   margin: 2rem auto 0;
-  background: linear-gradient(135deg, #9d4edd, #7a2c9f); /* purple gradient */
+  background: linear-gradient(135deg, #9d4edd, #7a2c9f); 
   color: #fff;
   border: none;
   border-radius: 2rem;
@@ -124,14 +123,14 @@
   transition: all 0.3s ease;
 }
 
-/* Hover effect */
+ 
 .btn-save:hover {
   background: linear-gradient(135deg, #7a2c9f, #5a189a);
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(122, 44, 159, 0.4);
 }
 
-/* Optional Active State */
+ 
 .btn-save:active {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -139,9 +138,9 @@
 
 
 .profile-avatar-icon {
-  font-size: 1rem; /* slightly smaller for balance */
-  color: #fff; /* white for contrast */
-  background: linear-gradient(135deg, #9d4edd, #7a2c9f); /* theme gradient */
+  font-size: 1rem;  
+  color: #fff;  
+  background: linear-gradient(135deg, #9d4edd, #7a2c9f);  
   border-radius: 1rem;
   width: 120px;
   height: 120px;
@@ -153,7 +152,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for interactivity */
+ 
 .profile-avatar-icon:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(122, 44, 159, 0.4);

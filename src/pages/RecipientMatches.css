@@ -1,14 +1,13 @@
-/* File: src/pages/RecipientMatches.css */
-/* give the match cards a soft pastel bg and dotted border per UI */
+
 
 .recipient-match-card {
-  background-color: #f3e5f5; /* light lavender */
+  background-color: #f3e5f5; 
   border: 1px dashed #9c27b0;
   border-radius: 0.75rem;
 }
 
 .donor-detail-box {
-  background-color: #e8f5e9; /* light green */
+  background-color: #e8f5e9; 
   border: 1px solid #c8e6c9;
   border-radius: 0.5rem;
 }
@@ -18,8 +17,8 @@
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
-  padding-top: 64px; /* if NavBar is present */
-  padding-left: 240px; /* if Sidebar is present */
+  padding-top: 64px; 
+  padding-left: 240px; 
 }
 
 .matches-wrapper {
@@ -27,7 +26,7 @@
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
-  padding-left: 240px;  /* for sidebar */
-  padding-top: 64px;    /* for navbar */
+  padding-left: 240px;  
+  padding-top: 64px;   
 }
 

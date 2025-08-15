@@ -1,10 +1,8 @@
 import React from 'react';
-
-/**
- * onDownload: fn that returns a promise resolving to the file blob
- * onUpdate:  fn to re‑fetch your analytics data
- */
 export function ActionButtons({ onDownload, onUpdate }) {
+
+
+  
   return (
     <div className="action-buttons">
       <button

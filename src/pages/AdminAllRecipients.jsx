@@ -1,4 +1,4 @@
-// File: src/pages/AdminAllRecipients.jsx
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
@@ -14,6 +14,7 @@ if (stored) {
   if (token) axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 // ─────────────────────────────────────────────────────────────────
+
 
 
 
@@ -55,11 +56,13 @@ export default function AdminAllRecipients() {
     return age;
   };
 
+
   const handleRemove = (id) => {
     if (window.confirm("Are you sure you want to remove this recipient?")) {
       setRecipients((prev) => prev.filter((r) => r.id !== id));
     }
   };
+
 
   return (
     <div className="recipient-page-container">
@@ -69,12 +72,17 @@ export default function AdminAllRecipients() {
       <p className="text-center">Loading donors...</p>
     ) : (
       <>
+
+
+
         {/* Table */}
         <div className="text-center mt-4">
         <button className="btn" style={{ backgroundColor: "#f79bd3" }} onClick={() => navigate("/admin/dashboard")}> 
           <FaHome className="me-2" /> Dashboard
         </button>
-      </div> <br></br>
+      </div>
+      
+       <br></br>
         
       <div className="table-responsive d-flex justify-content-center">
         <table className="table table-bordered text-center" style={{ maxWidth: "800px", backgroundColor: "#fce6ff" }}>
@@ -87,6 +95,9 @@ export default function AdminAllRecipients() {
               <th></th>
             </tr>
           </thead>
+
+
+          
           <tbody>
             {recipients.map((r, index) => (
   <tr key={`${r.userId}-${index}`}>

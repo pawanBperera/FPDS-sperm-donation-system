@@ -10,6 +10,9 @@ const GuideForIntendedParents = () => {
     <>
       <NavBar />
       <div className="medical-page-container">
+
+
+        
         {/* Hero Section */}
         <div className="hero-section">
           <h1>Guide for Intended Parents</h1>

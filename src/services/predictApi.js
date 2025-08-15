@@ -10,3 +10,4 @@ export const getModelInfo = () => predictApi.get("/model/info");
 export const trainModel = () => predictApi.post("/train");
 
 export const predict = (payload) => predictApi.post("/predict", payload);
+

@@ -1,4 +1,4 @@
-// File: src/pages/RecipientApprovedMatches.jsx
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
@@ -55,49 +55,6 @@ export default function RecipientApprovedMatches() {
           {!loading && approvedMatches.length === 0 && (
             <p>You have no approved matches yet.</p>
           )}
-
-         {/**  <div className="approved-list">
-            {approvedMatches.map((donor) => (
-              <div
-                key={donor.donor_id}
-                className="card mb-3 recipient-match-card"
-              >
-                <div className="row g-0">
-                  <div className="col-md-4 p-3">
-                    <h4>{donor.donor_id}</h4>
-                    <p>
-                      {donor.ethnicity}, from {donor.city}
-                    </p>
-                  </div>
-                  <div className="col-md-5 p-3">
-                    <div className="bg-light border rounded p-3 donor-detail-box">
-                      <p>
-                        <strong>Age:</strong> {donor.age}
-                      </p>
-                      <p>
-                        <strong>Location:</strong> {donor.city},{" "}
-                        {donor.province}
-                      </p>
-                      <p>
-                        <strong>Date registered:</strong>{" "}
-                        {new Date(donor.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="col-md-3 d-flex flex-column justify-content-center align-items-end p-3">
-                    <button
-                      className="btn btn-outline-secondary mb-2"
-                      onClick={() =>
-                        navigate(`/donor/profile/${donor.donor_id}`)
-                      }
-                    >
-                      Profile
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>*/}
 
           {approvedMatches.length > 0 && (
   <>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./static-pages.css"; // Shared CSS for all static pages
+import "./static-pages.css"; 
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import ivfDiagram from "../../assets/infogrph.png";

@@ -1,4 +1,4 @@
-// File: src/pages/DonorDashboard.jsx
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -9,11 +9,14 @@ import "./DonorDashboard.css";
 
 export default function DonorDashboard() {
   const navigate = useNavigate();
-  //const user = JSON.parse(localStorage.getItem("user")) || {};
+
+
 
   // 1) Dynamic timestamps
   const [lastLogin, setLastLogin]       = useState("");
   const [lastPwdChange, setLastPwdChange] = useState("");
+
+
 
   useEffect(() => {
     const u = auth.currentUser;
@@ -21,16 +24,17 @@ export default function DonorDashboard() {
       // last login
       const lastSignIn = u.metadata.lastSignInTime;
       setLastLogin(new Date(lastSignIn).toLocaleString());
-
       const created = u.metadata.creationTime;
       const daysAgo  = Math.floor(
         (Date.now() - new Date(created).getTime()) /
           (1000 * 60 * 60 * 24)
       );
       setLastPwdChange(`${daysAgo}d ago`);
-      // *************************
     }
   }, []);
+
+
+
 
 
   const notifications = [
@@ -66,11 +70,19 @@ export default function DonorDashboard() {
     },
   ];
 
+
+
+
   const handleLogout = async () => {
     await signOut(auth);
     localStorage.removeItem("user");
     navigate("/login");
   };
+
+
+
+
+
 
   return (
     
@@ -86,9 +98,9 @@ export default function DonorDashboard() {
 
       {/* Main */}
       <div className="flex-grow-1 p-4 d-flex flex-column">
-
-        
         <header className="mb-4">
+
+
           <h1 className="mb-1">Welcome back, 👋</h1>
 
 
@@ -96,6 +108,8 @@ export default function DonorDashboard() {
             Your donor profile will connect you with couples and individuals who dream of becoming parents and are seeking the gift of life through your generosity.
           </p>
         </header>
+
+
 
         {/* Dynamic login/password info */}
         <div
@@ -111,6 +125,8 @@ export default function DonorDashboard() {
             Last Password Change: <strong>{lastPwdChange}</strong>
           </p>
         </div>
+
+
 
         {/* Notifications */}
         <div className="flex-grow-1 overflow-auto">
@@ -128,6 +144,9 @@ export default function DonorDashboard() {
           ))}
         </div>
 
+
+
+
         {/* Logout */}
         <div className="mt-3">
           <button
@@ -140,9 +159,9 @@ export default function DonorDashboard() {
         </div>
 
 
+
+
       </div>
-
-
     </div>
 
     </>

@@ -1,4 +1,4 @@
-// File: src/components/NavBar/NavBar.jsx
+ 
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaTwitter, FaInstagram, FaFacebook, FaBars, FaTimes } from 'react-icons/fa';
@@ -6,9 +6,12 @@ import logo from "../../assets/logoidea1.1B.png";
 import "./NavBar.css";
 import { useTranslation } from 'react-i18next';
 
+
 export default function NavBar() {
   const [collapsed, setCollapsed] = useState(true);
   const { i18n } = useTranslation();
+
+
 
   // Persist selected language
   useEffect(() => {
@@ -17,12 +20,14 @@ export default function NavBar() {
       i18n.changeLanguage(savedLang);
     }
   }, [i18n]);
-
   const handleLanguageChange = (e) => {
     const lang = e.target.value;
     i18n.changeLanguage(lang);
     localStorage.setItem('language', lang);
   };
+
+
+
 
   return (
     <nav className="navbar recipient-navbar">
@@ -36,6 +41,8 @@ export default function NavBar() {
         <span className="brand-text">FPDS</span>
       </div>
 
+
+
       {/* Hamburger for mobile */}
       <button
         className="navbar-toggler d-md-none"
@@ -43,6 +50,8 @@ export default function NavBar() {
       >
         {collapsed ? <FaBars /> : <FaTimes />}
       </button>
+
+
 
       {/* Links (collapsed on mobile) */}
       <div className={`navbar-links ${collapsed ? 'collapsed' : ''}`}>
@@ -55,6 +64,10 @@ export default function NavBar() {
           Home
         </NavLink>
 
+
+
+
+
         {/* Social Icons */}
         <a href="https://twitter.com/YourFPDS" target="_blank" rel="noopener noreferrer" className="nav-icon pe-1">
           <FaTwitter />
@@ -66,6 +79,8 @@ export default function NavBar() {
           <FaFacebook />
         </a>
 
+
+
         <NavLink
           to="/recipient/dashboard"
           className={({ isActive }) =>
@@ -74,6 +89,9 @@ export default function NavBar() {
         >
           My Account
         </NavLink>
+
+
+
 
         {/* Language Switcher */}
         <select
@@ -84,7 +102,9 @@ export default function NavBar() {
   <option value="en">English</option>
   <option value="si">සිංහල</option>
   <option value="ta">தமிழ்</option>
-</select>
+  </select>
+
+
 
       </div>
 

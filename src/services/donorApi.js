@@ -1,4 +1,4 @@
-// File: src/services/donorApi.js
+
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 
@@ -13,10 +13,6 @@ async function fetchIdToken() {
   return await user.getIdToken();
 }
 
-/**
- * Fetch all donor profiles (suggestions or default list)
- * GET /api/donors
- */
 export async function getDonors() {
   const token = await fetchIdToken();
   if (!token) return { data: [] };
@@ -25,10 +21,7 @@ export async function getDonors() {
   });
 }
 
-/**
- * Search donors by filter parameters
- * GET /api/donors/search?param1=value1&...
- */
+
 export async function searchDonors(params) {
   const token = await fetchIdToken();
   if (!token) return { data: [] };
@@ -38,10 +31,7 @@ export async function searchDonors(params) {
   });
 }
 
-/**
- * Fetch a single donor profile
- * GET /api/donors/:id/profile
- */
+
 export async function getDonorProfile(id) {
   const token = await fetchIdToken();
   if (!token) return { data: null };

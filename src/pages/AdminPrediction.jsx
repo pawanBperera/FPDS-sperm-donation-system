@@ -86,6 +86,8 @@ const navigate = useNavigate();
         highlights the top factors 
         influencing the result.</p>
 
+
+
       {/* Metrics / Status */}
       <div className="mb-3 model-metrics">
         {info ? (
@@ -102,6 +104,7 @@ const navigate = useNavigate();
 
 
 
+
         <button
           className="btn btn-sm btn-outline-primary ms-2 model-metrics__train-btn"
           onClick={onTrain}
@@ -111,12 +114,9 @@ const navigate = useNavigate();
           "Training...⏸" 
           : "Train ▶"}
         </button>
-
-
-
-
-
       </div>
+
+
 
       {/* Form */}
       <div className="card p-3 mb-3 prediction-form">
@@ -134,6 +134,8 @@ const navigate = useNavigate();
             />
           </div>
 
+
+
           <div className="col-md-3 form-field form-field--childish">
             <label className="form-label form-field__label">Childish diseases</label>
             <select
@@ -147,6 +149,8 @@ const navigate = useNavigate();
             </select>
           </div>
 
+
+
           <div className="col-md-3 form-field form-field--trauma">
             <label className="form-label form-field__label">Accident/Trauma</label>
             <select
@@ -159,6 +163,8 @@ const navigate = useNavigate();
               <option>no</option>
             </select>
           </div>
+
+
 
           <div className="col-md-4 form-field form-field--fever">
             <label className="form-label form-field__label">High fevers (last year)</label>
@@ -209,6 +215,8 @@ const navigate = useNavigate();
             </select>
           </div>
 
+
+
           <div className="col-md-4 form-field form-field--sitting">
             <label className="form-label form-field__label">Hours sitting/day</label>
             <input
@@ -224,6 +232,8 @@ const navigate = useNavigate();
           </div>
         </div>
 
+
+
         <button
           className="btn btn-primary mt-3 predict-btn"
           onClick={onPredict}
@@ -232,6 +242,8 @@ const navigate = useNavigate();
           {busy ? "Predicting...💭" : "Predict"}
         </button>
       </div>
+
+
 
       {/* Result */}
       {error && <div className="alert alert-danger prediction-error">{error}</div>}
@@ -244,6 +256,8 @@ const navigate = useNavigate();
           <div className="prediction-result__confidence">
             Confidence: {(result.probability * 100).toFixed(1)}%
           </div>
+
+
 
           {result.why?.length > 0 && (
             <div className="mt-2 prediction-result__drivers">
@@ -262,11 +276,16 @@ const navigate = useNavigate();
           )}
 
 
+
 {info?.analytics && (
   <div className="card p-3 mt-4">
     <h5 className="mb-3">Analytics</h5>
 
+
+
     <div className="row">
+
+
       {/* Class Distribution */}
       <div className="col-md-6">
         <h6>Class Distribution</h6>
@@ -280,6 +299,8 @@ const navigate = useNavigate();
                 [classLabels[0]]: "#ff5050ff",
                 [classLabels[1]]: "#50ff70fe",
               };
+
+
               return (
                 <>
                   <Pie
@@ -298,9 +319,14 @@ const navigate = useNavigate();
                 </>
               );
             })()}
+
+
+
           </PieChart>
         </ResponsiveContainer>
       </div>
+
+
 
       {/* Global Feature Importance */}
       <div className="col-md-6">
@@ -321,10 +347,14 @@ const navigate = useNavigate();
         ) : (
           <div className="text-muted small">No importance data yet — train the model first.</div>
         )}
+
+
       </div>
     </div>
   </div>
 )}
+
+
 </div>
  )}
 
@@ -335,11 +365,11 @@ const navigate = useNavigate();
       fontSize: "18px",
       fontWeight: "bold",
       marginTop: "10px",
-      backgroundColor: "#f88ef0ff", // custom blue
-      color: "black", // text color
+      backgroundColor: "#f88ef0ff",  
+      color: "black", 
       border: "none",
       borderRadius: "18px",
-      boxShadow: "0 6px #6c2667ff", // 3D effect
+      boxShadow: "0 6px #6c2667ff",  
       cursor: "pointer", 
 
  display: "flex",

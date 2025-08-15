@@ -1,4 +1,4 @@
-// File: src/components/Sidebars/DonorSidebar.jsx
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaHome, FaCog, FaUser } from 'react-icons/fa';
@@ -8,11 +8,9 @@ export function DonorSidebar() {
 
 
   return (
-                    <div className="sidebar" style={{ marginTop: "-1px", minHeight: "100vh" }}>
+    <div className="sidebar" style={{ marginTop: "-1px", minHeight: "100vh" }}>
 
     <aside className="sidebar">
-
-
 
       <NavLink
         to="/donor/dashboard"
@@ -22,15 +20,12 @@ export function DonorSidebar() {
       </NavLink>
 
 
-    
-
         <NavLink
         to="/donor/profile"
         className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
       >
         <FaUser className="icon" /> Profile Manager
       </NavLink>
-
     
       
       <NavLink
@@ -39,6 +34,8 @@ export function DonorSidebar() {
       >
         <FaCog className="icon" /> Account Settings
       </NavLink>
+
+      
     </aside>
     </div>
   );

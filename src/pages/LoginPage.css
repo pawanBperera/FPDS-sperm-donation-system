@@ -1,4 +1,4 @@
-/* File: src/pages/LoginPage.css */
+
 
 .login-page {
   height: 100vh;
@@ -8,11 +8,7 @@
   flex-direction: column;
 }
 
-/*.login-logo {
-  width: 380px;
-  margin-left: -100px;
-}*/
-
+ 
 .login-logo {
   width: 240px;
   height: auto;
@@ -38,12 +34,12 @@
 }
 
 .login-title {
-  color: #5a3e23; /* brownish header */
+  color: #5a3e23;  
   font-family: serif;
 }
 
 .label-text {
-  color: #0e5f5e; /* teal labels */
+  color: #0e5f5e; 
   font-size: 1.25rem;
   font-family: serif;
 }
@@ -66,16 +62,7 @@
   margin-left: 0.5rem;
 }
 
-/*.show-hide-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 1rem;
-  background: transparent;
-  border: none;
-  font-size: 1.1rem;
-  color: #333;
-}*/
+ 
 
 .position-relative .show-hide-btn {
   position: absolute;
@@ -149,26 +136,21 @@
   width: auto;
 }
 
-
-
-
-
+ 
 .login-form-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /*width: 100%;*/
   max-width: 400%;
   padding: 0 1rem;
 }
 .login-title {
   position: absolute;
-  top: -2.3rem;               /* lifts it above the card */
+  top: -2.3rem;              
   left: 50%;
   transform: translateX(-50%);
-  /*background: rgba(138,146,169,0.85);*/
-  padding: 0 0.5rem;          /* mask behind text */
+  padding: 0 0.5rem;         
   color: #5a3e23;
   font-family: serif;
   z-index: 1;

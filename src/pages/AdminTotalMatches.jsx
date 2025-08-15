@@ -1,18 +1,10 @@
 
-// File: src/pages/AdminTotalMatches.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import axios from "axios";
-
-/*
-import {
-  fetchAdminShortlists,
-  updateShortlistStatus,
-} from "../services/adminApi";
-*/
-
 import "./AdminTotalMatches.css";
+
 
 // Configure axios base URL and auth header
 axios.defaults.baseURL = "http://localhost:8080/api";
@@ -40,7 +32,6 @@ export default function AdminTotalMatches() {
 
 const fetchPendingMatches = async () => {
   try {
-   // const res = await axios.get("/matches/status/pending");
    const res = await axios.get("/api/matches/status/pending");
 
     setMatches(res.data);
@@ -58,17 +49,14 @@ const fetchPendingMatches = async () => {
 const updateMatchStatus = async (matchId, newStatus) => {
   if (!window.confirm(`Are you sure you want to ${newStatus} this match?`)) return;
   try {
-  //  await axios.put(`/matches/${matchId}/status?status=${newStatus}&adminId=${user.id}`);
+
 await axios.put(`/api/matches/${matchId}/status?status=${newStatus}&adminId=${user.id}`);
-    setMatches(matches.filter((m) => m.matchId !== matchId)); // remove from list after update
+    setMatches(matches.filter((m) => m.matchId !== matchId)); 
   } catch (err) {
     console.error(`Failed to ${newStatus}:`, err);
     alert("Failed to update status.");
   }
 };
-
-
-
 
   if (loading) return <div className="p-4">Loading matches…</div>;
   if (error) return <div className="p-4 text-danger">{error}</div>;
@@ -85,6 +73,8 @@ await axios.put(`/api/matches/${matchId}/status?status=${newStatus}&adminId=${us
             <FaHome className="icon" /> Dashboard
           </button>
         </div>
+
+
 
         <table className="table table-bordered matches-table">
           <thead className="table-light">

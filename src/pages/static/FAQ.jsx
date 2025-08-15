@@ -1,7 +1,7 @@
 import React from "react";
 import "./static-pages.css";
-import Footer from "../../components/Footer/Footer"; // adjust path if needed
-import NavBar from "../../components/NavBar/NavBar"; // adjust path if needed
+import Footer from "../../components/Footer/Footer"; 
+import NavBar from "../../components/NavBar/NavBar"; 
 import { FaQuestionCircle, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import  { useState } from "react";
 

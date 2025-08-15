@@ -1,4 +1,4 @@
-// File: src/pages/LoginPage.js
+
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
@@ -44,13 +44,13 @@ export default function LoginPage() {
       const appUser = res.data;
 
       // 4) Store in localStorage
-     // localStorage.setItem("user", JSON.stringify(appUser));
+      localStorage.setItem("user", JSON.stringify(appUser));
 
 localStorage.setItem(
   "user",
   JSON.stringify({
     ...appUser,
-    token,               // the Firebase JWT you fetched above
+    token,               
   })
 );
 

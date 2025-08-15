@@ -1,6 +1,6 @@
-/* Step2.css */
+
 .step2-form {
- /* background: url('../../assets/clloud3.png') no-repeat center center;*/
+ 
  background-color: white;
 
   background-size: cover;
@@ -14,7 +14,7 @@
 }
 
 .step2-background{
-    background: url('../../assets/clloud3.png') no-repeat center center fixed;
+  background: url('../../assets/clloud3.png') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   padding: 40px 20px;
@@ -33,26 +33,15 @@
   margin-bottom: 30px;
   color: #2b2b2b;
   
-}/*
-.hed h2{
- text-align: center;
-  
-  color: #2b2b2b;
 }
-.hed h3{
- text-align: center;
-  
-  color: #2b2b2b;
-}*/
-
-/*===============================*/
 
 
 
-/* fix heading floating and font */
+
+
 .hed {
   position: absolute;
-  top: 10px; /* adjust vertically as needed */
+  top: 10px; 
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -61,6 +50,7 @@
   font-family: 'Segoe UI', sans-serif;
    
 }
+
 
 .hed h2 {
   font-size: 28px;
@@ -84,7 +74,7 @@
 
 }
 
-/* white container */
+
 .step2-container {
   background-color: white;
   padding: 40px;

@@ -1,4 +1,4 @@
-// File: src/pages/DonorProfileView.jsx
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
@@ -21,7 +21,8 @@ export default function DonorProfileView() {
         setLoading(true);
         const res = await getDonorProfile(id);
         const data = res.data;
-const mappedProfile = {
+        const mappedProfile = {
+
   userId: data.user_id,
   willingToHelp: data.willing_to_help,
   numberOfChildren: data.number_of_children || "N/A",
@@ -42,6 +43,8 @@ const mappedProfile = {
   hadBeenDonor: data.had_been_donor,
   age: data.age || "N/A"
 };
+
+
 setProfile(mappedProfile);
 
 
@@ -56,6 +59,8 @@ setProfile(mappedProfile);
     }
     fetchProfile();
   }, [id]);
+
+
 
   async function handleSave() {
     try {

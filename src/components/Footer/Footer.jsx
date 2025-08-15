@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaTwitter, FaInstagram, FaFacebookF } from "react-icons/fa";
-import "./Footer.css"; // create this for styling
+import "./Footer.css";
+
+
 
 const Footer = () => {
   return (
@@ -24,6 +26,10 @@ const Footer = () => {
           <h4 className="contact-title">Contact Us</h4>
         </div>
 
+
+
+
+
         {/* Middle Section */}
         <div className="footer-section">
           <ul>
@@ -36,6 +42,10 @@ const Footer = () => {
             <li><Link to="/recipient/female-infertility">Female Infertility</Link></li>
           </ul>
         </div>
+
+
+
+
 
         {/* Right Section */}
         <div className="footer-section">
@@ -50,5 +60,7 @@ const Footer = () => {
     </footer>
   );
 };
+
+
 
 export default Footer;

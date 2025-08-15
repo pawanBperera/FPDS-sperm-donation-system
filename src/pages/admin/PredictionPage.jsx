@@ -15,8 +15,7 @@ const PredictionPage = () => {
   const [error, setError] = useState("");
   
 
-
-  // Dummy pie data (static for now)
+  // Dummy pie data 
   const pieData = [
   { name: "Achieved Score", value: prediction?.score || 0 },
   { name: "Penalty", value: 100 - (prediction?.score || 0) }
@@ -25,20 +24,21 @@ const PredictionPage = () => {
 
 
 
-  const COLORS = ["#4caf50", "#ffc107", "#f44336"];
-
- const { donorId, recipientId } = useParams();
-  console.log("Params from URL:", donorId, recipientId);
-
-  
+const COLORS = ["#4caf50", "#ffc107", "#f44336"];
+const { donorId, recipientId } = useParams();
+  console.log("Params from URL:", donorId, recipientId);  
 const navigate = useNavigate();
 
 //*************************************************************************** */
+
+
 const fetchPrediction = async () => {
   setLoading(true);
 
+
+
   try {
-    // ✅ Use route params if available, fallback for demo mode
+  
    const donor = donorId && donorId !== "undefined" ? parseInt(donorId) : 3;
 const recipient = recipientId && recipientId !== "undefined" ? parseInt(recipientId) : 10;
 
@@ -46,7 +46,7 @@ const recipient = recipientId && recipientId !== "undefined" ? parseInt(recipien
 
 console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
 
-    // ✅ Firebase Auth check
+   
     const auth = getAuth();
     if (!auth.currentUser) {
       alert("Please log in to use this feature.");
@@ -57,7 +57,7 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
     const token = await auth.currentUser.getIdToken();
 
     
-    // ✅ API call
+    //API call
     const response = await axios.get("http://localhost:8080/api/predict-compatibility", {
       headers: { Authorization: `Bearer ${token}` },
       params: { donorId: donor, recipientId: recipient }
@@ -65,6 +65,8 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
 
     console.log("Prediction API Response:", response.data);
     setPrediction(response.data);
+
+
 
   } catch (err) {
     console.error("Error fetching prediction:", err);
@@ -75,15 +77,13 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
 };
 
 
-
-
-
-
   return (
     <div className="prediction-container">
 
       <h2 className="prediction-title">Compatibility Predictor</h2>
      <p className="prediction-subtitle">
+
+
         
       </p>
       {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
@@ -91,13 +91,18 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
 
       {loading && <p style={{ textAlign: "center" }}>Calculating...</p>}
 
+
       {!prediction && !loading && (
        <div className="predict-btn-wrapper">
           <button className="predict-btn" onClick={fetchPrediction}>
             Predict Compatibility
           </button>
 
+
           <div style={{ textAlign: "center", marginTop: "20px" }}>
+
+
+
   <button
     className="btn btn-secondary"
     style={{ padding: "10px 20px", fontSize: "16px", marginTop: "10px" }}
@@ -105,17 +110,12 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
   >
     Back to Dashboard
   </button>
+
+
+
 </div>
-
-        </div>
-
-
-
-
-
-      )}
-
-
+  </div>
+)}
 
 
      {prediction && (
@@ -132,22 +132,20 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
       prediction?.overallRisk === "MEDIUM" ? "orange" : "red"
   }}
 >
+
   {prediction?.overallRisk} RISK
 </h3>
-
-    </div>
+ </div>
 
     {/* Charts */}
-
-    
     <div className="prediction-charts">
       {/* Bar Chart */}
-
-
 
  <div className="bar-chart-section">
    <h4>Factor Breakdown</h4>
   
+
+
   <ResponsiveContainer width="100%" height="100%">
     <BarChart
     
@@ -182,6 +180,8 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
       </div>
     </div>
 
+
+
     {/* Quick Facts */}
     <div className="prediction-quick-facts">
       <h4>Quick Facts</h4>
@@ -189,6 +189,8 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
       <p>Province Match: {prediction?.details?.provinceMatch ? "Yes ✅" : "No ❌"}</p>
       <p>Ethnicity Match: {prediction?.details?.ethnicityMatch ? "Yes ✅" : "No ❌"}</p>
     </div>
+
+
 
     {/* Insights */}
 <div className="prediction-insights">
@@ -202,10 +204,7 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
           ? " Ethnicity matches."
           : " Ethnicity does not match, but this is optional."}
         Overall, the match is considered {prediction?.overallRisk}.
-      </p>
-
-
-      
+      </p>  
     </div>
 
 <button
@@ -215,28 +214,26 @@ console.log("✅ Using IDs → Donor:", donor, "| Recipient:", recipient);
       fontSize: "18px",
       fontWeight: "bold",
       marginTop: "10px",
-      backgroundColor: "#f88ef0ff", // custom blue
-      color: "black", // text color
+      backgroundColor: "#f88ef0ff", 
+      color: "black", 
       border: "none",
       borderRadius: "18px",
-      boxShadow: "0 6px #6c2667ff", // 3D effect
+      boxShadow: "0 6px #6c2667ff",
       cursor: "pointer", 
-
- display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     }}
+
     onClick={() => navigate("/admin/dashboard")}
   >
+
     Back to Dashboard
-  </button>
-
-    
+  </button> 
   </>
-
-  
 )}
+
+
 
     </div>
   );

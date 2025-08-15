@@ -1,4 +1,4 @@
-/* src/components/ChatBot/chatStyles.css */
+
 
 .chatbot-toggle {
   position: fixed;
@@ -20,13 +20,17 @@
   justify-content: center;
 }
 
-/* Hover effect: subtle bounce and glow */
+
+
+
 .chatbot-toggle:hover {
   transform: scale(1.08);
   box-shadow: 0 12px 28px rgba(151, 41, 241, 0.4);
 }
 
-/* Optional: animated ring glow */
+
+
+
 @keyframes pulse-glow {
   0% {
     box-shadow: 0 0 0 0 rgba(157, 78, 221, 0.4);
@@ -39,6 +43,8 @@
   }
 }
 
+
+
 .chatbot-toggle::after {
   content: "";
   position: absolute;
@@ -50,10 +56,14 @@
 }
 
 
+
+
 .chatbot-icon {
   width: 40px;
   height: 40px;
 }
+
+
 
 .chatbot-panel {
   position: fixed;
@@ -61,14 +71,10 @@
   right: 24px;
   width: 320px;
   max-height: 500px;
-  
   background-image: url("../../assets/infoBak.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-
-
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -76,6 +82,8 @@
   overflow: hidden;
   z-index: 9999;
 }
+
+
 
 .chatbot-header {
   background-color: #dc93fe;
@@ -90,6 +98,8 @@
   border-bottom: 1px solid #ddd;
 }
 
+
+
 .chatbot-header img {
   width: 28px;
   height: 28px;
@@ -98,6 +108,8 @@
   border-radius: 20px;
 }
 
+
+
 .close-btn {
   background: none;
   border: none;
@@ -105,6 +117,8 @@
   cursor: pointer;
   color: #000000;
 }
+
+
 
 .chatbot-messages {
   flex: 1;
@@ -115,6 +129,8 @@
   gap: 10px;
 }
 
+
+
 .chatbot-msg {
   padding: 10px 14px;
   border-radius: 20px;
@@ -123,16 +139,22 @@
   word-wrap: break-word;
 }
 
+
+
 .chatbot-msg.user {
   background-color:#d5abe9;
   align-self: flex-end;
   
 }
 
+
+
 .chatbot-msg.bot {
   background-color: #f4b1c3;
   align-self: flex-start;
 }
+
+
 
 .chatbot-input {
   display: flex;
@@ -142,6 +164,8 @@
   background-color:#dc93fe;
 }
 
+
+
 .chatbot-input input {
   flex: 1;
   padding: 8px 12px;
@@ -150,6 +174,8 @@
   outline: none;
   font-size: 14px;
 }
+
+
 
 .chatbot-input button {
   background-color: #ca57ff;
@@ -161,6 +187,8 @@
   color: #000;
   transition: background-color 0.2s ease;
 }
+
+
 
 .chatbot-input button:hover {
   background-color: #d78cfa;
@@ -182,6 +210,8 @@
   }
 }
 
+
+
 .flap-animation {
   animation: flap 0.7s infinite ease-in-out;
   transform-origin: center;
@@ -196,6 +226,8 @@
   text-align: left;
   animation: fadeIn 0.3s ease-in-out;
 }
+
+
 
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -85,21 +85,29 @@ useEffect(() => {
   };
 
   return (
-<div className="analytics-page">      <h1 className="text-center text-4xl font-bold text-purple-700 mb-6">
+<div className="analytics-page">     
+
+  <h1 className="text-center text-4xl font-bold text-purple-700 mb-6">
         Spermatogenesis Risk Prediction
       </h1>
+
+
 
       {/* Summary */}
        <div className="summary-cards-container">
    <SummaryCards summary={summary} className="summary-card" />
  </div>
 
+
+
       {/* Charts */}
      <div className="charts-section">
             <RiskByAgeChart data={ageRisk} />
             <HighRiskDonut highRisk={pieData.highRisk} lowRisk={pieData.lowRisk} />
       </div>
-{/* Prediction card */}
+
+
+    {/* Prediction card */}
      <div className="summary-card">
        <span className="summary-card-icon"><FaExclamationTriangle className="warning-icon" /></span>
        <div className="summary-card-content">
@@ -110,13 +118,17 @@ useEffect(() => {
      </div>
 
 
+
+
       {/* Table */}
-<h2 className="affected-donor-title">
+      <h2 className="affected-donor-title">
             Affected Donor Details
       </h2>
       <div className="affected-donor-table">
   <AffectedDonorTable rows={rows} />
  </div>
+
+
 
       {/* Buttons */}
       <div className="action-buttons">

@@ -1,4 +1,4 @@
-// File: src/pages/RecipientChangePassword.jsx
+ 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
@@ -9,7 +9,7 @@ import {
   EmailAuthProvider,
   updatePassword,
 } from "firebase/auth";
-//import "./RecipientChangePassword.css"; // create for any custom styles
+//import "./RecipientChangePassword.css"; 
 
 export default function RecipientChangePassword() {
   const navigate = useNavigate();

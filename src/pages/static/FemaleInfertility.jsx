@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 const FemaleInfertility = () => {
   const { t } = useTranslation();
 
+  
   return (
     <>
       <NavBar />

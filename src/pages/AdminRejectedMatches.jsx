@@ -1,4 +1,3 @@
-// File: src/pages/AdminRejectedMatches.jsx
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -43,10 +42,6 @@ export default function AdminRejectedMatches() {
     // 1) Call the status‐update endpoint with query params
     await axios.put(`/api/matches/${matchId}/status?status=pending&adminId=${user.id}`);
 
-
-
-
-
     // 2) Re‐fetch the “rejected” list so the UI stays in sync
     const res = await axios.get("/api/matches/status/rejected");
     setMatches(res.data);
@@ -57,9 +52,8 @@ export default function AdminRejectedMatches() {
 };
 
 
-
-
   if (loading) return <div className="p-4">Loading rejected matches…</div>;
+
 
   return (
     <div className="d-flex admin-matches-page">
@@ -74,6 +68,8 @@ export default function AdminRejectedMatches() {
           </button>
         </div>
 
+
+
         <table className="table table-bordered matches-table">
           <thead className="table-light">
             <tr>
@@ -83,6 +79,8 @@ export default function AdminRejectedMatches() {
 
             </tr>
           </thead>
+
+
 
          <tbody>
   {matches.map((m, index) => (
@@ -105,15 +103,17 @@ export default function AdminRejectedMatches() {
       </td>
     </tr>
   ))}
+
+
   {matches.length === 0 && (
     <tr>
       <td colSpan="3">No rejected matches.</td>
     </tr>
   )}
 </tbody>
-
-
         </table>
+
+
 
         <button
           className="btn btn-pink mt-4"
@@ -121,6 +121,8 @@ export default function AdminRejectedMatches() {
         >
           Back to All Matches
         </button>
+
+        
       </main>
     </div>
   );

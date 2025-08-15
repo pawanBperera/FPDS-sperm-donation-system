@@ -1,6 +1,5 @@
-/* File: src/pages/RecipientDashboard.css */
 
-/* Base card style */
+ 
 .dash-card {
   display: flex;
   align-items: center;
@@ -9,7 +8,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
 
-    box-shadow: 6px 6px 12px #a36bb18d, -6px -6px 12px #a7a0a0; /* 3D shadow */
+    box-shadow: 6px 6px 12px #a36bb18d, -6px -6px 12px #a7a0a0;  
 
 
 }
@@ -21,31 +20,25 @@
 
 .mb-3{
   font-family: 'Roboto', sans-serif;
-
 }
 
 .recipient-dashboard {
-  
   background: url('../assets/back\ 2.png') no-repeat center center;
   background-size: cover;
   display: flex;
   flex-direction: column;
-
-   background-size: cover;
-  background-attachment: fixed; /* Optional: makes it stay in place on scroll */
-   min-height: 100vh; /* Allows it to grow beyond viewport */
+  background-size: cover;
+  background-attachment: fixed;  
+  min-height: 100vh;  
   
 }
 
-
-/* Icons */
+ 
 .dash-icon {
   font-size: 1.75rem;
   margin-right: 1rem;
 }
-
-
-/* Primary card (matches) */
+ 
 .dash-card-primary {
   background-color: #f8bbd0;
 }
@@ -62,7 +55,7 @@
     color: #047048;
 }
 
-/* Success card (profile ✓, screening ✓, approved) */
+ 
 .dash-card-success {
   background-color: #c8e6c9;
 }
@@ -80,8 +73,7 @@
 .dash-icon-check:hover {
   color: #5cb461;
 }
-
-/* Warning card (profile ✗, screening ✗) */
+ 
 .dash-card-warning {
   background-color: #cda6e7;
   
@@ -91,8 +83,7 @@
   background-color: #e8ddf0;
 }
 
-
-/* Info card (last login) */
+ 
 .dash-card-info {
   background-color: #e1f5fe;
 }
@@ -109,8 +100,8 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  background: #fff9db; /* soft yellow tint */
-  color: #382d0a; /* dark golden tone for text */
+  background: #fff9db;  
+  color: #382d0a;  
   font-size: 0.95rem;
   font-weight: 500;
   padding: 0.8rem 1rem;
@@ -120,7 +111,7 @@
   
 }
 .alert-warning::before {
-  content: '❕'; /* bell icon for attention */
+  content: '❕';  
   font-size: 1.2rem;
 }
 
@@ -129,8 +120,8 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  background: #fff4e6; /* soft orange tint for info/warning */
-  color: #911b00; /* dark orange for text */
+  background: #fff4e6;  
+  color: #911b00;  
   font-size: 0.95rem;
   font-weight: 500;
   padding: 0.8rem 1rem;
@@ -139,9 +130,9 @@
   margin: 1rem 0;
 }
 
-/* Optional icon for better UX */
+ 
 .alert-info::before {
-  content: '❕'; /* or use SVG/icon for better style */
+  content: '❕'; 
   font-size: 1.2rem;
 }
 

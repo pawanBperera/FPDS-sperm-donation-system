@@ -1,7 +1,6 @@
-// File: src/components/Registration/Step1.js
+
 import React from "react";
-import { provincesList } from "../../constants"; // e.g. ["Western", "Central", ...]
-//import { mockCreateUser } from '../utils/fakeApi';
+import { provincesList } from "../../constants"; 
 import "./Step1.css";
 
 
@@ -14,8 +13,14 @@ export default function Step1({
   confirmPassword, setConfirmPassword,
   province, setProvince,
   onNext
-}) {
+}) 
+
+
+
+{
   return (
+
+
     <div className="step1-form">
       <h2>Step 1: Account Info</h2>
       <input
@@ -24,35 +29,55 @@ export default function Step1({
         value={email}
         onChange={e => setEmail(e.target.value)}
       />
+
+
       <br></br>
+
+
       <input
         type="text"
         placeholder="First Name"
         value={firstName}
         onChange={e => setFirstName(e.target.value)}
       />
+
+
       <br></br>
+
+
       <input
         type="text"
         placeholder="Last Name"
         value={lastName}
         onChange={e => setLastName(e.target.value)}
       />
+
+
       <br></br>
+
+
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
+
+
       <br></br>
+
+
       <input
         type="password"
         placeholder="Confirm Password"
         value={confirmPassword}
         onChange={e => setConfirmPassword(e.target.value)}
       />
+
       <br></br>
+
+
+
       <select
   value={province}
   onChange={e => setProvince(e.target.value)}
@@ -63,10 +88,16 @@ export default function Step1({
   ))}
 </select>
 
+
+
+
       <button onClick={onNext}>Next</button>
       <p>
         Have an account? <a href="/login">Log in</a>
       </p>
+
+
+      
     </div>
   );
 }

@@ -1,10 +1,10 @@
-// File: src/layouts/RecipientLayout.jsx
+
 import React from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import { RecipientSidebar } from "../components/Sidebars/RecipientSidebar";
 import Footer from "../components/Footer/Footer";
-import "../components/Sidebars/Sidebar.css"; // for sidebar styling
+import "../components/Sidebars/Sidebar.css"; 
 
 export default function RecipientLayout() {
   return (

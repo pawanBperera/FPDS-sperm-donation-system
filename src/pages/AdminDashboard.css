@@ -1,8 +1,6 @@
-/* File: src/pages/AdminDashboard.css */
 
-/* Analytics Cards */
 .analytics-card {
-    background-color: #f3e5f5; /* very light purple */
+    background-color: #f3e5f5; 
     border: 1px solid #d1c4e9;
     border-radius: 0.75rem;
     display: flex;
@@ -21,12 +19,12 @@
   .analytics-icon {
     font-size: 1.5rem;
     margin-right: 0.75rem;
-    color: #6d46b0; /* medium purple */
+    color: #6d46b0; 
   }
   
-  /* Action Buttons */
+ 
   .btn-add-donor {
-    background-color: #5746a2; /* pink */
+    background-color: #5746a2; 
     color: #000;
     border: none;
     border-radius: 1rem;
@@ -40,7 +38,7 @@ font-weight: bolder;
   }
   
   .btn-approved {
-    background-color: #337936; /* lavender */
+    background-color: #337936; 
     color: #000;
     border: none;
     border-radius: 1rem;
@@ -56,7 +54,7 @@ font-weight: bolder;
   
   
   .btn-rejected {
-    background-color: #8d2929; /* orange */
+    background-color: #8d2929;  
     color: #fff;
     border: none;
     border-radius: 1rem;
@@ -69,10 +67,9 @@ font-weight: bolder;
   }
   
   
-  
-  /* Logout Button */
+ 
   .btn-logout {
-    background-color: #dc3545; /* bootstrap danger */
+    background-color: #dc3545;  
     color: #fff;
     border: none;
     border-radius: 0.5rem;

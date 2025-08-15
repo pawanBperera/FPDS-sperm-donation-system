@@ -1,20 +1,18 @@
-/* Overall container */
+
 .prediction-container {
   padding: 20px;
   font-family: 'Roboto', sans-serif;
-  
-
-  background-image: url('../../assets/back\ 2.png'); /* Adjust path based on CSS location */
-  background-size: cover;  /* Makes the image fill the container */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Avoids tiling */
-  min-height: 100vh; /* Makes it full page height */
+  background-image: url('../../assets/back\ 2.png'); 
+  background-size: cover;   
+  background-position: center; 
+  background-repeat: no-repeat; 
+  min-height: 100vh;  
 
 
 
 }
 
-/* Page header */
+ 
 .prediction-title {
   text-align: center;
   font-size: 28px;
@@ -30,7 +28,7 @@
   margin-bottom: 20px;
 }
 
-/* Loading text */
+ 
 .prediction-loading {
   text-align: center;
   font-size: 18px;
@@ -40,7 +38,7 @@
 
 
 
-/* Predict button */
+ 
 .predict-btn-wrapper {
   text-align: center;
   margin-top: 20px;
@@ -59,8 +57,8 @@ background: rgba(255, 255, 255, 0.15);
 }
 
 .predict-btn:active {
-  box-shadow: 0 2px #0a58ca;   /* Reduce shadow when pressed */
-  transform: translateY(4px);  /* Push button down */
+  box-shadow: 0 2px #0a58ca;  
+  transform: translateY(4px);   
 }
 
 .predict-btn:hover {
@@ -70,11 +68,7 @@ background-color: #c46fe8;}
   
 
 
-
-
-
-
-/* Score & Risk Section */
+ 
 .prediction-score-wrapper {
   text-align: center;
   margin-top: 20px;
@@ -96,7 +90,7 @@ background-color: #c46fe8;}
 
 }
 
-/* Chart Section */
+ 
 .prediction-charts {
   display: flex;
   justify-content: space-around;
@@ -108,22 +102,14 @@ background-color: #c46fe8;}
 .pie-chart-section {
   width: 45%;
   text-align: center;
- 
-    background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-
   border: 1px solid #827979;
-
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   padding: 35px;
   border-radius: 38px;
 }
-
-
-
-
 
 
 .bar-chart-section h4,
@@ -133,8 +119,6 @@ background-color: #c46fe8;}
 }
 
 
-
-/* Quick Facts */
 .prediction-quick-facts {
   margin-top: 30px;
   text-align: center;
@@ -151,17 +135,12 @@ background-color: #c46fe8;}
 }
 
 
-
-
-/* Insights box */
 .prediction-insights {
 
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-
-
   color: black;
   padding: 15px;
   margin-top: 20px;

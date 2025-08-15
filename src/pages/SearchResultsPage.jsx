@@ -1,8 +1,8 @@
-// File: src/pages/SearchResultsPage.jsx
+
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { getDonors } from "../services/donorApi";             // ADDED
-import DonorProfileCard from "../components/DonorProfileCard";  // ADDED
+import { getDonors } from "../services/donorApi";             
+import DonorProfileCard from "../components/DonorProfileCard"; 
 import "./SearchResultsPage.css";
 
 export default function SearchResultsPage() {
@@ -17,8 +17,8 @@ export default function SearchResultsPage() {
   useEffect(() => {
     async function fetchResults() {
       try {
-        setLoading(true);  // UPDATED: show loading during API call
-        const res = await getDonors();    // UPDATED: use donorApi instead of mockSearchDonors
+        setLoading(true);  // show loading during API call
+        const res = await getDonors();    //  use donorApi instead of mockSearchDonors
         setResults(res.data);
       } catch (err) {
         console.error("Search failed:", err);
@@ -37,12 +37,14 @@ export default function SearchResultsPage() {
   return (
     <div className="results-page">
       <h1>Search Results</h1>
-      <div className="results-grid">  {/* ADDED: container for profile cards */}
+      <div className="results-grid">  
         {results.map((donor) => (
           <DonorProfileCard key={donor.userId} donor={donor} />  
         ))}
       </div>
-      {/* pagination controls here (unchanged) */}
+
+
+
     </div>
   );
 }

@@ -1,43 +1,40 @@
-/* File: src/pages/RecipientApprovedMatches.css */
-
-/* Reuse the same pastel card style */
+ 
 .recipient-match-card {
-  background-color: #f3e5f5; /* light lavender */
+  background-color: #f3e5f5; 
   border: 1px dashed #9c27b0;
   border-radius: 0.75rem;
   
 }
 
-/* Donor detail inner box */
+ 
 .donor-detail-box {
-  background-color: #e8f5e9; /* light green */
+  background-color: #e8f5e9;  
   border: 1px solid #c8e6c9;
   border-radius: 0.5rem;
 }
 
-/* Approval message box */
+ 
 .approved-msg-box {
   border-color: #90a4ae;
   background-color: #eceff1;
   border-radius: 0.5rem;
 }
 
-/* Appointment line */
+ 
 .appointment-pending {
   color: #546e7a;
 }
+
 .p-1 {
   margin-left: 240px; 
   margin-top: 64px;
-
   background: url('../assets/back\ 2.png') no-repeat center center;
   background-size: cover;
   display: flex;
   flex-direction: column;
-
-   background-size: cover;
+  background-size: cover;
   background-attachment: fixed; 
-   min-height: 100vh; 
+  min-height: 100vh; 
 }
 
 .notification-dot {

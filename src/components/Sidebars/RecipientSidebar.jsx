@@ -1,4 +1,4 @@
-// File: src/components/Sidebars/RecipientSidebar.jsx
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
@@ -45,7 +45,6 @@ export function RecipientSidebar() {
         <FaCommentDots className="icon" /> Feedback
       </NavLink>
       
-     
       
       <hr />
 
@@ -58,7 +57,10 @@ export function RecipientSidebar() {
         { to: '/recipient/gender-selection', label: 'Gender Selection' },
         { to: '/recipient/male-infertility', label: 'Male Infertility' },
         { to: '/recipient/female-infertility', label: 'Female Infertility' },
+
       ].map(({ to, label }) => (
+
+        
         <NavLink
           key={to}
           to={to}

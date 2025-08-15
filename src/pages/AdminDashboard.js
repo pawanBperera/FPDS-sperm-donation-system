@@ -1,13 +1,12 @@
-// File: src/pages/AdminDashboard.jsx
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
-
 import { AdminSidebar } from "../components/Sidebars/AdminSidebar";
 import { FaUser, FaUserFriends, FaHeart } from "react-icons/fa";
-import "../components/Sidebars/Sidebar.css"; // ensure sidebar CSS
-import "./AdminDashboard.css"; // create for custom styles as needed
+import "../components/Sidebars/Sidebar.css"; 
+import "./AdminDashboard.css"; 
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -21,7 +20,6 @@ if (stored) {
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
- // const user = JSON.parse(localStorage.getItem("user")) || {};
   const [totals, setTotals] = useState({
     recipients: 0,
     donors: 0,
@@ -30,25 +28,6 @@ export default function AdminDashboard() {
 
 
 
-
-/*
- useEffect(() => {
-  const fetchSummary = async () => {
-    try {
-      const res = await axios.get("/api/analytics/analytics");
-      setTotals({
-        recipients: res.data.total_recipients,
-        donors: res.data.total_donors,
-        matches: res.data.total_matches,
-      });
-    } catch (err) {
-      console.error("Error fetching admin summary:", err);
-    }
-  };
-  fetchSummary();
-}, []);
-
-*/
 
  useEffect(() => {
     const fetchTotals = async () => {
@@ -147,6 +126,8 @@ export default function AdminDashboard() {
   </div>
 </div>
 </div>
+
+
 
 <div className="ana"></div>
  <div className="col-md-6 col-lg-4">

@@ -1,5 +1,3 @@
-// File: src/constants.js
-
 // List of Sri Lankan provinces
 export const provincesList = [
     "Central",

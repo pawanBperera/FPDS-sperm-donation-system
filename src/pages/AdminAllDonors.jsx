@@ -1,9 +1,13 @@
-// File: src/pages/AdminAllDonors.jsx
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 //import "./AdminAllDonors.css"; // optional styling file if needed
 import axios from "axios";
+
+
+
+
 
 // ─── Axios defaults ────────────────────────────────────────────
 axios.defaults.baseURL = "http://localhost:8080";
@@ -14,6 +18,9 @@ if (token) axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 // ─────────────────────────────────────────────────────────────────
 
+
+
+
 export default function AdminAllDonors() {
   const navigate = useNavigate();
   const [donors, setDonors] = useState([]);
@@ -23,7 +30,7 @@ export default function AdminAllDonors() {
  useEffect(() => {
   const fetchDonors = async () => {
     try {
-      const res = await axios.get("/api/admin/users/donors"); // or your real route
+      const res = await axios.get("/api/admin/users/donors"); 
       setDonors(res.data);
     } catch (err) {
       console.error("Error fetching donors:", err);
@@ -49,11 +56,15 @@ export default function AdminAllDonors() {
     return age;
   };
 
+
+
   const handleRemove = (id) => {
     if (window.confirm("Are you sure you want to remove this donor?")) {
       setDonors((prev) => prev.filter((d) => d.id !== id));
     }
   };
+
+
 
   return (
     <div className="donor-page-container">
@@ -63,6 +74,8 @@ export default function AdminAllDonors() {
       <p className="text-center">Loading donors...</p>
     ) : (
       <>
+
+
 
        <div className="text-center mt-4">
               <button className="btn" style={{ backgroundColor: "#f79bd3" }} onClick={() => navigate("/admin/dashboard")}> 
@@ -83,6 +96,7 @@ export default function AdminAllDonors() {
           </thead>
 
 
+
           <tbody>
            {donors.map((d, index) => (
     <tr key={`${d.userId}-${index}`}>
@@ -91,6 +105,8 @@ export default function AdminAllDonors() {
       <td>{d.age > 0 ? d.age : "N/A"}</td>
       <td>{d.shortlistedCount}</td>
       <td>
+
+
                  <button
           className="btn btn-danger"
           onClick={() => handleRemove(d.userId)}
@@ -110,8 +126,6 @@ export default function AdminAllDonors() {
           </tbody>
         </table>
       </div>
-
-
 
     
 

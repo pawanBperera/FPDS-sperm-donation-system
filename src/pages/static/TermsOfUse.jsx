@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer";
 //import { FaInfoCircle, FaHeartbeat, FaClipboardList, FaCheckCircle } from "react-icons/fa";
 
 
+
 const TermsOfUse = () => {
   return (
     <>
