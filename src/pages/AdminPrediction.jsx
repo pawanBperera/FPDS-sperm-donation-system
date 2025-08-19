@@ -6,7 +6,9 @@ import {
   PieChart, Pie, Cell, Tooltip as ReTooltip, Legend,
   BarChart, Bar, XAxis, YAxis, CartesianGrid,
   ResponsiveContainer,
-} from "recharts";
+} 
+
+from "recharts";
 import { useNavigate } from "react-router-dom";
 
 export default function AdminPrediction() {

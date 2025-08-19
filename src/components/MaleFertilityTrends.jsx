@@ -13,15 +13,15 @@ const yMaxFor = (paramKey) => {
 
 
 export default function MaleFertilityTrends() {
-  const [allParams, setAllParams] = useState([]);
-  const [paramKey, setParamKey] = useState("total_motility_pct");
+  const [allParams, setAllParams] = useState([]);  //semen parameters hold krn thiynne that loaded from the json file.
+  const [paramKey, setParamKey] = useState("total_motility_pct"); //mona parameters the load krla display krnne kiyla chart ekata info denna
 
 
 
   useEffect(() => {
     const url = `${process.env.PUBLIC_URL}/data/male_fertility_who_p5.json`;
     console.log("[WHO] fetching:", url);
-
+                                                                                    // components load unama eka paarak run wela ara json file eken data adinwa. 
     fetch(url, { cache: "no-store" })
       .then((r) => {
         console.log("[WHO] status:", r.status, r.statusText);
@@ -78,7 +78,7 @@ export default function MaleFertilityTrends() {
 
 
 
-  const years  = useMemo(() => current?.series?.map(s => s.year) ?? [], [current]);
+  const years  = useMemo(() => current?.series?.map(s => s.year) ?? [], [current]); //awrudu tika (2010, 2021, 2020) gannnawa
   const values = useMemo(() => current?.series?.map(s => s.p5)  ?? [], [current]);
 
   console.log("[WHO] plotting", { paramKey, years, values });
@@ -91,7 +91,6 @@ export default function MaleFertilityTrends() {
       pointRadius: 4,
       pointHoverRadius: 6,
       borderWidth: 2,
-
       borderColor: "red",
       backgroundColor: "rgba(255, 0, 0, 0.2)",
       tension: 0.4, 
@@ -99,7 +98,7 @@ export default function MaleFertilityTrends() {
   }), [years, values]);
 
 
-
+// responsiveness eka handle krnna place eka
   const options = useMemo(() => ({
     responsive: true,
     maintainAspectRatio: false,
