@@ -128,18 +128,32 @@ export default function AdminDashboard() {
 </div>
 
 
-
-<div className="ana"></div>
- <div className="col-md-6 col-lg-4">
+<div className="col-md-6 col-lg-4">
   <div
     className="dash-card"
     onClick={() => navigate("/admin/prediction")}
-    style={{ cursor: "pointer" }}
+    style={{
+      cursor: "pointer",
+      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Deep blue to purple gradient
+      color: "white",
+      fontWeight: "bold",
+      border: "none",
+      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.15)",
+      transition: "all 0.3s ease-in-out",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = 'translateY(-3px)';
+      e.currentTarget.style.boxShadow = '0 7px 20px rgba(0, 0, 0, 0.2)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = 'translateY(0px)';
+      e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.15)';
+    }}
   >
     <div className="dash-icon">📈</div>
     <div>Prediction</div>
   </div>
-</div>
+</div> <br></br>
 
 
 
